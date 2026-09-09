@@ -1,6 +1,7 @@
 (()=>{
 const C=window.MWCAM_CONFIG||{};
 const A=window.MWCAM_ASSETS||{};
+const E=window.MWCAM_ENVIRONMENT||{layers:[]};
 const M=window.MWCAM_ENEMY_ATLAS||{frameWidth:128,frameHeight:128,rows:{skeleton:0,ghoul:4,vampire:8,monster:12,werewolf:16,ghost:20}};
 const TYPES=['skeleton','ghoul','vampire','monster','werewolf','ghost'];
 const BODIES={
@@ -12,6 +13,7 @@ class GothicHorror extends Phaser.Scene{
   constructor(){super('GothicHorror');this.health=C.player?.maxHealth||5;this.film=C.film?.max||100;this.captured=0;this.dead=false;this.jumpLatch=false;}
   preload(){
     if(A.courtyard)this.load.image('courtyard',A.courtyard);
+    (E.layers||[]).forEach(layer=>{if(layer?.key&&layer?.file)this.load.image('env-'+layer.key,layer.file);});
     this.load.spritesheet('hero',A.hero,{frameWidth:C.player.frame.width,frameHeight:C.player.frame.height});
     this.load.spritesheet('enemyAtlas',A.enemyAtlas,{frameWidth:M.frameWidth||128,frameHeight:M.frameHeight||128});
   }
