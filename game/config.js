@@ -1,22 +1,22 @@
 window.MWCAM_CONFIG = {
-  build:'production-raster-step18',
+  build:'production-raster-sprite-dim-fix',
   viewport:{desktop:{width:1280,height:720},mobile:{width:960,height:540},preferredOrientation:'landscape'},
   player:{
-    speed:238,captureMoveSpeed:108,jumpVelocity:-430,maxHealth:5,invulnerabilityMs:1050,scale:0.78,
+    speed:238,captureMoveSpeed:108,jumpVelocity:-430,maxHealth:5,invulnerabilityMs:1050,scale:1.55,
     acceleration:1500,airControl:0.82,groundDrag:0.78,
-    frame:{width:128,height:128,count:8},
+    frame:{width:32,height:62,count:8},
     animations:{idle:{frames:[0],rate:1},walk:{start:0,end:7,rate:11},brace:{frames:[1],rate:1},jump:{frames:[2],rate:1},recoil:{frames:[3],rate:1},hurt:{frames:[6],rate:1}},
     stateTiming:{hurtMs:300,recoilMs:135}
   },
   film:{max:100,drainPerSecond:9.5,recoverPerSecond:9,captureReward:14,emptyLockMs:420},
   capture:{range:485,spread:158,pullStrength:365,baseRate:0.94,minScale:0.14,beamColor:0x8ce8ff,beamAlpha:0.13,pulseMs:80},
   enemies:{
-    skeleton:{resistance:.92,speed:58,scale:.76,frame:{width:128,height:128,count:4},walkRate:7,attackRange:54,attackCooldown:1050},
-    ghoul:{resistance:1.18,speed:50,scale:.82,frame:{width:128,height:128,count:4},walkRate:6,attackRange:58,attackCooldown:1180},
-    vampire:{resistance:1.34,speed:66,scale:.80,frame:{width:128,height:128,count:4},walkRate:8,attackRange:62,attackCooldown:960},
-    monster:{resistance:1.68,speed:39,scale:.98,frame:{width:128,height:128,count:4},walkRate:5,attackRange:70,attackCooldown:1380},
-    werewolf:{resistance:1.48,speed:78,scale:.92,frame:{width:128,height:128,count:4},walkRate:9,attackRange:66,attackCooldown:850},
-    ghost:{resistance:1.22,speed:54,scale:.86,frame:{width:128,height:128,count:4},walkRate:6,floating:true,attackRange:58,attackCooldown:1100}
+    skeleton:{resistance:.92,speed:58,scale:1.35,frame:{width:64,height:65,count:4},walkRate:7,attackRange:54,attackCooldown:1050},
+    ghoul:{resistance:1.18,speed:50,scale:1.42,frame:{width:64,height:65,count:4},walkRate:6,attackRange:58,attackCooldown:1180},
+    vampire:{resistance:1.34,speed:66,scale:1.38,frame:{width:64,height:65,count:4},walkRate:8,attackRange:62,attackCooldown:960},
+    monster:{resistance:1.68,speed:39,scale:1.62,frame:{width:64,height:65,count:4},walkRate:5,attackRange:70,attackCooldown:1380},
+    werewolf:{resistance:1.48,speed:78,scale:1.52,frame:{width:64,height:65,count:4},walkRate:9,attackRange:66,attackCooldown:850},
+    ghost:{resistance:1.22,speed:54,scale:1.46,frame:{width:64,height:65,count:4},walkRate:6,floating:true,attackRange:58,attackCooldown:1100}
   },
   camera:{followLerpX:.105,followLerpY:.095,followOffsetX:-205,followOffsetY:28,deadzoneW:150,deadzoneH:82},
   horror:{
