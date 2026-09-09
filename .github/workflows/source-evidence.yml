@@ -1,0 +1,27 @@
+name: Read-only source evidence
+on:
+  push:
+    branches: [forensic-audit-20260909]
+    paths: [.github/workflows/source-evidence.yml]
+permissions:
+  contents: read
+jobs:
+  preserve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Preserve repository objects without modifying any game files
+        run: |
+          mkdir -p evidence
+          git fetch origin '+refs/heads/*:refs/remotes/origin/*'
+          git fsck --full > evidence/git-fsck.txt 2>&1
+          git show-ref > evidence/refs.txt
+          git log --all --format='%H %P %s' > evidence/history.txt
+          git bundle create evidence/source-history.bundle --all
+      - uses: actions/upload-artifact@v4
+        with:
+          name: source-history-evidence
+          path: evidence/
+          retention-days: 14
