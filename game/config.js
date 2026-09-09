@@ -1,5 +1,5 @@
 window.MWCAM_CONFIG = {
-  build: 'asset-rebuild-03',
+  build: 'asset-rebuild-04',
   viewport: {
     desktop: { width: 1280, height: 720 },
     mobile: { width: 960, height: 540 },
@@ -65,9 +65,9 @@ window.MWCAM_CONFIG = {
   audio: { musicVolume: 0.16, sfxVolume: 0.30 },
   assets: {
     background: 'assets/horror/courtyard.png',
-    hero: 'assets/horror/hero_sheet.png',
-    skeleton: 'assets/horror/skeleton_sheet.png',
-    ghoul: 'assets/horror/ghoul_sheet.png',
-    knight: 'assets/horror/knight_sheet.png'
+    hero: 'assets/horror/hero_sheet.svg',
+    skeleton: 'assets/horror/skeleton_sheet.svg',
+    ghoul: 'assets/horror/ghoul_sheet.svg',
+    knight: 'assets/horror/knight_sheet.svg'
   }
 };
