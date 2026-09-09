@@ -1,0 +1,3 @@
+Enemy atlas binary blob SHA: ad575fc4e0291be521712caf0c0daff6b4c299b8
+Target path: game/assets/production/characters/enemy_atlas.png
+Layout: 6 rows × 4 frames, 128×128 cells. Skeleton, ghoul, vampire, monster, werewolf, ghost.
