@@ -1,5 +1,5 @@
 window.MWCAM_CONFIG = {
-  build: 'production-raster-15b',
+  build: 'production-raster-15c-batch1',
   viewport: {
     desktop: { width: 1280, height: 720 },
     mobile: { width: 960, height: 540 },
@@ -39,9 +39,12 @@ window.MWCAM_CONFIG = {
     pulseMs: 90
   },
   enemies: {
-    skeleton: { resistance: 1.0, speed: 64, scale: 0.78, frame: { width: 129, height: 144, count: 6 }, walkRate: 7 },
-    ghoul: { resistance: 1.28, speed: 54, scale: 0.82, frame: { width: 120, height: 140, count: 6 }, walkRate: 6 },
-    knight: { resistance: 1.75, speed: 46, scale: 0.88, frame: { width: 133, height: 149, count: 6 }, walkRate: 5 }
+    skeleton: { resistance: 1.00, speed: 64, scale: 0.78, frame: { width: 128, height: 128, count: 4 }, walkRate: 7 },
+    ghoul:    { resistance: 1.28, speed: 54, scale: 0.84, frame: { width: 128, height: 128, count: 4 }, walkRate: 6 },
+    vampire:  { resistance: 1.48, speed: 70, scale: 0.82, frame: { width: 128, height: 128, count: 4 }, walkRate: 8 },
+    monster:  { resistance: 1.85, speed: 42, scale: 1.02, frame: { width: 128, height: 128, count: 4 }, walkRate: 5 },
+    werewolf: { resistance: 1.62, speed: 86, scale: 0.96, frame: { width: 128, height: 128, count: 4 }, walkRate: 9 },
+    ghost:    { resistance: 1.36, speed: 58, scale: 0.90, frame: { width: 128, height: 128, count: 4 }, walkRate: 6, floating: true }
   },
   horror: {
     worldWidth: 4300,
@@ -51,8 +54,9 @@ window.MWCAM_CONFIG = {
       [720, 505, 330], [1410, 455, 290], [2130, 510, 350], [2880, 440, 300], [3560, 505, 340]
     ],
     spawns: [
-      ['skeleton', 720, 500], ['ghoul', 1120, 520], ['skeleton', 1560, 510], ['knight', 2180, 500],
-      ['ghoul', 2700, 480], ['skeleton', 3180, 520], ['knight', 3740, 500]
+      ['skeleton', 620, 500], ['ghoul', 1050, 520], ['vampire', 1510, 505],
+      ['monster', 2070, 490], ['ghost', 2570, 470], ['werewolf', 3020, 505],
+      ['skeleton', 3410, 520], ['vampire', 3780, 500], ['ghoul', 4060, 510]
     ]
   },
   hud: {
@@ -66,8 +70,6 @@ window.MWCAM_CONFIG = {
   assets: {
     background: 'assets/horror/courtyard.png',
     hero: 'assets/production/characters/hero_walk.png',
-    skeleton: 'assets/horror/skeleton_sheet.svg',
-    ghoul: 'assets/horror/ghoul_sheet.svg',
-    knight: 'assets/horror/knight_sheet.svg'
+    enemyAtlas: 'assets/production/characters/enemy_atlas.png'
   }
 };
