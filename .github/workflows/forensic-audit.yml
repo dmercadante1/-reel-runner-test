@@ -1,0 +1,80 @@
+name: Read-only forensic browser audit
+on:
+  push:
+    branches: [forensic-audit-20260909]
+    paths: ['.github/workflows/forensic-audit.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned test dependencies
+        run: |
+          npm install --no-save --package-lock=false playwright@1.57.0 phaser@3.90.0
+          npx playwright install --with-deps chromium webkit
+      - name: Preserve previous versions and engine for reproduction
+        run: |
+          mkdir -p audit-out/vendor audit-out/recovery1 audit-out/step20
+          cp node_modules/phaser/dist/phaser.js node_modules/phaser/dist/phaser.min.js node_modules/phaser/LICENSE.md audit-out/vendor/
+          git archive dc271f4662ea4884042d48e2aae26e7f5beee8cb | tar -x -C audit-out/recovery1
+          git archive 558a8c32006373ffc67c6d37eeab0a361362a307 | tar -x -C audit-out/step20
+          git ls-tree -r HEAD > audit-out/source-tree.txt
+          python3 -m http.server 8123 > /tmp/mwcam-server.log 2>&1 &
+      - name: Capture real browser evidence
+        run: |
+          cat > audit-run.cjs <<'JS'
+          const fs=require('fs');
+          const {chromium,webkit}=require('playwright');
+          (async()=>{
+            const variants={live:'https://dmercadante1.github.io/-reel-runner-test/',recovery2:'http://127.0.0.1:8123/game/play.html',recovery1:'http://127.0.0.1:8123/audit-out/recovery1/game/play.html',step20:'http://127.0.0.1:8123/audit-out/step20/game/play.html'};
+            for(const [engine,type] of Object.entries({chromium,webkit})){
+              const browser=await type.launch({headless:true});
+              for(const [label,url] of Object.entries(variants)){
+                const page=await browser.newPage({viewport:{width:1216,height:1250}});
+                const report={engine,label,url,console:[],errors:[],network:[]};
+                page.on('console',m=>report.console.push({type:m.type(),text:m.text()}));
+                page.on('pageerror',e=>report.errors.push(e.stack||e.message));
+                page.on('response',r=>report.network.push({url:r.url(),status:r.status()}));
+                await page.addInitScript(()=>{
+                  let ph;
+                  Object.defineProperty(window,'Phaser',{configurable:true,get:()=>ph,set(v){ph=v;const G=v.Game;v.Game=class extends G{constructor(c){super(c);window.__auditGame=this;}};}});
+                });
+                try{
+                  await page.goto(url,{waitUntil:'networkidle',timeout:60000});
+                  await page.waitForTimeout(1800);
+                  report.actualURL=page.url();
+                  const snapshot=()=>page.evaluate(()=>{
+                    const g=window.__auditGame,s=g?.scene?.scenes?.[0],p=s?.player,c=document.querySelector('canvas'),r=c?.getBoundingClientRect();
+                    return {status:document.getElementById('status')?.textContent,phaser:window.Phaser?.VERSION,renderer:g?.renderer?.type,canvas:c?{width:c.width,height:c.height,rect:r?.toJSON(),style:c.getAttribute('style')}:null,scene:s?{key:s.sys.settings.key,status:s.sys.settings.status,world:s.physics?.world?.bounds,scrollX:s.cameras.main.scrollX,scrollY:s.cameras.main.scrollY}:null,player:p?{x:p.x,y:p.y,visible:p.visible,active:p.active,alpha:p.alpha,depth:p.depth,frame:p.frame?.name,texture:p.texture?.key,body:p.body?{x:p.body.x,y:p.body.y,width:p.body.width,height:p.body.height,vx:p.body.velocity.x,vy:p.body.velocity.y,grounded:p.body.blocked.down}:null}:null,objects:s?.children?.list?.map(o=>({type:o.type,x:o.x,y:o.y,width:o.width,height:o.height,depth:o.depth,visible:o.visible,alpha:o.alpha,text:o.text,texture:o.texture?.key})),textures:g?.textures?.getTextureKeys?.()};
+                  });
+                  report.before=await snapshot();
+                  await page.screenshot({path:`audit-out/${engine}-${label}-before.png`});
+                  await page.keyboard.down('ArrowRight');await page.waitForTimeout(700);await page.keyboard.up('ArrowRight');
+                  await page.keyboard.down('ArrowUp');await page.waitForTimeout(180);await page.keyboard.up('ArrowUp');
+                  report.after=await snapshot();
+                  await page.screenshot({path:`audit-out/${engine}-${label}-moving.png`});
+                  fs.writeFileSync(`audit-out/${engine}-${label}.html`,await page.content());
+                }catch(e){report.failure=e.stack||String(e);}
+                fs.writeFileSync(`audit-out/${engine}-${label}.json`,JSON.stringify(report,null,2));
+                console.log(JSON.stringify({engine,label,errors:report.errors,before:report.before?.player,after:report.after?.player,status:report.before?.status,failure:report.failure}));
+                await page.close();
+              }
+              await browser.close();
+            }
+          })().catch(e=>{console.error(e);process.exitCode=1;});
+          JS
+          node audit-run.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: forensic-browser-evidence
+          path: audit-out/
+          retention-days: 7
