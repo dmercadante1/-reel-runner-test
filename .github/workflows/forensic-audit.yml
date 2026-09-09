@@ -4,6 +4,9 @@ on:
     branches: [forensic-audit]
 permissions:
   contents: read
+concurrency:
+  group: read-only-forensic-audit
+  cancel-in-progress: true
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -12,13 +15,19 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - run: npm install --no-save --ignore-scripts playwright@1.57.0
       - run: npx playwright install --with-deps chromium webkit
-      - name: Audit unchanged repository and live Pages URL
+      - run: python -m pip install Pillow
+      - name: Audit every branch and historical image blob
+        run: python audit/repository-audit.py
+      - name: Read unchanged repository and live Pages URL
         run: node audit/browser-audit.cjs
+      - name: Reproduce historical versions without modifying them
+        run: node audit/versions-audit.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
