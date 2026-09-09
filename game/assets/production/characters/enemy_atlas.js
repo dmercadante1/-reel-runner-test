@@ -1,1 +1,1 @@
-window.MWCAM_ENEMY_ATLAS={url:'./assets/production/characters/enemy_atlas.png?v=15c',frameWidth:128,frameHeight:128,rows:{skeleton:0,ghoul:4,vampire:8,monster:12,werewolf:16,ghost:20}};
+window.MWCAM_ENEMY_ATLAS={url:'./assets/production/characters/enemy_atlas.png?v=sprite-dim-fix',frameWidth:64,frameHeight:65,rows:{skeleton:0,ghoul:4,vampire:8,monster:12,werewolf:16,ghost:20}};
