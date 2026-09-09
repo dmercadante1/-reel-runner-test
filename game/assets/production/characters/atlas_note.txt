@@ -1,0 +1,1 @@
+Binary enemy sheets are being committed as raster PNGs for 15C.
