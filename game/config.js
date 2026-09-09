@@ -1,5 +1,5 @@
 window.MWCAM_CONFIG = {
-  build: 'asset-rebuild-04',
+  build: 'production-raster-15b',
   viewport: {
     desktop: { width: 1280, height: 720 },
     mobile: { width: 960, height: 540 },
@@ -11,14 +11,14 @@ window.MWCAM_CONFIG = {
     jumpVelocity: -405,
     maxHealth: 5,
     invulnerabilityMs: 900,
-    scale: 0.82,
-    frame: { width: 106, height: 126, count: 6 },
+    scale: 0.78,
+    frame: { width: 128, height: 128, count: 8 },
     animations: {
       idle: { frames: [0], rate: 1 },
-      walk: { start: 0, end: 5, rate: 10 },
+      walk: { start: 0, end: 7, rate: 10 },
       brace: { frames: [0], rate: 1 },
-      jump: { frames: [1], rate: 1 },
-      hurt: { frames: [4], rate: 1 }
+      jump: { frames: [2], rate: 1 },
+      hurt: { frames: [6], rate: 1 }
     }
   },
   film: {
@@ -59,13 +59,13 @@ window.MWCAM_CONFIG = {
     showHealth: true,
     showFilm: true,
     showCaptured: true,
-    title: 'THE BLACK HOUSE',
-    subtitle: 'OUTER COURTYARD'
+    title: 'GOTHIC HORROR',
+    subtitle: 'LEVEL 1'
   },
   audio: { musicVolume: 0.16, sfxVolume: 0.30 },
   assets: {
     background: 'assets/horror/courtyard.png',
-    hero: 'assets/horror/hero_sheet.svg',
+    hero: 'assets/production/characters/hero_walk.png',
     skeleton: 'assets/horror/skeleton_sheet.svg',
     ghoul: 'assets/horror/ghoul_sheet.svg',
     knight: 'assets/horror/knight_sheet.svg'
