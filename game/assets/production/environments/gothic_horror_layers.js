@@ -7,7 +7,7 @@ window.MWCAM_ENVIRONMENT = {
     { key: 'castle',      file: './assets/production/environments/gothic_castle.png',       depth: -50, scrollFactor: 0.16, repeat: true },
     { key: 'architecture',file: './assets/production/environments/gothic_architecture.png', depth: -30, scrollFactor: 0.42, repeat: true, productionReady: true },
     { key: 'playPlane',   file: './assets/production/environments/gothic_playplane.png',    depth:   0, scrollFactor: 1.00, repeat: true, productionReady: true },
-    { key: 'foreground',  file: './assets/production/environments/gothic_foreground.png',   depth:  20, scrollFactor: 1.12, repeat: true, productionReady: false }
+    { key: 'foreground',  file: './assets/production/environments/gothic_foreground.png',   depth:  20, scrollFactor: 1.12, repeat: true, productionReady: true }
   ],
   atmosphere: {
     fogDepth: 14,
