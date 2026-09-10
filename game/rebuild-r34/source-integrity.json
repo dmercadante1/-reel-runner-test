@@ -1,0 +1,27 @@
+{
+  "approvedArchiveSHA256": "73e413af85d24ae0921af6439566ecd34ea5ca92ab555f7e19cddc5e1386cd80",
+  "textPackSHA256": "02a7dc8137d8d6b48dc87e8341af8cfc99c9feea174e2e8b76a247727f032ad6",
+  "sourceFiles": {
+    "a_wide_cinematic_dark_gothic_castle_environment.png": "e99cf52bef485fd71e370c902f0b27214631ba072900f2199b39408778b7fc67",
+    "wide_cinematic_concept_art_game_design_board_in_a.png": "3cdc4d0257042e37058283badaf6f106025e270267157c74af48db457e1250ed"
+  },
+  "sourceCode": {
+    "index.template.html": "4e67d0958a0543d836c4cec9d7fa1c2ebca031676c10506568326d1130451cd6",
+    "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
+    "src/boot.js": "d6e9d76f5296bdf3bf6325717f911ff63974c5d1c4e0e0000c15f8e8bf47de11",
+    "src/combat.js": "19f5b5b24155db6be969f4f819c57655f7b58f8e71799cb8d281f241c57f3928",
+    "src/config.js": "36b7a3c9f47ffb9b633c2b9baada6a335233dcadcd843cf251709fc6bb561f5f",
+    "src/hud.js": "917ef33dfe59c1dee7ea0cda02218e4c9d8aa1cbdb4bf75f5d51b2ab3d166907",
+    "src/scene.js": "c596aedde0e8bc31b717b5c12b11342a86695d9c2fa2a7e13b9de1b509904f41",
+    "src/shell.js": "27aa047bce454d5a227e5084c3ee1d9a7787fb433c55f98f7ebc6649372ef064",
+    "src/world.js": "05e346f7f482fd8b37c1a3a91342573ace989d5491247c63a1ca50d9541cf6ac",
+    "style.css": "05a37226a7cf0d348ff3fec4a5f1516d6a7c1bed1565c083009f73943de9c32c",
+    "tests/mechanics.py": "745dafd6db2be244145425daca0708c855b4d0dd59ba0350f9e7afb42a7c32ba",
+    "tests/playthrough.py": "982f0b61b97e358faca1d627fcf75324d3cd18fc35a72b91b8dd075938732136",
+    "tests/presentation.py": "9e717b18f1e027d05bc52eb1a79a00efe9ec3735e3fe63fd580e9528a152ec2b",
+    "tools/bundle.py": "67dd5e6da8a1a765da789c6abff5fa5f60cbd08d18ea79e560f822d69b28862b",
+    "tools/prepare_r34.py": "6d44d41c02f971d599682ac180927515027e4714fb973e7b53664a9a9165e008"
+  },
+  "run": "34435873369",
+  "status": "staged only; not a browser test or deployment"
+}

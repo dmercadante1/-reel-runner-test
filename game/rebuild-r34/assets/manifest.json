@@ -1,0 +1,732 @@
+{
+  "build": "gothic-r34",
+  "assets": [
+    {
+      "key": "hero-walk",
+      "file": "assets/hero-walk.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 49706,
+      "sha256": "c6f9aaa06f51b72fe8696826ee653a8f494eba36660f79d7261270581d9961ce",
+      "source": "a_wide_dark_cinematic_pixel_art_game_concept_cha.png",
+      "crops": [
+        [
+          929,
+          299,
+          997,
+          433
+        ],
+        [
+          1000,
+          299,
+          1068,
+          433
+        ],
+        [
+          1071,
+          299,
+          1139,
+          433
+        ],
+        [
+          1142,
+          299,
+          1211,
+          433
+        ],
+        [
+          1215,
+          299,
+          1283,
+          433
+        ],
+        [
+          1287,
+          299,
+          1356,
+          433
+        ],
+        [
+          1359,
+          299,
+          1427,
+          433
+        ],
+        [
+          1431,
+          299,
+          1500,
+          433
+        ]
+      ],
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "frames": 8
+    },
+    {
+      "key": "hero-brace",
+      "file": "assets/hero-brace.png",
+      "width": 448,
+      "height": 112,
+      "bytes": 30929,
+      "sha256": "61d12fb4fd28e0fc0265ff42e548658021ef682f909cc2adccf3f0613b3af432",
+      "source": "a_wide_pixel_art_game_sprite_sheet_concept_board.png",
+      "crops": [
+        [
+          21,
+          276,
+          108,
+          419
+        ],
+        [
+          112,
+          276,
+          198,
+          419
+        ],
+        [
+          202,
+          276,
+          289,
+          419
+        ],
+        [
+          296,
+          276,
+          383,
+          419
+        ]
+      ],
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "frames": 4
+    },
+    {
+      "key": "hero-recoil",
+      "file": "assets/hero-recoil.png",
+      "width": 448,
+      "height": 112,
+      "bytes": 32632,
+      "sha256": "a5864c000430500fd7b449d605b3b44cdf805cecbfadded43766271e8f367525",
+      "source": "a_wide_pixel_art_game_sprite_sheet_concept_board.png",
+      "crops": [
+        [
+          18,
+          458,
+          124,
+          589
+        ],
+        [
+          126,
+          458,
+          232,
+          589
+        ],
+        [
+          228,
+          458,
+          334,
+          589
+        ],
+        [
+          334,
+          458,
+          440,
+          589
+        ]
+      ],
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "frames": 4
+    },
+    {
+      "key": "hero-jump",
+      "file": "assets/hero-jump.png",
+      "width": 448,
+      "height": 112,
+      "bytes": 32702,
+      "sha256": "4e1b7aa939cd652c05424b26e0e9e1aad55426c4785538e89c6931b7d50c39e5",
+      "source": "a_wide_pixel_art_game_sprite_sheet_concept_board.png",
+      "crops": [
+        [
+          476,
+          459,
+          584,
+          591
+        ],
+        [
+          588,
+          459,
+          695,
+          591
+        ],
+        [
+          701,
+          459,
+          808,
+          591
+        ],
+        [
+          814,
+          459,
+          922,
+          591
+        ]
+      ],
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "frames": 4
+    },
+    {
+      "key": "hero-hurt",
+      "file": "assets/hero-hurt.png",
+      "width": 448,
+      "height": 112,
+      "bytes": 27477,
+      "sha256": "03eeabb189f6382ee5003346d6cf494bc264331762ef3558893e069bc127580e",
+      "source": "a_wide_dark_cinematic_pixel_art_game_concept_cha.png",
+      "crops": [
+        [
+          409,
+          630,
+          483,
+          747
+        ],
+        [
+          492,
+          630,
+          566,
+          747
+        ],
+        [
+          573,
+          630,
+          647,
+          747
+        ],
+        [
+          653,
+          630,
+          728,
+          747
+        ]
+      ],
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "frames": 4
+    },
+    {
+      "key": "skeleton",
+      "file": "assets/skeleton.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 57831,
+      "sha256": "6bce8e2ece8459a111aa5aa23d14bb1097bf4b5deb76eece4c803b9a8a52796b",
+      "source": "a_dark_detailed_pixel_art_concept_sheet_game_de.png",
+      "crops": [
+        [
+          289,
+          274,
+          349,
+          394
+        ],
+        [
+          348,
+          274,
+          408,
+          394
+        ],
+        [
+          409,
+          274,
+          469,
+          394
+        ],
+        [
+          468,
+          274,
+          528,
+          394
+        ],
+        [
+          7,
+          431,
+          98,
+          559
+        ],
+        [
+          101,
+          433,
+          173,
+          559
+        ],
+        [
+          701,
+          433,
+          789,
+          559
+        ],
+        [
+          790,
+          433,
+          878,
+          559
+        ]
+      ],
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "frames": 8
+    },
+    {
+      "key": "ghoul",
+      "file": "assets/ghoul.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 65313,
+      "sha256": "02bd1b67d84fa6ebc5a8a1003ba16c5c301530b8d046c511e28cbab7cdc8ab92",
+      "source": "a_wide_concept_art_sprite_sheet_poster_in_dark_g.png",
+      "crops": [
+        [
+          290,
+          275,
+          350,
+          394
+        ],
+        [
+          349,
+          275,
+          409,
+          394
+        ],
+        [
+          408,
+          275,
+          468,
+          394
+        ],
+        [
+          465,
+          275,
+          525,
+          394
+        ],
+        [
+          8,
+          434,
+          98,
+          550
+        ],
+        [
+          95,
+          434,
+          175,
+          550
+        ],
+        [
+          702,
+          434,
+          781,
+          554
+        ],
+        [
+          785,
+          434,
+          867,
+          554
+        ]
+      ],
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "frames": 8
+    },
+    {
+      "key": "vampire",
+      "file": "assets/vampire.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 69186,
+      "sha256": "3a6f6b01f7f2b912c565ab7101d144f237631b2f69f6b4fd87bbfdc07cd5a83b",
+      "source": "a_dark_atmospheric_pixel_art_game_design_animatio.png",
+      "crops": [
+        [
+          17,
+          207,
+          68,
+          302
+        ],
+        [
+          66,
+          207,
+          117,
+          302
+        ],
+        [
+          117,
+          207,
+          169,
+          302
+        ],
+        [
+          169,
+          207,
+          221,
+          302
+        ],
+        [
+          286,
+          207,
+          353,
+          302
+        ],
+        [
+          353,
+          207,
+          444,
+          302
+        ],
+        [
+          614,
+          207,
+          670,
+          302
+        ],
+        [
+          670,
+          207,
+          714,
+          302
+        ]
+      ],
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "frames": 8
+    },
+    {
+      "key": "monster",
+      "file": "assets/monster.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 92415,
+      "sha256": "aaecdb49f1f56ea3bc246173e92252d48d0092b5813c45ecdf2e8a16ebfb9812",
+      "source": "a_dark_atmospheric_pixel_art_game_design_animatio.png",
+      "crops": [
+        [
+          15,
+          364,
+          84,
+          461
+        ],
+        [
+          85,
+          364,
+          154,
+          461
+        ],
+        [
+          154,
+          364,
+          222,
+          461
+        ],
+        [
+          216,
+          364,
+          285,
+          461
+        ],
+        [
+          286,
+          363,
+          359,
+          461
+        ],
+        [
+          357,
+          363,
+          447,
+          461
+        ],
+        [
+          599,
+          363,
+          666,
+          461
+        ],
+        [
+          666,
+          363,
+          726,
+          461
+        ]
+      ],
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "frames": 8
+    },
+    {
+      "key": "werewolf",
+      "file": "assets/werewolf.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 94972,
+      "sha256": "a2f5505fe77b5ebe73b0244961f038d4a682d8f0eb0ec024e6a22cd042c0692d",
+      "source": "a_dark_atmospheric_pixel_art_game_design_animatio.png",
+      "crops": [
+        [
+          15,
+          524,
+          82,
+          619
+        ],
+        [
+          84,
+          524,
+          151,
+          619
+        ],
+        [
+          149,
+          524,
+          216,
+          619
+        ],
+        [
+          214,
+          524,
+          281,
+          619
+        ],
+        [
+          288,
+          524,
+          359,
+          619
+        ],
+        [
+          357,
+          524,
+          444,
+          619
+        ],
+        [
+          602,
+          524,
+          666,
+          619
+        ],
+        [
+          670,
+          524,
+          747,
+          619
+        ]
+      ],
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "frames": 8
+    },
+    {
+      "key": "ghost",
+      "file": "assets/ghost.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 81360,
+      "sha256": "83bc42624fcf80e0158e67ad0f5d0c2c08ec81f11dec107be0bdd299c27e12af",
+      "source": "a_dark_atmospheric_pixel_art_game_design_animatio.png",
+      "crops": [
+        [
+          17,
+          674,
+          81,
+          782
+        ],
+        [
+          84,
+          674,
+          148,
+          782
+        ],
+        [
+          151,
+          674,
+          215,
+          782
+        ],
+        [
+          223,
+          674,
+          288,
+          782
+        ],
+        [
+          286,
+          674,
+          345,
+          782
+        ],
+        [
+          341,
+          674,
+          399,
+          782
+        ],
+        [
+          549,
+          674,
+          630,
+          782
+        ],
+        [
+          666,
+          674,
+          753,
+          782
+        ]
+      ],
+      "frameWidth": 112,
+      "frameHeight": 112,
+      "frames": 8
+    },
+    {
+      "key": "courtyard",
+      "file": "assets/courtyard.png",
+      "width": 640,
+      "height": 360,
+      "bytes": 164246,
+      "sha256": "6183c457f636d98e6bd5134c55ac1a06bbf3bcb52047aaeb952fd91bd0bc4621",
+      "source": "a_wide_cinematic_dark_gothic_castle_environment.png",
+      "crop": [
+        0,
+        0,
+        1536,
+        864
+      ],
+      "use": "far background, not collision"
+    },
+    {
+      "key": "stone",
+      "file": "assets/stone.png",
+      "width": 448,
+      "height": 62,
+      "bytes": 20646,
+      "sha256": "9d631b332c0dd6c172562b28059b24604f9927d56a45a3d641817cecd7c48d56",
+      "source": "a_wide_cinematic_dark_gothic_castle_environment.png",
+      "crop": [
+        460,
+        716,
+        1536,
+        864
+      ],
+      "use": "walkable stone; top is floorY"
+    },
+    {
+      "key": "spiral",
+      "file": "assets/spiral.png",
+      "width": 52,
+      "height": 52,
+      "bytes": 7317,
+      "sha256": "80095c54004dade80d073696c5e49bf25dc52d101a542427c245009d842468b7",
+      "source": "a_wide_pixel_art_game_sprite_sheet_concept_board.png",
+      "crop": [
+        152,
+        645,
+        242,
+        736
+      ],
+      "use": "raster capture vortex"
+    },
+    {
+      "key": "column",
+      "file": "assets/column.png",
+      "width": 72,
+      "height": 245,
+      "bytes": 15580,
+      "sha256": "bb8f0ef697282d9b42d6e0d489fd8b91ab45fdcc585b9eff20f524c4474dd0e0",
+      "provenance": "R2 original design board column crop 29,438,73,574"
+    },
+    {
+      "key": "arch",
+      "file": "assets/arch.png",
+      "width": 108,
+      "height": 180,
+      "bytes": 12659,
+      "sha256": "a9de129548e154d7f6a0dc96b95e5af0aa03bfd833db4ffc2af6af032e2c89d6",
+      "provenance": "R2 original design board arch 87,438,172,504 with actual raster pillars"
+    },
+    {
+      "key": "statue",
+      "file": "assets/statue.png",
+      "width": 60,
+      "height": 125,
+      "bytes": 16155,
+      "sha256": "1cf5fd762fe840dee7011b92ef165fd8202de9cc0649294e07df49ac76dcf5fa",
+      "provenance": "character/environment board statue crop 373,440,438,573"
+    },
+    {
+      "key": "cathedral",
+      "file": "assets/cathedral.png",
+      "width": 640,
+      "height": 360,
+      "bytes": 91819,
+      "sha256": "bb3abfe0a2448b6a4ac945d886614f55a17936cae6a6612571b0523d9694ad89",
+      "provenance": "Raster tile collage from the R2 original design board masonry and chapel interior. 640x360, no character/labels baked in."
+    },
+    {
+      "key": "catacombs",
+      "file": "assets/catacombs.png",
+      "width": 640,
+      "height": 360,
+      "bytes": 118596,
+      "sha256": "36d80f23e5634a4c5f68e13bee137b63df8e62a6ad8b8b5a03a83887dd526918",
+      "provenance": "Raster masonry, dark niches and stone statues from approved source boards."
+    },
+    {
+      "key": "ramparts",
+      "file": "assets/ramparts.png",
+      "width": 640,
+      "height": 360,
+      "bytes": 304879,
+      "sha256": "01da1e26f308ae19224a58d740cec0ea5008967a2e7b93d0a337ed4605d2575e",
+      "provenance": "Original R2 environment source skyline plus distant castle row from original design board, not a magnified foreground strip."
+    },
+    {
+      "key": "hero-stride",
+      "file": "assets/hero-stride.png",
+      "width": 1344,
+      "height": 112,
+      "bytes": 20093,
+      "sha256": "8b87da1314138198fff1056c58aaa7d10e16a9d1a0373527a2e2ab915e13325d",
+      "provenance": "12 independently articulated frames derived from R2 hero frame0, limb texture mesh warp. Not duplicate poses or whole-sprite bobbing.",
+      "frames": 12,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "camera-light",
+      "file": "assets/camera-light.png",
+      "width": 300,
+      "height": 160,
+      "bytes": 9116,
+      "sha256": "e1f71d2abd3ebcf5b279ae599c7c6260c7a3d80b581e885d6e975f8c99fc8ca1",
+      "provenance": "New quantized/dithered optical light FX. Additive compositing; no external asset dependency."
+    },
+    {
+      "key": "lens-halo",
+      "file": "assets/lens-halo.png",
+      "width": 128,
+      "height": 128,
+      "bytes": 3762,
+      "sha256": "81beac5324870431f7047d3bc19c6c7069cb426a576b1947d73187da64caf56a",
+      "provenance": "Dither-scale raster lens halo FX."
+    },
+    {
+      "key": "heart",
+      "file": "assets/heart.png",
+      "width": 9,
+      "height": 9,
+      "bytes": 135,
+      "sha256": "4bcc944b02dceb8d4a0684bc5c26ff7d10469548e842f1e2483ba2b525d83268",
+      "provenance": "New 9px in-game life icon."
+    }
+  ]
+}
