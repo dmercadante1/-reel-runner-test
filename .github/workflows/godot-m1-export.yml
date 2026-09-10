@@ -46,6 +46,7 @@ jobs:
           ! grep -E 'SCRIPT ERROR|Parse Error|ERROR:' godot/evidence/ci-export.log
       - name: Real Chromium and WebKit input and rendered-output checks
         run: |
+          python3 godot/tools/web_compat.py
           python3 -m http.server 8765 --directory build/godot-m1 > /tmp/http.log 2>&1 &
           node godot/tests/browser.cjs
           python3 godot/tests/pixels.py
