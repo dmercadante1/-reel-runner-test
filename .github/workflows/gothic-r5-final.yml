@@ -1,4 +1,4 @@
-name: Verify exact R5 release candidate
+name: Verify exact R5 release candidate - frame-local controls
 on:
   push:
     branches: [gothic-r5-release]
@@ -27,7 +27,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install Pillow playwright==1.57.0
-      - name: Confirm exact game and use frame-observed keyboard test navigation
+      - name: Confirm exact game and use frame-local keyboard test navigation
         run: |
           python audit/r5/verify-exact-candidate.py
           python audit/r5/refine-navigation-test.py
@@ -94,7 +94,7 @@ jobs:
           git fetch origin gothic-r5-release
           git merge --ff-only origin/gothic-r5-release
           git add game/rebuild-r5/evidence game/rebuild-r5/tests/r5_playthrough.py
-          git commit -m 'R5 passes exact-byte Chromium/WebKit checks and keyboard-only 30-encounter four-ferry traversals'
+          git commit -m 'R5 passes exact-byte Chromium/WebKit checks and browser-keyboard 30-encounter four-ferry traversals'
           git push origin HEAD:gothic-r5-release
       - uses: actions/upload-artifact@v4
         if: always()
