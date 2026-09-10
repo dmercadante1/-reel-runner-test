@@ -1,0 +1,58 @@
+name: Import and verify Gothic Horror R2
+on:
+  push:
+    branches: [gothic-hud-r2-release]
+    paths: ['.github/workflows/import-gothic-r2.yml']
+permissions:
+  contents: write
+concurrency:
+  group: gothic-r2-import
+  cancel-in-progress: false
+jobs:
+  import-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test and integrity tools
+        run: python -m pip install playwright==1.57.0 Pillow cryptography
+      - name: Receive approved archive with ephemeral encryption and verify exact bytes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python audit/import-gothic-r2.py
+      - name: Install browser engines
+        run: python -m playwright install --with-deps chromium webkit
+      - name: Chromium HTTP gameplay HUD and restart release gate
+        env:
+          BROWSER: chromium
+        run: python audit/test-gothic-r2.py
+      - name: WebKit HTTP gameplay HUD and restart release gate
+        env:
+          BROWSER: webkit
+        run: python audit/test-gothic-r2.py
+      - name: Save verified source and bytes to staging branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin gothic-hud-r2-release
+          git merge --ff-only origin/gothic-hud-r2-release
+          git add game/rebuild-r2 game/releases/gothic-hud-r2 game/play.html index.html .nojekyll audit/r2-import-integrity.json
+          git commit -m 'Stage byte-verified R2 game and HUD after Chromium and WebKit acceptance'
+          git push origin HEAD:gothic-hud-r2-release
+          git rev-parse HEAD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gothic-r2-release-evidence
+          path: |
+            game/rebuild-r2/evidence/
+            audit/r2-import-integrity.json
+          retention-days: 14
