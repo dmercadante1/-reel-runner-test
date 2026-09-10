@@ -33,10 +33,11 @@ try:
  with sync_playwright()as pw:
   kwargs={'executable_path':'/usr/bin/chromium','args':['--no-sandbox']}if engine=='chromium'and not os.getenv('GITHUB_ACTIONS')else{}
   b=getattr(pw,engine).launch(**kwargs);p=b.new_page(viewport={'width':1280,'height':720});p.on('pageerror',lambda e:errors.append(str(e)));p.set_default_timeout(10000);p.set_content((R/f'releases/gothic-r{edition}/index.html').read_text(),wait_until='load');p.wait_for_function('GOTHIC.phase==="ready"');ck('Boot validates all 24 textures',p.evaluate('GOTHIC_ASSETS.length===24'))
-  p.locator('#start').click();p.wait_for_timeout(650);ck('Start and floor landing',info(p)['phase']=='running'and abs(info(p)['bottom']-316)<2)
   before=p.screenshot();p.evaluate('GOTHIC.scene.player.setVisible(false)');p.wait_for_timeout(65);after=p.screenshot();p.evaluate('GOTHIC.scene.player.setVisible(true)');ck('Player contributes visible rendered pixels',ImageChops.difference(Image.open(BytesIO(before)),Image.open(BytesIO(after))).getbbox()is not None)
   ck('HUD rendered in canvas, fixed over world',p.evaluate('GOTHIC.scene.hudHearts.length===5&&GOTHIC.scene.hudGraphics.scrollFactorX===0&&GOTHIC.scene.hudGraphics.depth===1000'))
-  setkeys(p,{'ArrowRight'});p.wait_for_timeout(400);ck('Moving hero uses 12 articulated frames',p.evaluate('GOTHIC.scene.player.anims.currentAnim.key==="hero-stride"&&GOTHIC.scene.player.anims.currentAnim.frames.length===12'));setkeys(p,{'ArrowUp'});p.wait_for_timeout(190);ck('Jump rises',info(p)['bottom']<285);setkeys(p,set());p.wait_for_timeout(700)
+  # Screenshot comparison is performed before Start, with the world paused, not while enemies can attack an unattended player.
+  p.locator('#start').click();p.wait_for_timeout(650);ck('Start and floor landing',info(p)['phase']=='running'and abs(info(p)['bottom']-316)<2)
+  setkeys(p,{'ArrowRight'});p.wait_for_timeout(400);ck('Moving hero uses 12 articulated frames',p.evaluate('GOTHIC.scene.player.anims.currentAnim.key==="hero-stride"&&GOTHIC.scene.player.anims.currentAnim.frames.length===12'));setkeys(p,{'ArrowUp'});p.wait_for_timeout(190);ck('Jump rises',info(p)['bottom']<285,info(p));setkeys(p,set());p.wait_for_timeout(700)
   setkeys(p,{'Space'});p.wait_for_function('GOTHIC.scene.light.visible && GOTHIC.scene.beaming');p.wait_for_timeout(40);ck('Camera optical spill illuminates scene',p.evaluate('GOTHIC.scene.light.visible&&GOTHIC.scene.light.alpha>.7'));p.screenshot(path=str(R/f'evidence/r{edition}-light-active.png'));setkeys(p,set())
   seen=set();nav=set();deadline=time.time()+165;last=time.time()
   while time.time()<deadline:
@@ -56,12 +57,10 @@ try:
     desired={'Space'}
     if abs(target['x']-s['x'])>145:desired.add('ArrowLeft'if target['x']<s['x']else'ArrowRight')
     else:
-     # Face the actual threat before standing and filming.
      flip=p.evaluate('GOTHIC.scene.player.flipX')
      if flip!=(target['x']<s['x']):desired.add('ArrowLeft'if target['x']<s['x']else'ArrowRight')
     if edition==4 and abs(target['x']-s['x'])<186 and s['flash']<=0 and s['film']>=18 and target['state']in ['attack','windup']:desired.add('KeyX')
    else:desired={'ArrowRight'}
-   # Playwright expects X rather than KeyX.
    if 'KeyX'in desired:desired.remove('KeyX');desired.add('x')
    setkeys(p,desired);p.wait_for_timeout(100)
   setkeys(p,set());ck('Keyboard-only complete four-stage traversal',info(p)['phase']=='complete',info(p));ck('All twelve encounters captured',info(p)['total']==12);ck('All four stages visited',len(seen)==4);p.screenshot(path=str(R/f'evidence/r{edition}-{engine}-complete.png'))
