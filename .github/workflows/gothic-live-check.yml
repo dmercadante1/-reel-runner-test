@@ -1,18 +1,19 @@
-name: Verify served Gothic Horror R2
+name: Verify served Gothic Horror R3 and R4
 on:
   push:
     branches: [main]
     paths:
       - 'index.html'
-      - 'game/releases/gothic-hud-r2/**'
-      - 'audit/check-live-gothic-r2.py'
+      - 'game/releases/gothic-r3/**'
+      - 'game/releases/gothic-r4/**'
+      - 'audit/check-live-r34.py'
       - '.github/workflows/gothic-live-check.yml'
 permissions:
   contents: read
 jobs:
   served-build:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,11 +23,11 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install playwright==1.57.0
       - run: python -m playwright install --with-deps chromium webkit
-      - name: Verify Pages content hash and actual-root Chromium/WebKit gameplay
-        run: python audit/check-live-gothic-r2.py
+      - name: Verify Pages bytes and actual-root Chromium/WebKit desktop/mobile input and HUD
+        run: python audit/check-live-r34.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: gothic-r2-live-proof
+          name: gothic-r34-live-proof
           path: live-evidence/
           retention-days: 14
