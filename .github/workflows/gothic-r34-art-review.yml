@@ -1,0 +1,89 @@
+name: Verify Gothic R3 R4 final art review
+on:
+  push:
+    branches: [gothic-r34-art-review]
+    paths: ['.github/workflows/gothic-r34-art-review.yml']
+permissions:
+  contents: write
+jobs:
+  art-and-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow numpy scipy scikit-image playwright==1.57.0
+      - name: Correct documented source-coordinate mismatch and rebuild complete raster assets
+        run: |
+          if ! grep -q 'original_parts_size=parts.size' game/rebuild-r34/tools/prepare_r34.py; then
+            python audit/normalize-r34-art-board.py
+          fi
+          python game/rebuild-r34/tools/prepare_r34.py
+          python game/rebuild-r34/tools/bundle.py 3
+          python game/rebuild-r34/tools/bundle.py 4
+          mkdir -p game/releases/gothic-r3a game/releases/gothic-r4a
+          cp game/rebuild-r34/releases/gothic-r3/* game/releases/gothic-r3a/
+          cp game/rebuild-r34/releases/gothic-r4/* game/releases/gothic-r4a/
+          git diff --exit-code -- game/releases/gothic-r3 game/releases/gothic-r4 game/releases/gothic-hud-r2
+      - name: Preserve corrected artwork on review branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add game/rebuild-r34 game/releases/gothic-r3a game/releases/gothic-r4a index.html game/play.html audit/check-live-r34.py .github/workflows/gothic-live-check.yml
+          git diff --cached --quiet || git commit -m 'Fix source-board crop scale; stage corrected R3/R4 art at new immutable URLs'
+          git push origin HEAD:gothic-r34-art-review
+      - name: Remove older evidence so it cannot satisfy the new release gate
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('game/rebuild-r34/evidence')
+          for engine in ['chromium','webkit']:
+              for name in [f'r3-{engine}-playthrough.json',f'r4-{engine}-playthrough.json',f'r4-{engine}-mechanics.json',f'r4-{engine}-presentation.json']:(p/name).unlink(missing_ok=True)
+          (p/'release-gates.json').unlink(missing_ok=True)
+          PY
+      - run: python -m playwright install --with-deps chromium webkit
+      - name: Full progression combat platforms and HUD in both engines
+        run: |
+          python - <<'PY'
+          import os,subprocess
+          failures=[]
+          for engine in ['chromium','webkit']:
+              for args in [['playthrough.py','3'],['playthrough.py','4'],['mechanics.py'],['presentation.py']]:
+                  r=subprocess.run(['python','game/rebuild-r34/tests/'+args[0],*args[1:]],env={**os.environ,'BROWSER':engine},timeout=240)
+                  if r.returncode:failures.append([engine,args,r.returncode])
+          assert not failures,failures
+          PY
+      - name: Save new exact-byte gates and actual stage screenshots
+        run: |
+          python - <<'PY'
+          import json,pathlib,os
+          root=pathlib.Path('game/rebuild-r34');reports={}
+          for engine in ['chromium','webkit']:
+              for file in [f'r3-{engine}-playthrough.json',f'r4-{engine}-playthrough.json',f'r4-{engine}-mechanics.json',f'r4-{engine}-presentation.json']:
+                  r=json.loads((root/'evidence'/file).read_text());assert r['failed']==0 and not r['errors'];reports[file]={'passed':r['passed'],'failed':r['failed'],'errors':r['errors']}
+          result={'success':True,'run':os.environ['GITHUB_RUN_ID'],'reports':reports,'totalPassed':sum(r['passed'] for r in reports.values()),'physicalDeviceTested':False,'artCoordinateCorrection':True,'releases':{f'r{n}':json.loads(pathlib.Path(f'game/releases/gothic-r{n}a/build.json').read_text()) for n in [3,4]},'status':'Corrected art passes staging gates; final screenshots need review before main promotion'}
+          (root/'evidence/release-gates.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
+          PY
+          git fetch origin gothic-r34-art-review
+          git merge --ff-only origin/gothic-r34-art-review
+          git add game/rebuild-r34/evidence
+          git commit -m 'Corrected R3/R4 interiors pass all Chromium and WebKit gates with fresh screenshot evidence'
+          git push origin HEAD:gothic-r34-art-review
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gothic-r34-art-reviewed-proof
+          path: |
+            game/rebuild-r34/evidence/
+            game/rebuild-r34/assets/cathedral.png
+            game/rebuild-r34/assets/catacombs.png
+            game/rebuild-r34/assets/ramparts.png
+            game/rebuild-r34/assets/arch.png
+          retention-days: 14
