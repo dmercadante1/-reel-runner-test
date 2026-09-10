@@ -7,6 +7,7 @@ on:
       - 'game/play.html'
       - 'game/releases/gothic-r5/**'
       - 'audit/check-live-r5.py'
+      - 'audit/check-r5-worker-and-live.py'
       - '.github/workflows/gothic-r5-live.yml'
 permissions:
   contents: read
@@ -26,8 +27,8 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install playwright==1.57.0
       - run: python -m playwright install --with-deps chromium webkit
-      - name: Exact served bytes and desktop/mobile-emulated browser behavior
-        run: python audit/check-live-r5.py
+      - name: Exact served HTML and worker, desktop/mobile input, app and offline behavior
+        run: python audit/check-r5-worker-and-live.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
