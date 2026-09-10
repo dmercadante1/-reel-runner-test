@@ -24,10 +24,20 @@ jobs:
           python-version: '3.12'
       - name: Install integrity and asset production tools
         run: python -m pip install Pillow numpy scipy scikit-image cryptography playwright==1.57.0
-      - name: Recover verified code and approved original artwork without a new Dropbox write
+      - name: Recover or reuse exact staged source artwork
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python audit/import-r34.py
+      - name: Use motion-trace fixture rather than start-end cancellation at the platform turning point
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('game/rebuild-r34/tests/mechanics.py');s=p.read_text()
+          if 'from platform_probe import check_platform_carry' not in s:
+              lines=s.splitlines();matches=[i for i,l in enumerate(lines) if l.startswith('  fixture(p,1);pos=')];assert len(matches)==1
+              lines[matches[0]]='  fixture(p,1);check_platform_carry(p,ck)'
+              s='\n'.join(lines)+'\n';s=s.replace('import os,json,traceback,time','import os,json,traceback,time\nfrom platform_probe import check_platform_carry');p.write_text(s)
+          PY
       - name: Generate complete raster PNGs and immutable release bundles
         run: |
           python game/rebuild-r34/tools/prepare_r34.py
@@ -43,7 +53,7 @@ jobs:
           git fetch origin gothic-r3-r4-release
           git merge --ff-only origin/gothic-r3-r4-release
           git add game/rebuild-r34 game/releases/gothic-r3 game/releases/gothic-r4 audit/r34/source-00.b64
-          git diff --cached --quiet || git commit -m 'Preserve R3/R4 candidate source and valid assets; acceptance pending, no main change'
+          git diff --cached --quiet || git commit -m 'Preserve R3/R4 candidate and motion-trace fixture; acceptance pending'
           git push origin HEAD:gothic-r3-r4-release
       - name: Install Chromium and WebKit
         run: python -m playwright install --with-deps chromium webkit
@@ -66,14 +76,13 @@ jobs:
       - name: Save successful release evidence to staging only
         run: |
           python - <<'PY'
-          import json,pathlib,hashlib
+          import json,pathlib
           root=pathlib.Path('game/rebuild-r34');reports={}
           for engine in ['chromium','webkit']:
               for file in [f'r3-{engine}-playthrough.json',f'r4-{engine}-playthrough.json',f'r4-{engine}-mechanics.json',f'r4-{engine}-presentation.json']:
                   r=json.loads((root/'evidence'/file).read_text());assert r['failed']==0 and not r['errors'];reports[file]={'passed':r['passed'],'failed':r['failed']}
           result={'success':True,'reports':reports,'totalPassed':sum(r['passed'] for r in reports.values()),'physicalDeviceTested':False,'releases':{f'r{n}':json.loads((root/f'releases/gothic-r{n}/build.json').read_text()) for n in [3,4]},'status':'Passed staging gates; main and public root not changed'}
-          (root/'evidence/release-gates.json').write_text(json.dumps(result,indent=2))
-          print(json.dumps(result,indent=2))
+          (root/'evidence/release-gates.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
           PY
           git fetch origin gothic-r3-r4-release
           git merge --ff-only origin/gothic-r3-r4-release
