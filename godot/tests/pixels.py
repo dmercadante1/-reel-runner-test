@@ -11,7 +11,7 @@ for engine in ['chromium','webkit']:
   actual=im.getpixel((x,y));assert max(abs(a-b) for a,b in zip(actual,c))<=2,(engine,i,actual,c)
   assert all(im.getpixel((x+dx,y+dy))==actual for dx in [0,1] for dy in [0,1]),'nearest-neighbor 2x blocks'
  # Opaque white checker pixels alternate with transparent background. Semi-transparent swatches blend rather than turn opaque.
- bright=im.getpixel((514*2,186*2));dark=im.getpixel((515*2,186*2));alpha=im.getpixel((514*2,206*2))
+ bright=im.getpixel((514*2,186*2));dark=im.getpixel((515*2,186*2));alpha=im.getpixel((514*2,208*2))
  assert sum(bright)>500 and sum(dark)<180,(bright,dark)
  assert 65<alpha[0]<200 and 50<alpha[1]<195,(engine,alpha)
  reports.append({'browser':engine,'passed':True,'size':im.size,'checker':[bright,dark],'alpha':alpha})
