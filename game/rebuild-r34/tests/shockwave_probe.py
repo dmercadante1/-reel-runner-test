@@ -1,9 +1,12 @@
-"""Three jump timings against a real game shockwave. This is a collision fixture,
-not a replacement for the unmodified keyboard-only level playthrough.
+"""Real-keyboard collision fixtures, separate from the full level playthrough.
+At 152 px/s, the wave overlaps the player about 690-1020 ms after creation.
+The jump clears the wave height about 68-773 ms after takeoff. Thus a 200-ms
+jump can correctly be hit while landing; successful probes use 300-420 ms.
+The existing grounded control must still take damage. No runtime changes.
 """
 def check_shockwave_dodge(page, fixture, check, snapshot):
     trials=[]
-    for delay in (200,280,340):
+    for delay in (300,360,420):
         fixture(page)
         born=page.evaluate('''()=>{
             const s=GOTHIC.scene,e=s.enemies[0];
