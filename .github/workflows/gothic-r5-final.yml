@@ -1,4 +1,4 @@
-name: Verify exact R5 release candidate - recovery-aware controls
+name: Verify renderer-aware R5 release
 on:
   push:
     branches: [gothic-r5-release]
@@ -9,7 +9,39 @@ concurrency:
   group: gothic-r5-final
   cancel-in-progress: true
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      sha: ${{ steps.save.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow
+      - name: Build exact renderer-aware candidate and preserve old public releases
+        id: save
+        run: |
+          python game/rebuild-r5/tools/bundle.py
+          cp game/rebuild-r5/releases/gothic-r5/* game/releases/gothic-r5/
+          python audit/r5/verify-exact-candidate.py
+          python audit/r5/refine-navigation-test.py
+          git diff --exit-code -- game/releases/gothic-r4a game/releases/gothic-r3a game/releases/gothic-hud-r2 .github/workflows
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add game/rebuild-r5/releases game/rebuild-r5/tests/r5_playthrough.py game/releases/gothic-r5
+          git diff --cached --quiet || git commit -m 'Preserve R5 renderer fallback and recovery-aware test driver; full verification pending'
+          git push origin HEAD:gothic-r5-release
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
   browser:
+    needs: prepare
     strategy:
       fail-fast: false
       matrix:
@@ -19,6 +51,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ needs.prepare.outputs.sha }}
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
@@ -27,15 +60,14 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install Pillow playwright==1.57.0
-      - name: Confirm exact game and use frame-local recovery-aware keyboard navigation
+      - name: Validate all bytes and remove previous reports
         run: |
           python audit/r5/verify-exact-candidate.py
-          python audit/r5/refine-navigation-test.py
           python game/rebuild-r5/tools/bundle.py
           cmp game/rebuild-r5/releases/gothic-r5/index.html game/releases/gothic-r5/index.html
           rm -f game/rebuild-r5/evidence/r5-${{ matrix.engine }}-acceptance.json game/rebuild-r5/evidence/r5-${{ matrix.engine }}-playthrough.json
       - run: python -m playwright install --with-deps ${{ matrix.engine }}
-      - name: Fresh controls resources HUD and complete unmodified gameplay
+      - name: Full controls resources HUD and thirty-encounter traversal
         env:
           BROWSER: ${{ matrix.engine }}
         run: |
@@ -56,7 +88,7 @@ jobs:
           path: game/rebuild-r5/evidence/r5-${{ matrix.engine }}-*
           retention-days: 14
   gates:
-    needs: browser
+    needs: [prepare, browser]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -64,16 +96,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: gothic-r5-release
           fetch-depth: 0
       - uses: actions/download-artifact@v4
         with:
           pattern: r5-final-*
           merge-multiple: true
           path: fresh-r5-evidence
-      - name: Require all four fresh reports and matching release evidence
+      - name: Require all four fresh reports for the exact prepared candidate
         run: |
           python audit/r5/verify-exact-candidate.py
-          python audit/r5/refine-navigation-test.py
           python - <<'PY'
           import json,pathlib,shutil,os
           root=pathlib.Path('game/rebuild-r5');fresh=pathlib.Path('fresh-r5-evidence');reports={}
@@ -86,15 +118,13 @@ jobs:
                   reports[name]={'passed':r['passed'],'failed':r['failed'],'errors':r['errors']}
           for file in fresh.iterdir():
               if file.is_file():shutil.copy2(file,root/'evidence'/file.name)
-          result={'success':True,'run':os.environ['GITHUB_RUN_ID'],'build':build,'reports':reports,'totalPassed':sum(x['passed'] for x in reports.values()),'physicalDeviceTested':False,'status':'Exact R5 candidate passed both browser suites; screenshot review and actual-site verification still required'}
+          result={'success':True,'run':os.environ['GITHUB_RUN_ID'],'build':build,'reports':reports,'totalPassed':sum(x['passed'] for x in reports.values()),'softwareRendererFallback':True,'physicalDeviceTested':False,'status':'R5 passed full fresh browser gates; manual screenshot and public-site verification still required'}
           (root/'evidence/release-gates.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
           PY
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git fetch origin gothic-r5-release
-          git merge --ff-only origin/gothic-r5-release
-          git add game/rebuild-r5/evidence game/rebuild-r5/tests/r5_playthrough.py
-          git commit -m 'R5 passes exact-byte Chromium/WebKit checks and recovery-aware browser-keyboard 30-encounter traversals'
+          git add game/rebuild-r5/evidence
+          git commit -m 'Renderer-aware R5 passes both complete browser suites with all thirty captures and four ferries'
           git push origin HEAD:gothic-r5-release
       - uses: actions/upload-artifact@v4
         if: always()
