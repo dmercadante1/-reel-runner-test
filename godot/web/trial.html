@@ -7,10 +7,14 @@
 // Godot 4.7 WebKit self-blit (upstream #122816). Skip only exact no-op copies
 // where READ and DRAW are the identical framebuffer and rectangles match.
 // Do not swallow GL errors or bypass meaningful rendering operations.
-window.M1RenderGuard={skipped:0};
+window.M1RenderGuard={skipped:0,calls:[]};
 if(window.WebGL2RenderingContext){
  const original=WebGL2RenderingContext.prototype.blitFramebuffer;
  WebGL2RenderingContext.prototype.blitFramebuffer=function(...a){
+  const read=this.getParameter(this.READ_FRAMEBUFFER_BINDING),draw=this.getParameter(this.DRAW_FRAMEBUFFER_BINDING);
+  const rt=read?this.getFramebufferAttachmentParameter(this.READ_FRAMEBUFFER,this.COLOR_ATTACHMENT0,this.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME):null;
+  const dt=draw?this.getFramebufferAttachmentParameter(this.DRAW_FRAMEBUFFER,this.COLOR_ATTACHMENT0,this.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME):null;
+  if(M1RenderGuard.calls.length<12)M1RenderGuard.calls.push({args:a,same:read===draw,read:!!read,draw:!!draw,sameTexture:!!rt&&rt===dt});
   if(a[0]===a[4]&&a[1]===a[5]&&a[2]===a[6]&&a[3]===a[7]&&this.getParameter(this.READ_FRAMEBUFFER_BINDING)===this.getParameter(this.DRAW_FRAMEBUFFER_BINDING)){
    M1RenderGuard.skipped++;return;
   }
