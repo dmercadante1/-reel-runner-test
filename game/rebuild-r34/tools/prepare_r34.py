@@ -55,10 +55,10 @@ for x in [25,183,341,499]:crypt.alpha_composite(ImageEnhance.Brightness(alcove).
 for x in [-30,126,284,442,600]:crypt.alpha_composite(ImageEnhance.Brightness(column).enhance(.64),(x,65))
 ar=np.array(crypt).astype(float);ar[:,:,0]*=.91;ar[:,:,1]*=.86;ar[:,:,2]*=1.05;ar[:,:,3]=255
 save(Image.fromarray(np.uint8(ar.clip(0,255))),'catacombs','Raster masonry, dark niches and stone statues from approved source boards.')
-# Ramparts distant plane from source board. Separate near arches handled by the game.
-sky=crop(board,(5,4,1530,620),(640,270));ramp=Image.new('RGBA',(640,360),(9,16,28,255));ramp.alpha_composite(sky,(0,30));
-far=crop(parts,(920,463,1430,500),(640,82));ramp.alpha_composite(far,(0,236))
-save(ramp,'ramparts','Original R2 environment source skyline plus distant castle row from original design board, not a magnified foreground strip.')
+# Ramparts distant plane uses one continuous full-height original illustration.
+# Near arches, platforms and floor are separate game objects.
+ramp=crop(board,(5,4,1530,845),(640,360))
+save(ramp,'ramparts','Complete original Gothic environment crop 5,4,1530,845 resized nearest-neighbor to 640x360; no magnified skyline strip or presentation-board pixels.')
 # Authentic textured animated limbs: mesh-warp original raster trousers and shoes, independently.
 hero=Image.open(A/'hero-walk.png').convert('RGBA').crop((0,0,112,112));upper=hero.copy();upper.paste((0,0,0,0),(0,70,112,112))
 # Source polygons separate the two legs. Small overlapping hip patch stays under the shirt.

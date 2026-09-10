@@ -1,0 +1,24 @@
+{
+  "sourceSHA256": "e99cf52bef485fd71e370c902f0b27214631ba072900f2199b39408778b7fc67",
+  "sourceSize": [
+    1536,
+    1024
+  ],
+  "crop": [
+    5,
+    4,
+    1530,
+    845
+  ],
+  "output": {
+    "key": "ramparts",
+    "file": "assets/ramparts.png",
+    "width": 640,
+    "height": 360,
+    "bytes": 431497,
+    "sha256": "26446139d05b3703f42149dd0953d519e9120b358b4007b66ee14e4a3eb45eae",
+    "provenance": "Complete original Gothic environment crop 5,4,1530,845 resized nearest-neighbor to 640x360; no magnified skyline strip or presentation-board pixels."
+  },
+  "reason": "Remove obvious blue rectangular skyline band seen in the actual stage-4 screenshot",
+  "runtimeChanged": false
+}

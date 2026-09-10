@@ -685,9 +685,9 @@
       "file": "assets/ramparts.png",
       "width": 640,
       "height": 360,
-      "bytes": 261592,
-      "sha256": "54cc78827256cecaf6f1e50eaf71c687fd5a14abe396ad4954b436f139a30c97",
-      "provenance": "Original R2 environment source skyline plus distant castle row from original design board, not a magnified foreground strip."
+      "bytes": 431497,
+      "sha256": "26446139d05b3703f42149dd0953d519e9120b358b4007b66ee14e4a3eb45eae",
+      "provenance": "Complete original Gothic environment crop 5,4,1530,845 resized nearest-neighbor to 640x360; no magnified skyline strip or presentation-board pixels."
     },
     {
       "key": "hero-stride",

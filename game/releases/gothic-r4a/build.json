@@ -1,13 +1,13 @@
 {
   "edition": 4,
-  "sha256": "7935010064c617a1f4f9cfc11fa33faaa8599da1621a60e08b3f0c7c16684b9f",
-  "bytes": 3000170,
+  "sha256": "5c07df9c37fe86fd6eba4cb72ce27fa6bef82c23a4c2348ee81d658fc6c6b2d4",
+  "bytes": 3226734,
   "assets": 24,
   "sourceHashes": {
     "src/shell.js": "27aa047bce454d5a227e5084c3ee1d9a7787fb433c55f98f7ebc6649372ef064",
     "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
     "src/config.js": "36b7a3c9f47ffb9b633c2b9baada6a335233dcadcd843cf251709fc6bb561f5f",
-    "src/assets.js": "d54fdf19297c85e29f2db60379162e5c43c69689e3f162ec8997f30e657fb04a",
+    "src/assets.js": "692c43a6b300e08ccf22b00109a3e7d038496b5ef035b54662df2bf342b0bd74",
     "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
     "src/hud.js": "917ef33dfe59c1dee7ea0cda02218e4c9d8aa1cbdb4bf75f5d51b2ab3d166907",
     "src/world.js": "05e346f7f482fd8b37c1a3a91342573ace989d5491247c63a1ca50d9541cf6ac",
