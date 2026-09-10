@@ -1,0 +1,38 @@
+{
+  "files": {
+    "index.audio.position.worklet.js": {
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8"
+    },
+    "index.audio.worklet.js": {
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3"
+    },
+    "index.html": {
+      "bytes": 8715,
+      "sha256": "0516bd0533081aecf191c0f93d32885e04ce6f4db8dbfec1d7967e49ae2a9138"
+    },
+    "index.js": {
+      "bytes": 279814,
+      "sha256": "7ae834bce024f55120a0e73f16abd5fc9ad080f4b90edc52f5240fb91d020962"
+    },
+    "index.pck": {
+      "bytes": 25156,
+      "sha256": "b51c346ba54b8ccc0aafde75340a5e0f36641639ebf19ec82cf327a64760ab50"
+    },
+    "index.png": {
+      "bytes": 21443,
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e"
+    },
+    "index.wasm": {
+      "bytes": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0"
+    }
+  },
+  "engine": "4.7.2.stable",
+  "internal_resolution": [
+    640,
+    360
+  ],
+  "production_art": false
+}

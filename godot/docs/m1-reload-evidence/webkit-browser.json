@@ -1,0 +1,686 @@
+{
+  "browser": "webkit",
+  "os": "linux",
+  "arch": "x64",
+  "url": "http://127.0.0.1:8765",
+  "checks": [
+    {
+      "name": "engine ready and fixed 640×360 viewport",
+      "passed": true,
+      "detail": {
+        "actions": {
+          "jump": false,
+          "move_left": false,
+          "move_right": false,
+          "record": false
+        },
+        "audio_enabled": true,
+        "audio_events": 0,
+        "build": "m1-02",
+        "engine": "4.7.2-stable (official)",
+        "feet": 220,
+        "film": 12,
+        "film_capacity": 12,
+        "fps": 1,
+        "frame_p95_ms": 0,
+        "frame_samples": 0,
+        "grounded": false,
+        "jumps": 0,
+        "landings": 0,
+        "max_spares": 3,
+        "phase": "ready",
+        "pickups": 3,
+        "production_art": false,
+        "recording": false,
+        "reload_left": 0,
+        "reloads": 0,
+        "respawns": 0,
+        "spares": 2,
+        "tick": 0,
+        "viewport": [
+          640,
+          360
+        ],
+        "vx": 0,
+        "vy": 0,
+        "x": 85
+      }
+    },
+    {
+      "name": "desktop integer 2x display",
+      "passed": true,
+      "detail": {
+        "width": 640,
+        "height": 360,
+        "cssWidth": 1280,
+        "cssHeight": 720
+      }
+    },
+    {
+      "name": "keyboard right and release braking",
+      "passed": true,
+      "detail": {
+        "before": {
+          "actions": {
+            "jump": false,
+            "move_left": false,
+            "move_right": false,
+            "record": false
+          },
+          "audio_enabled": true,
+          "audio_events": 1,
+          "build": "m1-02",
+          "engine": "4.7.2-stable (official)",
+          "feet": 295.967864990234,
+          "film": 12,
+          "film_capacity": 12,
+          "fps": 12,
+          "frame_p95_ms": 16.6666666666667,
+          "frame_samples": 62,
+          "grounded": true,
+          "jumps": 0,
+          "landings": 1,
+          "max_spares": 3,
+          "phase": "running",
+          "pickups": 3,
+          "production_art": false,
+          "recording": false,
+          "reload_left": 0,
+          "reloads": 0,
+          "respawns": 0,
+          "spares": 2,
+          "tick": 65,
+          "viewport": [
+            640,
+            360
+          ],
+          "vx": 0,
+          "vy": 0,
+          "x": 85
+        },
+        "after": {
+          "actions": {
+            "jump": false,
+            "move_left": false,
+            "move_right": false,
+            "record": false
+          },
+          "audio_enabled": true,
+          "audio_events": 1,
+          "build": "m1-02",
+          "engine": "4.7.2-stable (official)",
+          "feet": 295.967864990234,
+          "film": 12,
+          "film_capacity": 12,
+          "fps": 58,
+          "frame_p95_ms": 17,
+          "frame_samples": 88,
+          "grounded": true,
+          "jumps": 0,
+          "landings": 1,
+          "max_spares": 3,
+          "phase": "running",
+          "pickups": 3,
+          "production_art": false,
+          "recording": false,
+          "reload_left": 0,
+          "reloads": 0,
+          "respawns": 0,
+          "spares": 2,
+          "tick": 93,
+          "viewport": [
+            640,
+            360
+          ],
+          "vx": 0,
+          "vy": 0,
+          "x": 122.361083984375
+        }
+      }
+    },
+    {
+      "name": "physical A moves left",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "short and held keyboard jumps have different heights",
+      "passed": true,
+      "detail": {
+        "short": {
+          "height": 19.13198852539,
+          "jumps": 1,
+          "grounded": true
+        },
+        "held": {
+          "height": 57.20976257324199,
+          "jumps": 1,
+          "grounded": true
+        }
+      }
+    },
+    {
+      "name": "quick key down/up is not lost",
+      "passed": true,
+      "detail": {
+        "height": 16.159759521483977,
+        "jumps": 1,
+        "grounded": true
+      }
+    },
+    {
+      "name": "keyboard filming active",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "keyboard filming release",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "full-film reload does not spend a reel",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "filming drains finite stock",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "reload spends one spare and suspends filming",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "held reload completes once at full film",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "move + film + jump simultaneously",
+      "passed": true,
+      "detail": {
+        "before": {
+          "actions": {
+            "jump": false,
+            "move_left": false,
+            "move_right": false,
+            "record": false
+          },
+          "audio_enabled": true,
+          "audio_events": 5,
+          "build": "m1-02",
+          "engine": "4.7.2-stable (official)",
+          "feet": 295.967864990234,
+          "film": 12,
+          "film_capacity": 12,
+          "fps": 64,
+          "frame_p95_ms": 16.6666666666667,
+          "frame_samples": 600,
+          "grounded": true,
+          "jumps": 0,
+          "landings": 1,
+          "max_spares": 3,
+          "phase": "running",
+          "pickups": 3,
+          "production_art": false,
+          "recording": false,
+          "reload_left": 0,
+          "reloads": 0,
+          "respawns": 0,
+          "spares": 2,
+          "tick": 61,
+          "viewport": [
+            640,
+            360
+          ],
+          "vx": 0,
+          "vy": 0,
+          "x": 85
+        },
+        "multi": {
+          "actions": {
+            "jump": false,
+            "move_left": false,
+            "move_right": true,
+            "record": true
+          },
+          "audio_enabled": true,
+          "audio_events": 6,
+          "build": "m1-02",
+          "engine": "4.7.2-stable (official)",
+          "feet": 274.798370361328,
+          "film": 11.7,
+          "film_capacity": 12,
+          "fps": 64,
+          "frame_p95_ms": 16.6666666666667,
+          "frame_samples": 600,
+          "grounded": false,
+          "jumps": 1,
+          "landings": 1,
+          "max_spares": 3,
+          "phase": "running",
+          "pickups": 3,
+          "production_art": false,
+          "recording": true,
+          "reload_left": 0,
+          "reloads": 0,
+          "respawns": 0,
+          "spares": 2,
+          "tick": 82,
+          "viewport": [
+            640,
+            360
+          ],
+          "vx": 145,
+          "vy": -92.6666870117188,
+          "x": 120.682502746582
+        }
+      }
+    },
+    {
+      "name": "releasing film preserves held direction",
+      "passed": true,
+      "detail": {
+        "state": {
+          "actions": {
+            "jump": false,
+            "move_left": false,
+            "move_right": true,
+            "record": false
+          },
+          "audio_enabled": true,
+          "audio_events": 7,
+          "build": "m1-02",
+          "engine": "4.7.2-stable (official)",
+          "feet": 282.342834472656,
+          "film": 11.6,
+          "film_capacity": 12,
+          "fps": 63,
+          "frame_p95_ms": 16.6666666666667,
+          "frame_samples": 600,
+          "grounded": false,
+          "jumps": 1,
+          "landings": 1,
+          "max_spares": 3,
+          "phase": "running",
+          "pickups": 2,
+          "production_art": false,
+          "recording": false,
+          "reload_left": 0,
+          "reloads": 0,
+          "respawns": 0,
+          "spares": 3,
+          "tick": 96,
+          "viewport": [
+            640,
+            360
+          ],
+          "vx": 145,
+          "vy": 140.666641235352,
+          "x": 154.515884399414
+        },
+        "trace": [
+          {
+            "type": "pointerdown",
+            "id": 1,
+            "time": 2969
+          },
+          {
+            "type": "pointerup",
+            "id": 1,
+            "time": 2969
+          },
+          {
+            "type": "pointerdown",
+            "id": 1,
+            "time": 5112
+          },
+          {
+            "type": "pointerup",
+            "id": 1,
+            "time": 5113
+          },
+          {
+            "type": "pointerdown",
+            "id": 1,
+            "time": 7137
+          },
+          {
+            "type": "pointerup",
+            "id": 1,
+            "time": 7139
+          },
+          {
+            "type": "pointerdown",
+            "id": 1,
+            "time": 9442
+          },
+          {
+            "type": "pointerup",
+            "id": 1,
+            "time": 9443
+          },
+          {
+            "type": "pointerdown",
+            "id": 1,
+            "time": 11421
+          },
+          {
+            "type": "pointerup",
+            "id": 1,
+            "time": 11422
+          },
+          {
+            "type": "pointerdown",
+            "id": 1,
+            "time": 12725
+          },
+          {
+            "type": "pointerup",
+            "id": 1,
+            "time": 12726
+          },
+          {
+            "type": "pointerdown",
+            "id": 1,
+            "time": 15640
+          },
+          {
+            "type": "pointerup",
+            "id": 1,
+            "time": 15640
+          },
+          {
+            "type": "pointerdown",
+            "id": 1,
+            "target": "move_right",
+            "time": 16710
+          },
+          {
+            "type": "pointerdown",
+            "id": 2,
+            "target": "record",
+            "time": 16717
+          },
+          {
+            "type": "pointerdown",
+            "id": 3,
+            "target": "jump",
+            "time": 16890
+          },
+          {
+            "type": "pointerup",
+            "id": 3,
+            "target": "jump",
+            "time": 16940
+          },
+          {
+            "type": "pointerup",
+            "id": 2,
+            "target": "record",
+            "time": 17115
+          }
+        ],
+        "held": [
+          {
+            "action": "move_left",
+            "held": "false"
+          },
+          {
+            "action": "move_right",
+            "held": "true"
+          },
+          {
+            "action": "reload",
+            "held": "false"
+          },
+          {
+            "action": "record",
+            "held": "false"
+          },
+          {
+            "action": "jump",
+            "held": "false"
+          }
+        ]
+      }
+    },
+    {
+      "name": "touch release brakes",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "quick touch reload works while moving",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "touch reload restores full film",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "world pickup adds a spare",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "blur pauses and clears velocity",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "paused simulation does not advance",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "resume has no stuck movement",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "pause clears a queued jump before resume",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "rotation pauses and clears filming",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "fit 844×390",
+      "passed": true,
+      "detail": {
+        "x": 199.78125,
+        "y": 35,
+        "w": 444.4375,
+        "h": 250,
+        "overflow": false,
+        "viewport": [
+          640,
+          360
+        ]
+      }
+    },
+    {
+      "name": "fit 390×844",
+      "passed": true,
+      "detail": {
+        "x": 12,
+        "y": 73,
+        "w": 366,
+        "h": 205.875,
+        "overflow": false,
+        "viewport": [
+          640,
+          360
+        ]
+      }
+    },
+    {
+      "name": "fit 1024×768",
+      "passed": true,
+      "detail": {
+        "x": 192,
+        "y": 66,
+        "w": 640,
+        "h": 360,
+        "overflow": false,
+        "viewport": [
+          640,
+          360
+        ]
+      }
+    },
+    {
+      "name": "sound toggle off",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "audio context running after user activation",
+      "passed": true,
+      "detail": [
+        {
+          "state": "running",
+          "time": 24.081995464852607,
+          "sampleRate": 44100
+        }
+      ]
+    },
+    {
+      "name": "shortcut fallback is honest about offline support",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "fullscreen or visible fallback",
+      "passed": true,
+      "detail": {
+        "active": true,
+        "notice": ""
+      }
+    },
+    {
+      "name": "unsupported fullscreen remains usable",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "sustained GL error polling is clean",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "no browser script or engine console errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "physical_phone_tested": false,
+  "audible_output_verified": false,
+  "version": "26.5",
+  "ready_ms": 2753,
+  "touch_method": "WebKit DOM pointer events; hardware delivery not certified",
+  "audio": [
+    {
+      "state": "running",
+      "time": 24.081995464852607,
+      "sampleRate": 44100
+    }
+  ],
+  "performance": {
+    "actions": {
+      "jump": false,
+      "move_left": false,
+      "move_right": false,
+      "record": false
+    },
+    "audio_enabled": true,
+    "audio_events": 13,
+    "build": "m1-02",
+    "engine": "4.7.2-stable (official)",
+    "feet": 295.967864990234,
+    "film": 12,
+    "film_capacity": 12,
+    "fps": 64,
+    "frame_p95_ms": 16.6666666666667,
+    "frame_samples": 600,
+    "grounded": true,
+    "jumps": 0,
+    "landings": 1,
+    "max_spares": 3,
+    "phase": "running",
+    "pickups": 3,
+    "production_art": false,
+    "recording": false,
+    "reload_left": 0,
+    "reloads": 0,
+    "respawns": 0,
+    "spares": 2,
+    "tick": 255,
+    "viewport": [
+      640,
+      360
+    ],
+    "vx": 0,
+    "vy": 0,
+    "x": 85
+  },
+  "resources": [
+    {
+      "name": "index.js",
+      "duration": 2,
+      "transferSize": 280114,
+      "decodedBodySize": 279814
+    },
+    {
+      "name": "index.pck",
+      "duration": 2,
+      "transferSize": 25456,
+      "decodedBodySize": 25156
+    },
+    {
+      "name": "index.wasm",
+      "duration": 63,
+      "transferSize": 39515054,
+      "decodedBodySize": 39514754
+    }
+  ],
+  "gl_errors": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "passed": 33,
+  "failed": 0
+}

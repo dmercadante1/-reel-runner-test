@@ -1,3 +1,5 @@
+> Latest revision: see CHECKPOINT-M1-RELOAD.md for Reload, spare reels, fresh verification, and the separate M1-02 preview. This file preserves the first M1 proof.
+
 # M1 — browser delivery verified; physical phone approval remains open
 
 2026-09-10. Source tested: `2336262` on `godot-640-foundation`.
