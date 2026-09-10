@@ -56,7 +56,7 @@ try:
      x=rect['x']+603*rect['width']/640;y=rect['y']+22*rect['height']/360
      (page.touchscreen.tap(x,y) if mobile else page.mouse.click(x,y));page.wait_for_function('GOTHIC.phase==="paused"');check(label+' native HUD pause works',True)
      (page.locator('#start').tap() if mobile else page.locator('#start').click());page.wait_for_function('GOTHIC.phase==="running"')
-     page.keyboard.press('r');page.wait_for_function('GOTHIC.phase==="running" && GOTHIC.scene.player.x<120');control(page,'right',250,mobile);check(label+' restart remains playable',state(page)['x']>125)
+     page.evaluate('window.__previousRunStats=GOTHIC.scene.stats');page.keyboard.press('r');page.wait_for_function('GOTHIC.phase==="running" && GOTHIC.scene.stats!==window.__previousRunStats && GOTHIC.scene.player.x<120');control(page,'right',250,mobile);check(label+' restart remains playable',state(page)['x']>125)
      if mobile:
       page.set_viewport_size({'width':390,'height':844});page.wait_for_function('GOTHIC.phase==="paused"');page.set_viewport_size({'width':844,'height':390});page.wait_for_function('GOTHIC.phase==="running"');check(label+' orientation pauses and resumes',True)
      page.screenshot(path=str(OUT/(label+'.png')));context.close()

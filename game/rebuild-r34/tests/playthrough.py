@@ -33,7 +33,7 @@ try:
  with sync_playwright()as pw:
   kwargs={'executable_path':'/usr/bin/chromium','args':['--no-sandbox']}if engine=='chromium'and not os.getenv('GITHUB_ACTIONS')else{}
   b=getattr(pw,engine).launch(**kwargs);p=b.new_page(viewport={'width':1280,'height':720});p.on('pageerror',lambda e:errors.append(str(e)));p.set_default_timeout(10000);p.set_content((R/f'releases/gothic-r{edition}/index.html').read_text(),wait_until='load');p.wait_for_function('GOTHIC.phase==="ready"');ck('Boot validates all 24 textures',p.evaluate('GOTHIC_ASSETS.length===24'))
-  before=p.screenshot();p.evaluate('GOTHIC.scene.player.setVisible(false)');p.wait_for_timeout(65);after=p.screenshot();p.evaluate('GOTHIC.scene.player.setVisible(true)');ck('Player contributes visible rendered pixels',ImageChops.difference(Image.open(BytesIO(before)),Image.open(BytesIO(after))).getbbox()is not None)
+  before=p.screenshot();p.evaluate('GOTHIC.scene.player.setVisible(false)');p.wait_for_timeout(65);after=p.screenshot();p.evaluate('GOTHIC.scene.player.setVisible(true)');ck('Player contributes visible rendered pixels',ImageChops.difference(Image.open(BytesIO(before)).convert('RGB'),Image.open(BytesIO(after)).convert('RGB')).getbbox()is not None)
   ck('HUD rendered in canvas, fixed over world',p.evaluate('GOTHIC.scene.hudHearts.length===5&&GOTHIC.scene.hudGraphics.scrollFactorX===0&&GOTHIC.scene.hudGraphics.depth===1000'))
   # Screenshot comparison is performed before Start, with the world paused, not while enemies can attack an unattended player.
   p.locator('#start').click();p.wait_for_timeout(650);ck('Start and floor landing',info(p)['phase']=='running'and abs(info(p)['bottom']-316)<2)
