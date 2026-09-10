@@ -155,11 +155,12 @@ func _report() -> void:
 	samples.sort()
 	var p95: float = samples[int((samples.size() - 1) * 0.95)] if not samples.is_empty() else 0.0
 	var state := {"phase": _phase, "x": player.position.x, "feet": player.position.y,
-		"vx": player.velocity.x, "vy": player.velocity.y, "grounded": player.is_on_floor(),
+		"vx": player.velocity.x, "vy": player.velocity.y, "grounded": player.is_on_floor() and player._was_grounded,
 		"tick": _tick, "jumps": _jumps, "landings": _lands, "respawns": _respawns,
 		"recording": _record, "audio_events": _audio_events, "audio_enabled": _audio_enabled,
 		"fps": Engine.get_frames_per_second(), "frame_p95_ms": p95, "frame_samples": samples.size(),
 		"viewport": [get_viewport_rect().size.x, get_viewport_rect().size.y],
+		"actions": {"move_left": Input.is_action_pressed("move_left"), "move_right": Input.is_action_pressed("move_right"), "jump": Input.is_action_pressed("jump"), "record": Input.is_action_pressed("record")},
 		"engine": Engine.get_version_info().string, "build": "m1-01", "production_art": false}
 	if _bridge != null:
 		_bridge.report(JSON.stringify(state))
