@@ -3,12 +3,17 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 import os,json,traceback,time
 from platform_probe import check_platform_carry
+from shockwave_probe import check_shockwave_dodge
 R=Path(__file__).resolve().parents[1];engine=os.getenv('BROWSER','chromium');checks=[];errors=[]
 def ck(name,ok,detail=None):
  checks.append({'name':name,'passed':bool(ok),'detail':detail});(R/f'evidence/r4-{engine}-mechanics-progress.json').write_text(json.dumps({'checks':checks,'errors':errors},indent=2));print(('PASS'if ok else'FAIL'),name,flush=True)
  if not ok:raise AssertionError((name,detail))
 def fixture(p,i=0):
- p.evaluate('(i)=>GOTHIC.scene.scene.restart({stage:i,auto:true})',i);p.wait_for_timeout(350);p.wait_for_function('GOTHIC.phase==="running"');p.evaluate('GOTHIC.scene.enemies.forEach(e=>{e.setData("stunUntil",1e9);e.setVelocity(0)})');p.wait_for_timeout(150)
+ p.evaluate('(i)=>{window.__fixtureStats=GOTHIC.scene.stats;GOTHIC.scene.scene.restart({stage:i,auto:true});}',i)
+ p.wait_for_function('(i)=>GOTHIC.phase==="running"&&GOTHIC.scene.stageIndex===i&&GOTHIC.scene.stats!==window.__fixtureStats&&GOTHIC.scene.player?.body?.enable',arg=i)
+ p.evaluate('GOTHIC.scene.enemies.forEach(e=>{e.setData("stunUntil",1e9);e.setVelocity(0)})')
+ p.wait_for_function('GOTHIC.scene.tick>=2&&(GOTHIC.scene.player.body.blocked.down||GOTHIC.scene.player.body.touching.down)')
+ assert p.evaluate('GOTHIC.scene.stats.damage===0&&GOTHIC.scene.stats.attacks===0&&GOTHIC.scene.enemies.every(e=>e.getData("stunUntil")>GOTHIC.scene.clock)'), 'Fixture is not isolated from previous scene/AI'
 def snapshot(p):return p.evaluate('({x:GOTHIC.scene.player.x,bottom:GOTHIC.scene.player.body.bottom,health:GOTHIC.scene.health,film:GOTHIC.scene.film,stats:GOTHIC.scene.stats,phase:GOTHIC.phase})')
 try:
  with sync_playwright()as pw:
@@ -24,7 +29,7 @@ try:
   fixture(p);p.evaluate('''()=>{let s=GOTHIC.scene;s.enemies.forEach(e=>e.destroy());s.enemies=[];s.spawn('monster',230);s.enemies[0].setData({state:'windup',attackAt:s.clock,nextAttack:s.clock+3000});}''');p.keyboard.press('x');p.wait_for_timeout(90);s=snapshot(p);ck('Flash costs film and triggers defense',s['film']<88 and s['stats']['flashes']==1,s);ck('Flash interrupts monster armor/attack',p.evaluate('GOTHIC.scene.enemies[0].getData("stunUntil")>GOTHIC.scene.clock'));p.keyboard.press('x');p.wait_for_timeout(90);ck('Flash cooldown prevents spamming',snapshot(p)['stats']['flashes']==1);p.screenshot(path=str(R/f'evidence/r4-{engine}-flash.png'))
   p.evaluate('GOTHIC.scene.film=0;GOTHIC.scene.flashUntil=0');p.keyboard.press('x');p.wait_for_timeout(70);ck('Insufficient film refuses flash',snapshot(p)['stats']['flashes']==1)
   fixture(p);p.evaluate('''()=>{let s=GOTHIC.scene,e=s.enemies[0];e.body.reset(280,322);e.setData('stunUntil',1e9);s.player.setFlipX(false);GOTHIC_COMBAT.shoot(s,e,'bone',-1);}''');p.keyboard.down('Space');p.wait_for_timeout(300);p.keyboard.up('Space');ck('Camera light destroys incoming bone projectile',snapshot(p)['stats']['blocked']>=1,snapshot(p))
-  fixture(p);p.evaluate('''()=>{let s=GOTHIC.scene,e=s.enemies[0];e.body.reset(260,322);e.setData('stunUntil',1e9);GOTHIC_COMBAT.shoot(s,e,'wave',-1);}''');p.wait_for_timeout(300);p.keyboard.down('ArrowUp');p.wait_for_timeout(150);p.keyboard.up('ArrowUp');p.wait_for_timeout(650);ck('Jump evades ground shockwave',snapshot(p)['health']==5 and snapshot(p)['stats']['dodged']>=1,snapshot(p))
+  check_shockwave_dodge(p,fixture,ck,snapshot)
   fixture(p);p.evaluate('''()=>{let s=GOTHIC.scene,e=s.enemies[0];e.body.reset(260,322);GOTHIC_COMBAT.shoot(s,e,'wave',-1);}''');p.wait_for_timeout(1100);ck('Same ground shockwave damages grounded player',snapshot(p)['health']==4,snapshot(p));p.evaluate('GOTHIC.scene.damage({x:300});GOTHIC.scene.damage({x:300})');ck('Invulnerability prevents stacked damage',snapshot(p)['health']==4)
   fixture(p);p.evaluate('GOTHIC.scene.checkpoint=850;GOTHIC.scene.health=1;GOTHIC.scene.damage({x:400})');p.wait_for_timeout(250);ck('Lethal damage restores checkpoint',abs(snapshot(p)['x']-850)<2 and snapshot(p)['health']==5,snapshot(p))
   p.evaluate('GOTHIC.pause("manual",true)');a=p.evaluate('GOTHIC.scene.clock');p.wait_for_timeout(400);ck('Pause freezes combat clock',p.evaluate('GOTHIC.scene.clock')==a);p.locator('#start').click();ck('Resume restores running state',snapshot(p)['phase']=='running')
