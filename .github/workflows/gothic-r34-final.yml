@@ -7,7 +7,7 @@ permissions:
   contents: write
 concurrency:
   group: gothic-r34-final
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -24,10 +24,11 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install Pillow playwright==1.57.0
-      - name: Finish animation priority and continuous Ramparts background
+      - name: Build reviewed art and walking-while-filming correction; repair test isolation
         run: |
           python audit/finish-r34-locomotion.py
           python audit/refine-r34-ramparts.py
+          python audit/stabilize-r34-fixtures.py
           python game/rebuild-r34/tools/bundle.py 3
           python game/rebuild-r34/tools/bundle.py 4
           cp game/rebuild-r34/releases/gothic-r3/* game/releases/gothic-r3a/
@@ -35,17 +36,9 @@ jobs:
           git diff --exit-code -- game/releases/gothic-r3 game/releases/gothic-r4 game/releases/gothic-hud-r2 .github/workflows
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add game/rebuild-r34/src game/rebuild-r34/assets game/rebuild-r34/tools game/rebuild-r34/evidence/ramparts-visual-review.json game/rebuild-r34/releases game/releases/gothic-r3a game/releases/gothic-r4a
-          git diff --cached --quiet || git commit -m 'Finish filming stride and replace discontinuous Ramparts strip with full illustration'
+          git add game/rebuild-r34/src game/rebuild-r34/assets game/rebuild-r34/tools game/rebuild-r34/tests game/rebuild-r34/evidence/ramparts-visual-review.json game/rebuild-r34/releases game/releases/gothic-r3a game/releases/gothic-r4a
+          git diff --cached --quiet || git commit -m 'Preserve reviewed R3/R4 candidate and event-synchronized isolated mechanics tests'
           git push origin HEAD:gothic-r34-art-review
-      - name: Export complete editable source and exact candidate bytes for independent inspection
-        uses: actions/upload-artifact@v4
-        with:
-          name: gothic-r34-final-source
-          path: |
-            game/rebuild-r34/
-            audit/check-live-r34.py
-          retention-days: 14
       - name: Remove stale browser evidence
         run: |
           python - <<'PY'
@@ -55,22 +48,39 @@ jobs:
               for name in [f'r3-{engine}-playthrough.json',f'r4-{engine}-playthrough.json',f'r4-{engine}-mechanics.json',f'r4-{engine}-presentation.json',f'{engine}-locomotion.json']:(p/name).unlink(missing_ok=True)
           (p/'release-gates.json').unlink(missing_ok=True)
           PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gothic-r34-final-source
+          path: |
+            game/rebuild-r34/
+            audit/check-live-r34.py
+          retention-days: 14
       - run: python -m playwright install --with-deps chromium webkit
-      - name: Full keyboard traversals and isolated mechanics, layout and filming locomotion
+      - name: Check defense, platforms and filming locomotion first
         run: |
           python - <<'PY'
-          import os,subprocess,json,pathlib
-          failures=[]
+          import os,subprocess
           for engine in ['chromium','webkit']:
-              for args in [['playthrough.py','3'],['playthrough.py','4'],['mechanics.py'],['presentation.py'],['locomotion.py']]:
-                  try:
-                      r=subprocess.run(['python','game/rebuild-r34/tests/'+args[0],*args[1:]],env={**os.environ,'BROWSER':engine},timeout=240)
-                      if r.returncode:failures.append([engine,args,r.returncode])
-                  except subprocess.TimeoutExpired:failures.append([engine,args,'timeout'])
-          pathlib.Path('game/rebuild-r34/evidence/script-exit-results.json').write_text(json.dumps({'failures':failures},indent=2))
-          assert not failures,failures
+              for name in ['mechanics.py','locomotion.py']:
+                  subprocess.run(['python','game/rebuild-r34/tests/'+name],env={**os.environ,'BROWSER':engine},timeout=150,check=True)
           PY
-      - name: Require all ten reports and exact artifact hashes
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gothic-r34-defense-proof
+          path: |
+            game/rebuild-r34/evidence/*mechanics*.json
+            game/rebuild-r34/evidence/*locomotion.json
+          retention-days: 14
+      - name: Complete real-keyboard traversals and viewport checks in both engines
+        run: |
+          python - <<'PY'
+          import os,subprocess
+          for engine in ['chromium','webkit']:
+              for args in [['playthrough.py','3'],['playthrough.py','4'],['presentation.py']]:
+                  subprocess.run(['python','game/rebuild-r34/tests/'+args[0],*args[1:]],env={**os.environ,'BROWSER':engine},timeout=240,check=True)
+          PY
+      - name: Require all ten fresh reports and exact artifact hashes
         run: |
           python - <<'PY'
           import json,pathlib,os,hashlib
@@ -87,7 +97,7 @@ jobs:
           git fetch origin gothic-r34-art-review
           git merge --ff-only origin/gothic-r34-art-review
           git add game/rebuild-r34/evidence
-          git commit -m 'Final R3/R4 corrected artwork and filming stride pass all ten Chromium/WebKit suites'
+          git commit -m 'Final R3/R4 art, movement and defense pass all ten Chromium/WebKit suites'
           git push origin HEAD:gothic-r34-art-review
       - uses: actions/upload-artifact@v4
         if: always()
