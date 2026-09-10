@@ -1,0 +1,88 @@
+name: Final R3 R4 gameplay art and locomotion gates
+on:
+  push:
+    branches: [gothic-r34-final-release]
+    paths: ['.github/workflows/gothic-r34-final.yml']
+permissions:
+  contents: write
+jobs:
+  final-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned production and test dependencies
+        run: python -m pip install Pillow==12.3.0 numpy==2.5.3 scipy==1.18.1 scikit-image==0.26.0 playwright==1.57.0
+      - name: Finish grounded filming locomotion and rebuild corrected artwork
+        run: |
+          grep -q 'original_parts_size=parts.size' game/rebuild-r34/tools/prepare_r34.py
+          python audit/finish-r34-locomotion.py
+          python game/rebuild-r34/tools/prepare_r34.py
+          python game/rebuild-r34/tools/bundle.py 3
+          python game/rebuild-r34/tools/bundle.py 4
+          cp game/rebuild-r34/releases/gothic-r3/* game/releases/gothic-r3a/
+          cp game/rebuild-r34/releases/gothic-r4/* game/releases/gothic-r4a/
+          git diff --exit-code -- game/releases/gothic-r3 game/releases/gothic-r4 game/releases/gothic-hud-r2 .github/workflows/gothic-live-check.yml
+      - name: Preserve the exact final candidate on its release branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add game/rebuild-r34 game/releases/gothic-r3a game/releases/gothic-r4a
+          git diff --cached --quiet || git commit -m 'Stage corrected interiors and moving-while-filming stride for R3/R4; acceptance pending'
+          git push origin HEAD:gothic-r34-final-release
+      - name: Delete previous run reports
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('game/rebuild-r34/evidence')
+          for engine in ['chromium','webkit']:
+              for name in [f'r3-{engine}-playthrough.json',f'r4-{engine}-playthrough.json',f'r4-{engine}-mechanics.json',f'r4-{engine}-presentation.json',f'{engine}-locomotion.json']:(p/name).unlink(missing_ok=True)
+          (p/'release-gates.json').unlink(missing_ok=True)
+          PY
+      - run: python -m playwright install --with-deps chromium webkit
+      - name: Execute all ten fresh suites, including real-input filming strides
+        run: |
+          python - <<'PY'
+          import os,subprocess
+          failures=[]
+          for engine in ['chromium','webkit']:
+              for args in [['playthrough.py','3'],['playthrough.py','4'],['mechanics.py'],['presentation.py'],['locomotion.py']]:
+                  r=subprocess.run(['python','game/rebuild-r34/tests/'+args[0],*args[1:]],env={**os.environ,'BROWSER':engine},timeout=240)
+                  if r.returncode:failures.append([engine,args,r.returncode])
+          assert not failures,failures
+          PY
+      - name: Require every fresh check and save final exact-byte release evidence
+        run: |
+          python - <<'PY'
+          import json,pathlib,os
+          root=pathlib.Path('game/rebuild-r34');reports={}
+          for engine in ['chromium','webkit']:
+              for file in [f'r3-{engine}-playthrough.json',f'r4-{engine}-playthrough.json',f'r4-{engine}-mechanics.json',f'r4-{engine}-presentation.json',f'{engine}-locomotion.json']:
+                  r=json.loads((root/'evidence'/file).read_text());assert r['failed']==0 and not r['errors'];reports[file]={'passed':r['passed'],'failed':r['failed'],'errors':r['errors']}
+          result={'success':True,'run':os.environ['GITHUB_RUN_ID'],'reports':reports,'totalPassed':sum(r['passed'] for r in reports.values()),'physicalDeviceTested':False,'artCoordinateCorrection':True,'filmingLocomotionVerified':True,'releases':{f'r{n}':json.loads(pathlib.Path(f'game/releases/gothic-r{n}a/build.json').read_text()) for n in [3,4]},'status':'Final R3/R4 candidate passes all staging gates; actual hosted bytes must be checked after promotion'}
+          (root/'evidence/release-gates.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
+          PY
+          git fetch origin gothic-r34-final-release
+          git merge --ff-only origin/gothic-r34-final-release
+          git add game/rebuild-r34/evidence
+          git commit -m 'Final R3/R4 candidate passes both browsers: full traversal, combat, HUD, platforms and filming locomotion'
+          git push origin HEAD:gothic-r34-final-release
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gothic-r34-final-proof
+          path: |
+            game/rebuild-r34/evidence/
+            game/rebuild-r34/assets/cathedral.png
+            game/rebuild-r34/assets/catacombs.png
+            game/rebuild-r34/assets/ramparts.png
+            game/rebuild-r34/assets/arch.png
+          retention-days: 14
