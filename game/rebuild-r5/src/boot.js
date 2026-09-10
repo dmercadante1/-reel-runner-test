@@ -1,6 +1,6 @@
 'use strict';
 (async()=>{
- const G=GOTHIC_CONFIG?GOTHIC:null,C=GOTHIC_CONFIG;
+ const G=GOTHIC,C=GOTHIC_CONFIG;
  try{
   if(!window.Phaser)throw Error('Engine unavailable.');
   for(const a of GOTHIC_ASSETS){
