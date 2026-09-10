@@ -640,8 +640,8 @@
       "file": "assets/column.png",
       "width": 72,
       "height": 245,
-      "bytes": 15580,
-      "sha256": "bb8f0ef697282d9b42d6e0d489fd8b91ab45fdcc585b9eff20f524c4474dd0e0",
+      "bytes": 9749,
+      "sha256": "8fc8a72625ea2a2db331893097d913b051eb4edf67636cbc7df2fac97a87aef5",
       "provenance": "R2 original design board column crop 29,438,73,574"
     },
     {
@@ -649,8 +649,8 @@
       "file": "assets/arch.png",
       "width": 108,
       "height": 180,
-      "bytes": 12659,
-      "sha256": "a9de129548e154d7f6a0dc96b95e5af0aa03bfd833db4ffc2af6af032e2c89d6",
+      "bytes": 7935,
+      "sha256": "8feded3c195f1cf784f7dcbccdc0453d7aa434963847add1f945b143ddd6866f",
       "provenance": "R2 original design board arch 87,438,172,504 with actual raster pillars"
     },
     {
@@ -658,8 +658,8 @@
       "file": "assets/statue.png",
       "width": 60,
       "height": 125,
-      "bytes": 16155,
-      "sha256": "1cf5fd762fe840dee7011b92ef165fd8202de9cc0649294e07df49ac76dcf5fa",
+      "bytes": 10827,
+      "sha256": "68186d67393e5084274155017a6af399ce5340e1ba5ef2e075b80550a064e778",
       "provenance": "character/environment board statue crop 373,440,438,573"
     },
     {
@@ -667,8 +667,8 @@
       "file": "assets/cathedral.png",
       "width": 640,
       "height": 360,
-      "bytes": 91819,
-      "sha256": "bb3abfe0a2448b6a4ac945d886614f55a17936cae6a6612571b0523d9694ad89",
+      "bytes": 83347,
+      "sha256": "b084c208bde0a7d31ffed0ab88132e54ed4988c59b612115a1f5f4da7f69ba68",
       "provenance": "Raster tile collage from the R2 original design board masonry and chapel interior. 640x360, no character/labels baked in."
     },
     {
@@ -676,8 +676,8 @@
       "file": "assets/catacombs.png",
       "width": 640,
       "height": 360,
-      "bytes": 118596,
-      "sha256": "36d80f23e5634a4c5f68e13bee137b63df8e62a6ad8b8b5a03a83887dd526918",
+      "bytes": 83449,
+      "sha256": "4797ee35b4da7b533393ab4f1728da56ec97bd05c4a82a87790275c61ea2bc37",
       "provenance": "Raster masonry, dark niches and stone statues from approved source boards."
     },
     {
@@ -685,8 +685,8 @@
       "file": "assets/ramparts.png",
       "width": 640,
       "height": 360,
-      "bytes": 304879,
-      "sha256": "01da1e26f308ae19224a58d740cec0ea5008967a2e7b93d0a337ed4605d2575e",
+      "bytes": 261592,
+      "sha256": "54cc78827256cecaf6f1e50eaf71c687fd5a14abe396ad4954b436f139a30c97",
       "provenance": "Original R2 environment source skyline plus distant castle row from original design board, not a magnified foreground strip."
     },
     {

@@ -14,10 +14,10 @@ def press(p,key,mobile):
   box=p.locator('[data-input="'+key+'"]').bounding_box();p.mouse.move(box['x']+box['width']/2,box['y']+box['height']/2);p.mouse.down();return p.mouse.up
  name={'right':'ArrowRight','jump':'ArrowUp','beam':'Space','flash':'x'}[key];p.keyboard.down(name);return lambda:p.keyboard.up(name)
 def wait_bytes(edition):
- build=json.loads(pathlib.Path(f'game/releases/gothic-r{edition}/build.json').read_text());last=None
+ build=json.loads(pathlib.Path(f'game/releases/gothic-r{edition}a/build.json').read_text());last=None
  for _ in range(75):
   try:
-   req=urllib.request.Request(BASE+f'game/releases/gothic-r{edition}/?verify='+str(time.time_ns()),headers={'Cache-Control':'no-cache'})
+   req=urllib.request.Request(BASE+f'game/releases/gothic-r{edition}a/?verify='+str(time.time_ns()),headers={'Cache-Control':'no-cache'})
    with urllib.request.urlopen(req,timeout=25) as res:data=res.read()
    last=hashlib.sha256(data).hexdigest()
    if last==build['sha256']:
@@ -35,9 +35,9 @@ try:
     for mobile in [False,True]:
      label=f'{engine}-r{edition}-'+('phone-emulated' if mobile else 'desktop');w,h=(844,390) if mobile else (1280,720)
      context=browser.new_context(viewport={'width':w,'height':h},has_touch=mobile,is_mobile=mobile);page=context.new_page();page.on('pageerror',lambda e,l=label:errors.append({'case':l,'error':e.message}));page.set_default_timeout(15000)
-     url=BASE if edition==4 else BASE+'game/releases/gothic-r3/'
+     url=BASE if edition==4 else BASE+'game/releases/gothic-r3a/'
      page.goto(url+'?verify='+str(time.time_ns()),wait_until='load');page.wait_for_function('window.GOTHIC && GOTHIC.phase==="ready"')
-     check(label+' root resolves correct edition',state(page)['edition']==edition and f'gothic-r{edition}/' in page.url,page.url)
+     check(label+' root resolves correct edition',state(page)['edition']==edition and f'gothic-r{edition}a/' in page.url,page.url)
      check(label+' all 24 raster textures loaded',page.evaluate('GOTHIC_ASSETS.length===24 && GOTHIC_ASSETS.every(a=>GOTHIC.scene.textures.exists(a.key))'))
      (page.locator('#start').tap() if mobile else page.locator('#start').click());page.wait_for_function('GOTHIC.phase==="running"')
      # Exercise camera before approaching enemies; the full combat runs are separate.

@@ -12,6 +12,11 @@ def source(name):
  p=S/name;return Image.open(p).convert('RGBA')
 board=source('a_wide_cinematic_dark_gothic_castle_environment.png')
 parts=source('wide_cinematic_concept_art_game_design_board_in_a.png')
+# Canonical crop coordinates are for the 1536x1024 original, not the archived preview.
+original_parts_size=parts.size
+assert original_parts_size in [(1099,733),(1536,1024)], 'Unrecognized source board size'
+if parts.size!=(1536,1024):parts=parts.resize((1536,1024),Image.Resampling.NEAREST)
+assert board.size==(1536,1024) and parts.size==(1536,1024)
 def crop(im,box,size=None):
  x=im.crop(box)
  return x.resize(size,Image.Resampling.NEAREST) if size else x

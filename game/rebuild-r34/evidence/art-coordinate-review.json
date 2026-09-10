@@ -1,0 +1,18 @@
+{
+  "source": "game/rebuild-r34/sources/wide_cinematic_concept_art_game_design_board_in_a.png",
+  "sourceSHA256": "3cdc4d0257042e37058283badaf6f106025e270267157c74af48db457e1250ed",
+  "actualDimensions": [
+    1099,
+    733
+  ],
+  "cropCoordinateDimensions": [
+    1536,
+    1024
+  ],
+  "correction": "Normalize the intact source-board preview before extracting raster crops; no gameplay or physics changes",
+  "oldReleasePreserved": true,
+  "newReleasePaths": [
+    "game/releases/gothic-r3a/",
+    "game/releases/gothic-r4a/"
+  ]
+}
