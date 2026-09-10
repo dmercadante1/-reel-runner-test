@@ -2,6 +2,7 @@
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 import os,json,traceback,time
+from platform_probe import check_platform_carry
 R=Path(__file__).resolve().parents[1];engine=os.getenv('BROWSER','chromium');checks=[];errors=[]
 def ck(name,ok,detail=None):
  checks.append({'name':name,'passed':bool(ok),'detail':detail});(R/f'evidence/r4-{engine}-mechanics-progress.json').write_text(json.dumps({'checks':checks,'errors':errors},indent=2));print(('PASS'if ok else'FAIL'),name,flush=True)
@@ -15,7 +16,7 @@ try:
   b=getattr(pw,engine).launch(**kw);p=b.new_page(viewport={'width':1280,'height':720});p.on('pageerror',lambda e:errors.append(str(e)));H=(R/'releases/gothic-r4/index.html').read_text();p.set_content(H,wait_until='load');p.wait_for_function('GOTHIC.phase==="ready"');p.locator('#start').click();p.wait_for_timeout(400)
   ck('R4 edition enabled',p.evaluate('GOTHIC_CONFIG.edition===4'))
   fixture(p);p.evaluate('GOTHIC.scene.player.body.reset(590,322)');p.keyboard.down('ArrowUp');p.wait_for_timeout(210);p.keyboard.up('ArrowUp');ck('Jump passes upward through one-way ledge',snapshot(p)['bottom']<264,snapshot(p));p.wait_for_timeout(720);ck('Lands on ledge top',abs(snapshot(p)['bottom']-264)<2,snapshot(p));ck('Visible artwork matches collision surface',p.evaluate('GOTHIC.scene.platforms.every(p=>Math.abs(p.art.y-p.zone.body.top)<1&&Math.abs(p.art.x-(p.zone.x-p.def.width/2))<1)'))
-  fixture(p,1);pos=p.evaluate('(()=>{let s=GOTHIC.scene,a=s.platforms.find(p=>p.def.motion);s.player.body.reset(a.zone.x,a.zone.body.top-18);s.player.setVelocity(0);return{x:s.player.x};})()');p.wait_for_timeout(1400);r=p.evaluate('(()=>{let s=GOTHIC.scene,a=s.platforms.find(p=>p.def.motion);return{x:s.player.x,bottom:s.player.body.bottom,top:a.zone.body.top};})()');ck('Moving platform supports player',abs(r['bottom']-r['top'])<3,r);ck('Moving platform carries resting player',abs(r['x']-pos['x'])>8,r)
+  fixture(p,1);check_platform_carry(p,ck)
   fixture(p,2);p.evaluate('(()=>{let s=GOTHIC.scene,a=s.platforms.find(p=>p.def.crumble);s.player.body.reset(a.zone.x,a.zone.body.top-18);s.player.setVelocity(0);})()');p.wait_for_timeout(1300);ck('Crumbling ledge gives way after landing',p.evaluate('!GOTHIC.scene.platforms.find(p=>p.def.crumble).zone.body.enable'));p.wait_for_timeout(3400);ck('Crumbling ledge restores safely',p.evaluate('GOTHIC.scene.platforms.find(p=>p.def.crumble).zone.body.enable'))
   # Each ability exercised without capture input suppressing the tell.
   for kind in ['skeleton','ghoul','vampire','ghost','monster','werewolf']:
