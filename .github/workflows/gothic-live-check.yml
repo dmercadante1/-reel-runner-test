@@ -1,17 +1,10 @@
-name: Verify served Gothic Horror R3 and R4
+name: Archived Gothic R3 and R4 verification
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'index.html'
-      - 'game/releases/gothic-r3a/**'
-      - 'game/releases/gothic-r4a/**'
-      - 'audit/check-live-r34.py'
-      - '.github/workflows/gothic-live-check.yml'
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  served-build:
+  served-archive:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -23,11 +16,19 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install playwright==1.57.0
       - run: python -m playwright install --with-deps chromium webkit
-      - name: Verify Pages bytes and actual-root Chromium/WebKit desktop/mobile input and HUD
-        run: python audit/check-live-r34.py
+      - name: Check archived direct URLs rather than expecting the current root to remain R4
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('audit/check-live-r34.py');s=p.read_text()
+          old="url=BASE if edition==4 else BASE+'game/releases/gothic-r3a/'"
+          assert old in s
+          p.write_text(s.replace(old,"url=BASE+f'game/releases/gothic-r{edition}a/'"))
+          PY
+          python audit/check-live-r34.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: gothic-r34-live-proof
+          name: gothic-r34-archive-proof
           path: live-evidence/
           retention-days: 14
