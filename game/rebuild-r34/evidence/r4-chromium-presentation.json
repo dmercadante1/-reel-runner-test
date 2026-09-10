@@ -1,0 +1,219 @@
+{
+  "engine": "chromium",
+  "scope": "R4 presentation, six emulated layouts, actual renderer and input checks; no physical hardware claim",
+  "passed": 36,
+  "failed": 0,
+  "errors": [],
+  "checks": [
+    {
+      "name": "1280x720 canvas is 16:9",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "name": "1280x720 canvas stays in viewport",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280x720 starts without external assets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280x720 HUD is canvas-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280x720 HUD reflects game values",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1216x1242 canvas is 16:9",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 279,
+        "width": 1216,
+        "height": 684
+      }
+    },
+    {
+      "name": "1216x1242 canvas stays in viewport",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1216x1242 starts without external assets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1216x1242 HUD is canvas-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1216x1242 HUD reflects game values",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390 canvas is 16:9",
+      "passed": true,
+      "detail": {
+        "x": 75.328125,
+        "y": 0,
+        "width": 693.328125,
+        "height": 389.984375
+      }
+    },
+    {
+      "name": "844x390 canvas stays in viewport",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390 starts without external assets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390 HUD is canvas-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390 HUD reflects game values",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "667x375 canvas is 16:9",
+      "passed": true,
+      "detail": {
+        "x": 0.171875,
+        "y": 0,
+        "width": 666.65625,
+        "height": 374.984375
+      }
+    },
+    {
+      "name": "667x375 canvas stays in viewport",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "667x375 starts without external assets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "667x375 HUD is canvas-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "667x375 HUD reflects game values",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "568x320 canvas is 16:9",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 0.25,
+        "width": 568,
+        "height": 319.5
+      }
+    },
+    {
+      "name": "568x320 canvas stays in viewport",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "568x320 starts without external assets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "568x320 HUD is canvas-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "568x320 HUD reflects game values",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "390x844 canvas is 16:9",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 312.3125,
+        "width": 390,
+        "height": 219.375
+      }
+    },
+    {
+      "name": "390x844 canvas stays in viewport",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Portrait blocks accidental start",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "390x844 starts without external assets",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "390x844 HUD is canvas-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "390x844 HUD reflects game values",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Canvas renderer fallback boots",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Short X tap queues camera defense",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Bad image blocks play explicitly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "All 12 leg images contain different poses",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "passed": true,
+      "detail": []
+    }
+  ]
+}

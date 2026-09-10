@@ -1,0 +1,86 @@
+{
+  "success": true,
+  "run": "34437753551",
+  "reports": {
+    "r3-chromium-playthrough.json": {
+      "passed": 17,
+      "failed": 0,
+      "errors": []
+    },
+    "r4-chromium-playthrough.json": {
+      "passed": 21,
+      "failed": 0,
+      "errors": []
+    },
+    "r4-chromium-mechanics.json": {
+      "passed": 42,
+      "failed": 0,
+      "errors": []
+    },
+    "r4-chromium-presentation.json": {
+      "passed": 36,
+      "failed": 0,
+      "errors": []
+    },
+    "r3-webkit-playthrough.json": {
+      "passed": 17,
+      "failed": 0,
+      "errors": []
+    },
+    "r4-webkit-playthrough.json": {
+      "passed": 21,
+      "failed": 0,
+      "errors": []
+    },
+    "r4-webkit-mechanics.json": {
+      "passed": 40,
+      "failed": 0,
+      "errors": []
+    },
+    "r4-webkit-presentation.json": {
+      "passed": 36,
+      "failed": 0,
+      "errors": []
+    }
+  },
+  "totalPassed": 230,
+  "physicalDeviceTested": false,
+  "releases": {
+    "r3": {
+      "edition": 3,
+      "sha256": "3b37123c494f2f04cfc32965ad0e399f24e653035eedd99a0d3129a4a5261654",
+      "bytes": 3131447,
+      "assets": 24,
+      "sourceHashes": {
+        "src/shell.js": "27aa047bce454d5a227e5084c3ee1d9a7787fb433c55f98f7ebc6649372ef064",
+        "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
+        "src/config.js": "36b7a3c9f47ffb9b633c2b9baada6a335233dcadcd843cf251709fc6bb561f5f",
+        "src/assets.js": "46f25fb31de7e6f6b3e0375ceb2c91f778227286582b5b0c0f0b428bc83a6fbf",
+        "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
+        "src/hud.js": "917ef33dfe59c1dee7ea0cda02218e4c9d8aa1cbdb4bf75f5d51b2ab3d166907",
+        "src/world.js": "05e346f7f482fd8b37c1a3a91342573ace989d5491247c63a1ca50d9541cf6ac",
+        "src/scene.js": "c596aedde0e8bc31b717b5c12b11342a86695d9c2fa2a7e13b9de1b509904f41",
+        "src/boot.js": "d6e9d76f5296bdf3bf6325717f911ff63974c5d1c4e0e0000c15f8e8bf47de11"
+      }
+    },
+    "r4": {
+      "edition": 4,
+      "sha256": "96948109f94c603d8fd2b0928685a285d3e4101a689dc7aab23204f885e5c722",
+      "bytes": 3137238,
+      "assets": 24,
+      "sourceHashes": {
+        "src/shell.js": "27aa047bce454d5a227e5084c3ee1d9a7787fb433c55f98f7ebc6649372ef064",
+        "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
+        "src/config.js": "36b7a3c9f47ffb9b633c2b9baada6a335233dcadcd843cf251709fc6bb561f5f",
+        "src/assets.js": "46f25fb31de7e6f6b3e0375ceb2c91f778227286582b5b0c0f0b428bc83a6fbf",
+        "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
+        "src/hud.js": "917ef33dfe59c1dee7ea0cda02218e4c9d8aa1cbdb4bf75f5d51b2ab3d166907",
+        "src/world.js": "05e346f7f482fd8b37c1a3a91342573ace989d5491247c63a1ca50d9541cf6ac",
+        "src/combat.js": "19f5b5b24155db6be969f4f819c57655f7b58f8e71799cb8d281f241c57f3928",
+        "src/scene.js": "c596aedde0e8bc31b717b5c12b11342a86695d9c2fa2a7e13b9de1b509904f41",
+        "src/boot.js": "d6e9d76f5296bdf3bf6325717f911ff63974c5d1c4e0e0000c15f8e8bf47de11"
+      }
+    }
+  },
+  "status": "Passed exact-byte staging gates; public root not yet promoted"
+}

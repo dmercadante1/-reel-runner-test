@@ -1,0 +1,568 @@
+{
+  "checks": [
+    {
+      "name": "R4 edition enabled",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Jump passes upward through one-way ledge",
+      "passed": true,
+      "detail": {
+        "x": 590,
+        "bottom": 261.0666666666665,
+        "health": 5,
+        "film": 100,
+        "stats": {
+          "captures": 0,
+          "damage": 0,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 0,
+          "attacks": 1,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 0
+        },
+        "phase": "running"
+      }
+    },
+    {
+      "name": "Lands on ledge top",
+      "passed": true,
+      "detail": {
+        "x": 590,
+        "bottom": 264,
+        "health": 5,
+        "film": 100,
+        "stats": {
+          "captures": 0,
+          "damage": 0,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 0,
+          "attacks": 1,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 0
+        },
+        "phase": "running"
+      }
+    },
+    {
+      "name": "Visible artwork matches collision surface",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Moving platform supports player",
+      "passed": true,
+      "detail": {
+        "groundedSamples": 32,
+        "samples": [
+          {
+            "playerX": 816.105742739906,
+            "platformX": 820.234567185764,
+            "bottom": 216,
+            "top": 216,
+            "velocity": 11.893238783524794
+          },
+          {
+            "playerX": 817.2277483571348,
+            "platformX": 821.3565728029929,
+            "bottom": 216,
+            "top": 216,
+            "velocity": 11.536510170291876
+          },
+          {
+            "playerX": 818.2872393526904,
+            "platformX": 822.4160637985485,
+            "bottom": 216,
+            "top": 216,
+            "velocity": 9.209410851167377
+          },
+          {
+            "playerX": 819.2460627684908,
+            "platformX": 823.3748872143489,
+            "bottom": 216,
+            "top": 216,
+            "velocity": 6.987425530992368
+          },
+          {
+            "playerX": 819.8733580028038,
+            "platformX": 824.0021824486619,
+            "bottom": 216,
+            "top": 216,
+            "velocity": 5.3031192604230455
+          },
+          {
+            "playerX": 820.3981883399529,
+            "platformX": 824.5270127858109,
+            "bottom": 216,
+            "top": 216,
+            "velocity": 3.430748462619704
+          },
+          {
+            "playerX": 820.6449754561194,
+            "platformX": 824.7737999019774,
+            "bottom": 216,
+            "top": 216,
+            "velocity": 2.118755369894643
+          },
+          {
+            "playerX": 820.7873983364228,
+            "platformX": 824.9162227822809,
+            "bottom": 216,
+            "top": 216,
+            "velocity": 0.06704239195460104
+          },
+          {
+            "playerX": 820.7253589892227,
+            "platformX": 824.8541834350808,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -1.5673174547191593
+          },
+          {
+            "playerX": 820.5014764531802,
+            "platformX": 824.6303008990383,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -3.17400896347408
+          },
+          {
+            "playerX": 820.0873399781489,
+            "platformX": 824.2161644240069,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -5.464227198632216
+          },
+          {
+            "playerX": 819.4907241784043,
+            "platformX": 823.6195486242624,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -6.7322454595596355
+          },
+          {
+            "playerX": 818.6216149115293,
+            "platformX": 822.7504393573873,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -8.416638460721515
+          },
+          {
+            "playerX": 817.7189692472882,
+            "platformX": 821.8477936931463,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -9.898517835957136
+          },
+          {
+            "playerX": 816.6627389373152,
+            "platformX": 820.7915633831733,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -13.108571847978965
+          },
+          {
+            "playerX": 814.8638511318496,
+            "platformX": 818.9926755777077,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -14.013336925874682
+          },
+          {
+            "playerX": 813.4181476786598,
+            "platformX": 817.5469721245179,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -15.106419776622715
+          },
+          {
+            "playerX": 811.5825824449038,
+            "platformX": 815.7114068907619,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -16.598338113264617
+          },
+          {
+            "playerX": 810.1631779148298,
+            "platformX": 814.2920023606879,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -17.864374844980375
+          },
+          {
+            "playerX": 807.819190544828,
+            "platformX": 811.948014990686,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -20.377606906692563
+          },
+          {
+            "playerX": 805.7635163327824,
+            "platformX": 809.8923407786405,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -20.898043391315696
+          },
+          {
+            "playerX": 803.2756305765317,
+            "platformX": 807.4044550223898,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -21.981710492793354
+          },
+          {
+            "playerX": 801.0337518265068,
+            "platformX": 805.1625762723648,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -23.027940544161538
+          },
+          {
+            "playerX": 798.4928141177594,
+            "platformX": 802.6216385636175,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -26.081940162129285
+          },
+          {
+            "playerX": 791.5504693804472,
+            "platformX": 795.6792938263053,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -26.69115338697975
+          },
+          {
+            "playerX": 788.3974038409958,
+            "platformX": 792.5262282868539,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -27.45474312268925
+          },
+          {
+            "playerX": 785.8597339791885,
+            "platformX": 789.9885584250466,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -30.422249520102014
+          },
+          {
+            "playerX": 782.8649568229077,
+            "platformX": 786.9937812687658,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -29.514552283086232
+          },
+          {
+            "playerX": 779.4233559592244,
+            "platformX": 783.5521804050825,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -29.60744410382813
+          },
+          {
+            "playerX": 776.4504418185084,
+            "platformX": 780.5792662643664,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -29.870417564354284
+          },
+          {
+            "playerX": 773.3874071387111,
+            "platformX": 777.5162315845691,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -32
+          },
+          {
+            "playerX": 770.1874071387113,
+            "platformX": 774.3162315845693,
+            "bottom": 216,
+            "top": 216,
+            "velocity": -32
+          }
+        ]
+      }
+    },
+    {
+      "name": "Moving platform carries resting player",
+      "passed": true,
+      "detail": {
+        "playerTravel": 50.599991197711574,
+        "platformTravel": 50.599991197711574,
+        "relativeOffsetVariation": 0.0
+      }
+    },
+    {
+      "name": "Crumbling ledge gives way after landing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Crumbling ledge restores safely",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "skeleton readable windup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "skeleton executes its attack",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ghoul readable windup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ghoul executes its attack",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "vampire readable windup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "vampire executes its attack",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ghost readable windup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ghost executes its attack",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "monster readable windup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "monster executes its attack",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "werewolf readable windup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "werewolf executes its attack",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Flash costs film and triggers defense",
+      "passed": true,
+      "detail": {
+        "x": 110,
+        "bottom": 316,
+        "health": 5,
+        "film": 83.5392,
+        "stats": {
+          "captures": 0,
+          "damage": 0,
+          "flashes": 1,
+          "blocked": 1,
+          "dodged": 0,
+          "attacks": 1,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 0
+        },
+        "phase": "running"
+      }
+    },
+    {
+      "name": "Flash interrupts monster armor/attack",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Flash cooldown prevents spamming",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Insufficient film refuses flash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Camera light destroys incoming bone projectile",
+      "passed": true,
+      "detail": {
+        "x": 110,
+        "bottom": 316,
+        "health": 5,
+        "film": 96.96339999999998,
+        "stats": {
+          "captures": 0,
+          "damage": 0,
+          "flashes": 0,
+          "blocked": 2,
+          "dodged": 0,
+          "attacks": 1,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 0
+        },
+        "phase": "running"
+      }
+    },
+    {
+      "name": "Jump evades ground shockwave",
+      "passed": true,
+      "detail": {
+        "x": 110,
+        "bottom": 301.89999999999975,
+        "health": 5,
+        "film": 100,
+        "stats": {
+          "captures": 0,
+          "damage": 0,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 1,
+          "attacks": 1,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 0
+        },
+        "phase": "running"
+      }
+    },
+    {
+      "name": "Same ground shockwave damages grounded player",
+      "passed": true,
+      "detail": {
+        "x": 67.44000000000005,
+        "bottom": 316,
+        "health": 4,
+        "film": 100,
+        "stats": {
+          "captures": 0,
+          "damage": 1,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 0,
+          "attacks": 1,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 0
+        },
+        "phase": "running"
+      }
+    },
+    {
+      "name": "Invulnerability prevents stacked damage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Lethal damage restores checkpoint",
+      "passed": true,
+      "detail": {
+        "x": 850,
+        "bottom": 316,
+        "health": 5,
+        "film": 100,
+        "stats": {
+          "captures": 0,
+          "damage": 1,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 0,
+          "attacks": 1,
+          "checkpoints": 0,
+          "respawns": 1,
+          "pickups": 0,
+          "stages": 0
+        },
+        "phase": "running"
+      }
+    },
+    {
+      "name": "Pause freezes combat clock",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Resume restores running state",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Restart cycle 1 moves",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Restart cycle 2 moves",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Restart cycle 3 moves",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Restart cycle 4 moves",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Mobile touch Start works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Mobile canvas retains 16:9",
+      "passed": true,
+      "detail": {
+        "x": 75.328125,
+        "y": 0,
+        "width": 693.328125,
+        "height": 389.984375
+      }
+    },
+    {
+      "name": "Portrait pauses play",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Landscape resumes safely",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

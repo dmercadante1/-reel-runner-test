@@ -1,0 +1,168 @@
+{
+  "edition": 3,
+  "engine": "webkit",
+  "passed": 17,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Boot validates all 24 textures",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Player contributes visible rendered pixels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "HUD rendered in canvas, fixed over world",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Start and floor landing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Moving hero uses 12 articulated frames",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Jump rises",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 0,
+        "x": 163.9150000000001,
+        "y": 264.0777777777776,
+        "bottom": 258.0777777777776,
+        "vx": 0,
+        "vy": -179.33333333333326,
+        "hp": 5,
+        "film": 100,
+        "cap": 0,
+        "total": 0,
+        "tick": 74,
+        "exit": 1460,
+        "top": 316,
+        "flash": -1251.9666666666667,
+        "enemies": [
+          {
+            "x": 411.25000000000085,
+            "type": "skeleton",
+            "state": "walk"
+          },
+          {
+            "x": 877,
+            "type": "ghoul",
+            "state": "walk"
+          },
+          {
+            "x": 1270,
+            "type": "vampire",
+            "state": "walk"
+          }
+        ],
+        "stats": {
+          "captures": 0,
+          "damage": 0,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 0,
+          "attacks": 0,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 0
+        }
+      }
+    },
+    {
+      "name": "Camera optical spill illuminates scene",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Game enters stage 1",
+      "passed": true,
+      "detail": 163.9150000000001
+    },
+    {
+      "name": "Game enters stage 2",
+      "passed": true,
+      "detail": 110
+    },
+    {
+      "name": "Game enters stage 3",
+      "passed": true,
+      "detail": 110
+    },
+    {
+      "name": "Game enters stage 4",
+      "passed": true,
+      "detail": 110
+    },
+    {
+      "name": "Keyboard-only complete four-stage traversal",
+      "passed": true,
+      "detail": {
+        "phase": "complete",
+        "stage": 3,
+        "x": 1681.0951666666572,
+        "y": 322,
+        "bottom": 316,
+        "vx": 0,
+        "vy": 0,
+        "hp": 5,
+        "film": 100,
+        "cap": 3,
+        "total": 12,
+        "tick": 909,
+        "exit": 1700,
+        "top": 316,
+        "flash": -14717.600000000155,
+        "enemies": [],
+        "stats": {
+          "captures": 12,
+          "damage": 0,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 0,
+          "attacks": 0,
+          "checkpoints": 4,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 4
+        }
+      }
+    },
+    {
+      "name": "All twelve encounters captured",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "All four stages visited",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Replay resets stage and captures",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Replay moves",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No uncaught JavaScript exceptions",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,326 @@
+{
+  "edition": 4,
+  "engine": "webkit",
+  "passed": 21,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Boot validates all 24 textures",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Player contributes visible rendered pixels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "HUD rendered in canvas, fixed over world",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Start and floor landing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Moving hero uses 12 articulated frames",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Jump rises",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 0,
+        "x": 171.2088333333334,
+        "y": 270.29999999999984,
+        "bottom": 264.29999999999984,
+        "vx": 0,
+        "vy": -208.66666666666657,
+        "hp": 5,
+        "film": 100,
+        "cap": 0,
+        "total": 0,
+        "tick": 80,
+        "exit": 1460,
+        "top": 316,
+        "flash": -1257.6,
+        "enemies": [
+          {
+            "x": 425.6500000000005,
+            "type": "skeleton",
+            "state": "windup"
+          },
+          {
+            "x": 877,
+            "type": "ghoul",
+            "state": "walk"
+          },
+          {
+            "x": 1270,
+            "type": "vampire",
+            "state": "walk"
+          }
+        ],
+        "stats": {
+          "captures": 0,
+          "damage": 0,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 0,
+          "attacks": 0,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 0
+        }
+      }
+    },
+    {
+      "name": "Camera optical spill illuminates scene",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Game enters stage 1",
+      "passed": true,
+      "detail": 171.2088333333334
+    },
+    {
+      "name": "Game enters stage 2",
+      "passed": true,
+      "detail": 110
+    },
+    {
+      "name": "Cathedral lower stair landed",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 1,
+        "x": 1390.0239999999926,
+        "y": 276,
+        "bottom": 270,
+        "vx": 0,
+        "vy": 0,
+        "hp": 5,
+        "film": 100,
+        "cap": 3,
+        "total": 6,
+        "tick": 801,
+        "exit": 1640,
+        "top": 222,
+        "flash": -10535.600000000146,
+        "enemies": [],
+        "stats": {
+          "captures": 6,
+          "damage": 0,
+          "flashes": 1,
+          "blocked": 2,
+          "dodged": 0,
+          "attacks": 2,
+          "checkpoints": 2,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 1
+        }
+      }
+    },
+    {
+      "name": "Cathedral balcony landed",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 1,
+        "x": 1491.4951666666586,
+        "y": 228,
+        "bottom": 222,
+        "vx": 0,
+        "vy": 0,
+        "hp": 5,
+        "film": 100,
+        "cap": 3,
+        "total": 6,
+        "tick": 875,
+        "exit": 1640,
+        "top": 222,
+        "flash": -11727.400000000162,
+        "enemies": [],
+        "stats": {
+          "captures": 6,
+          "damage": 0,
+          "flashes": 1,
+          "blocked": 2,
+          "dodged": 0,
+          "attacks": 2,
+          "checkpoints": 2,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 1
+        }
+      }
+    },
+    {
+      "name": "Game enters stage 3",
+      "passed": true,
+      "detail": 110
+    },
+    {
+      "name": "Catacomb near ledge reached by keyboard",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 2,
+        "x": 732.9747812009227,
+        "y": 270,
+        "bottom": 264,
+        "vx": 0,
+        "vy": 0,
+        "hp": 5,
+        "film": 100,
+        "cap": 1,
+        "total": 7,
+        "tick": 362,
+        "exit": 1590,
+        "top": 316,
+        "flash": -6047.600000000022,
+        "enemies": [
+          {
+            "x": 1057.2666666666732,
+            "type": "monster",
+            "state": "walk"
+          },
+          {
+            "x": 1420,
+            "type": "skeleton",
+            "state": "walk"
+          }
+        ],
+        "stats": {
+          "captures": 7,
+          "damage": 0,
+          "flashes": 1,
+          "blocked": 2,
+          "dodged": 0,
+          "attacks": 2,
+          "checkpoints": 2,
+          "respawns": 0,
+          "pickups": 1,
+          "stages": 2
+        }
+      }
+    },
+    {
+      "name": "Chasm crossed with jump",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 2,
+        "x": 911.3964478675884,
+        "y": 286,
+        "bottom": 280,
+        "vx": 0,
+        "vy": 0,
+        "hp": 5,
+        "film": 100,
+        "cap": 1,
+        "total": 7,
+        "tick": 460,
+        "exit": 1590,
+        "top": 316,
+        "flash": -7725.900000000044,
+        "enemies": [
+          {
+            "x": 1041.8666666666732,
+            "type": "monster",
+            "state": "attack"
+          },
+          {
+            "x": 1420,
+            "type": "skeleton",
+            "state": "walk"
+          }
+        ],
+        "stats": {
+          "captures": 7,
+          "damage": 0,
+          "flashes": 1,
+          "blocked": 2,
+          "dodged": 0,
+          "attacks": 3,
+          "checkpoints": 2,
+          "respawns": 0,
+          "pickups": 1,
+          "stages": 2
+        }
+      }
+    },
+    {
+      "name": "Game enters stage 4",
+      "passed": true,
+      "detail": 110
+    },
+    {
+      "name": "Keyboard-only complete four-stage traversal",
+      "passed": true,
+      "detail": {
+        "phase": "complete",
+        "stage": 3,
+        "x": 1682.6976666666558,
+        "y": 322,
+        "bottom": 316,
+        "vx": 0,
+        "vy": 0,
+        "hp": 5,
+        "film": 100,
+        "cap": 3,
+        "total": 12,
+        "tick": 957,
+        "exit": 1700,
+        "top": 316,
+        "flash": -3378.300000000081,
+        "enemies": [],
+        "stats": {
+          "captures": 12,
+          "damage": 0,
+          "flashes": 3,
+          "blocked": 7,
+          "dodged": 0,
+          "attacks": 4,
+          "checkpoints": 4,
+          "respawns": 0,
+          "pickups": 1,
+          "stages": 4
+        }
+      }
+    },
+    {
+      "name": "All twelve encounters captured",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "All four stages visited",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Replay resets stage and captures",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Replay moves",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No uncaught JavaScript exceptions",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}
