@@ -1,6 +1,6 @@
 {
   "success": true,
-  "run": "34437753551",
+  "run": "34439350821",
   "reports": {
     "r3-chromium-playthrough.json": {
       "passed": 17,
@@ -45,17 +45,18 @@
   },
   "totalPassed": 230,
   "physicalDeviceTested": false,
+  "artCoordinateCorrection": true,
   "releases": {
     "r3": {
       "edition": 3,
-      "sha256": "3b37123c494f2f04cfc32965ad0e399f24e653035eedd99a0d3129a4a5261654",
-      "bytes": 3131447,
+      "sha256": "8a5cae07287010b137efbd5be1be46602223cfd5b85d1b4624689ab4b3a51ed3",
+      "bytes": 2994392,
       "assets": 24,
       "sourceHashes": {
         "src/shell.js": "27aa047bce454d5a227e5084c3ee1d9a7787fb433c55f98f7ebc6649372ef064",
         "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
         "src/config.js": "36b7a3c9f47ffb9b633c2b9baada6a335233dcadcd843cf251709fc6bb561f5f",
-        "src/assets.js": "46f25fb31de7e6f6b3e0375ceb2c91f778227286582b5b0c0f0b428bc83a6fbf",
+        "src/assets.js": "d54fdf19297c85e29f2db60379162e5c43c69689e3f162ec8997f30e657fb04a",
         "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
         "src/hud.js": "917ef33dfe59c1dee7ea0cda02218e4c9d8aa1cbdb4bf75f5d51b2ab3d166907",
         "src/world.js": "05e346f7f482fd8b37c1a3a91342573ace989d5491247c63a1ca50d9541cf6ac",
@@ -65,14 +66,14 @@
     },
     "r4": {
       "edition": 4,
-      "sha256": "96948109f94c603d8fd2b0928685a285d3e4101a689dc7aab23204f885e5c722",
-      "bytes": 3137238,
+      "sha256": "cf692cbd45bed16e409f72c0a1940676e69ef8dc60ff1daca6b9f5fd362b9f89",
+      "bytes": 3000183,
       "assets": 24,
       "sourceHashes": {
         "src/shell.js": "27aa047bce454d5a227e5084c3ee1d9a7787fb433c55f98f7ebc6649372ef064",
         "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
         "src/config.js": "36b7a3c9f47ffb9b633c2b9baada6a335233dcadcd843cf251709fc6bb561f5f",
-        "src/assets.js": "46f25fb31de7e6f6b3e0375ceb2c91f778227286582b5b0c0f0b428bc83a6fbf",
+        "src/assets.js": "d54fdf19297c85e29f2db60379162e5c43c69689e3f162ec8997f30e657fb04a",
         "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
         "src/hud.js": "917ef33dfe59c1dee7ea0cda02218e4c9d8aa1cbdb4bf75f5d51b2ab3d166907",
         "src/world.js": "05e346f7f482fd8b37c1a3a91342573ace989d5491247c63a1ca50d9541cf6ac",
@@ -82,5 +83,5 @@
       }
     }
   },
-  "status": "Passed exact-byte staging gates; public root not yet promoted"
+  "status": "Corrected art passes staging gates; final screenshots need review before main promotion"
 }
