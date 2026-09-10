@@ -1,0 +1,43 @@
+{
+  "art_approved": false,
+  "browser_tested": false,
+  "checks": [
+    {
+      "name": "Player lands on floor at authored foot height",
+      "passed": true
+    },
+    {
+      "name": "Right action moves the collision body",
+      "passed": true
+    },
+    {
+      "name": "Releasing input brakes to rest",
+      "passed": true
+    },
+    {
+      "name": "Left action moves the collision body",
+      "passed": true
+    },
+    {
+      "name": "Held jump reaches its provisional height",
+      "passed": true
+    },
+    {
+      "name": "Early release creates a shorter jump",
+      "passed": true
+    },
+    {
+      "name": "Player returns to floor after jump",
+      "passed": true
+    },
+    {
+      "name": "Up-arrow binding is present",
+      "passed": true
+    }
+  ],
+  "engine": "4.7.2-stable (official)",
+  "failed": 0,
+  "passed": 8,
+  "physical_phone_tested": false,
+  "scope": "native physics and source binding only"
+}

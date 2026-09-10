@@ -1,0 +1,10 @@
+{
+  "engine": "4.7.2.stable",
+  "file": "index.js",
+  "before_sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+  "after_sha256": "7ae834bce024f55120a0e73f16abd5fc9ad080f4b90edc52f5240fb91d020962",
+  "change": "Use existing shader-copy presentation path instead of glBlitFramebuffer",
+  "upstream": "https://github.com/godotengine/godot/issues/122816",
+  "suppresses_errors": false,
+  "wasm_modified": false
+}

@@ -1,0 +1,10 @@
+{
+  "calibration.png": {
+    "bytes": 311,
+    "sha256": "04ee2fbbc8a2ac3e84e2d6057de25b39b65a32a27528fb911f1d56fc57b8617a"
+  },
+  "calibration-tone.wav": {
+    "bytes": 4454,
+    "sha256": "2a76682906d435f2018788154c8f6aa8004a81dab6e6d740fd0360055d263957"
+  }
+}

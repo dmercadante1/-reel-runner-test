@@ -46,3 +46,7 @@ Assets get exact dimensions, pivots, frame counts, alpha validation and source p
 Every completed batch records: files/commit, tests actually executed, screenshot/clip when relevant, outstanding failures and exact next task. A workflow running is not a passed build. Functional success is separate from art approval and playfeel approval. No background/notification promises without an actual supported mechanism. Do not send the user diagnostic blocks as the final visual result.
 
 Immediate next task after M0: M1 web/mobile feasibility and M2 everyday-character model approval. Do not start the Cathedral or create more marketing boards yet.
+
+## Current checkpoint — 2026-09-10
+
+M0 native foundation is complete. M1 browser delivery has passed fresh native, Chromium/WebKit and rendered-pixel verification; a separate technical preview is published. Physical-phone/audibility/playfeel approval remains open. See CHECKPOINT-M1.md. R5 and its root link are preserved. The separate character approval study remains local and is not published in this repository.

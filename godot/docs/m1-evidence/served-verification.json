@@ -1,0 +1,92 @@
+{
+  "preview_url": "https://dmercadante1.github.io/-reel-runner-test/game/previews/godot-m1-20260910-01/",
+  "tested_source": "2336262",
+  "test_run": 34530397668,
+  "publication_commit": "ffae42917fe52733def5f9e9be9006903955c690",
+  "files": {
+    "index.audio.position.worklet.js": {
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+      "bytes": 2973,
+      "mime": "application/javascript; charset=utf-8",
+      "matches_tested_artifact": true
+    },
+    "index.audio.worklet.js": {
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+      "bytes": 7298,
+      "mime": "application/javascript; charset=utf-8",
+      "matches_tested_artifact": true
+    },
+    "index.html": {
+      "sha256": "0f9696fe2fecef8b77e86d55cba8787beaf9cccb4b7c3e03a0723807eada9813",
+      "bytes": 8613,
+      "mime": "text/html; charset=utf-8",
+      "matches_tested_artifact": true
+    },
+    "index.js": {
+      "sha256": "7ae834bce024f55120a0e73f16abd5fc9ad080f4b90edc52f5240fb91d020962",
+      "bytes": 279814,
+      "mime": "application/javascript; charset=utf-8",
+      "matches_tested_artifact": true
+    },
+    "index.pck": {
+      "sha256": "79774eed838d23469c5ae2f62300ba9d1871bc465d763e5019f269bef6c0e286",
+      "bytes": 23048,
+      "mime": "application/octet-stream",
+      "matches_tested_artifact": true
+    },
+    "index.png": {
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+      "bytes": 21443,
+      "mime": "image/png",
+      "matches_tested_artifact": true
+    },
+    "index.wasm": {
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+      "bytes": 39514754,
+      "mime": "application/wasm",
+      "matches_tested_artifact": true
+    }
+  },
+  "preserved": {
+    "index.html": {
+      "sha256": "b64b66b229df6355ddc6b2ad7ed5b188b69b4ee14700825c5bbb99eb2bd2b8cf",
+      "byte_identical": true
+    },
+    "game/releases/gothic-r5/build.json": {
+      "sha256": "8d2ceed0fbfc68384ca185a22c18cc1cd4ee73350592ca428a7310aef53103ee",
+      "byte_identical": true
+    },
+    "game/releases/gothic-r5/icon-180.png": {
+      "sha256": "dffff8ccbcc4e819765bf03216597804b89709d55c501b9064f84518c0f6900e",
+      "byte_identical": true
+    },
+    "game/releases/gothic-r5/icon-192.png": {
+      "sha256": "69e6dac0e7da48a81460db5647a92deb29808c808e21fe564f62c119ccbccab4",
+      "byte_identical": true
+    },
+    "game/releases/gothic-r5/icon-512.png": {
+      "sha256": "e6bf834bcff74bd2380b8595aee55dd591dcd2d5d7e123b502ae8c8b1134cc05",
+      "byte_identical": true
+    },
+    "game/releases/gothic-r5/index.html": {
+      "sha256": "6d5bf642fbdc44af784a472faa15d15d4c22e5b9b6b5f3ea5943260f9d94c702",
+      "byte_identical": true
+    },
+    "game/releases/gothic-r5/manifest.webmanifest": {
+      "sha256": "e03bf655a747fffb1c6445a5178581aafb0362c3803dee6e7719010a371a3482",
+      "byte_identical": true
+    },
+    "game/releases/gothic-r5/sw.js": {
+      "sha256": "512d9941bebf354c7ce8c5d06919891dfd3a4cd633d068a9f9590a6137a87e57",
+      "byte_identical": true
+    }
+  },
+  "all_passed": true,
+  "live_browser_startup": {
+    "verified": true,
+    "browser": "Codex in-app Chromium on macOS",
+    "observed": "Ready -> Start trial -> running, visible calibration scene at 640x360, 60 fps / 16.7 ms sampled p95",
+    "verified_at_utc": "2026-09-10T21:34:00Z",
+    "cold_load_timing": "Not certified; tab-opening automation returned after a long delay."
+  }
+}

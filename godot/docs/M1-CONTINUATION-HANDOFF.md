@@ -1,3 +1,5 @@
+> Historical handoff. Fresh implementation, executed verification and preview publication are now recorded in [CHECKPOINT-M1.md](CHECKPOINT-M1.md). Physical-phone approval remains open.
+
 # M1 continuation handoff — verification remains open
 
 This note distinguishes previously inspected results from code that still needs execution. R5, main, and the public game root must remain unchanged.

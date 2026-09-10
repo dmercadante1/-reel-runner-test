@@ -2,3 +2,5 @@
 evidence/*
 !evidence/.gitkeep
 tests/latest-native-results.json
+export_credentials.cfg
+*.tmp
