@@ -1,0 +1,22 @@
+{
+  "baseCommit": "2a4df8c8b9743b9214c4b9250830ad21c6c4a637",
+  "gzipSHA256": "ad57eda5eddff9885a37d28b9c3066d95f5f0c0412732c7c226a6856a24d5b34",
+  "decodedSHA256": "2f90d23ace50cfbed29ef2f76fa13142224e1f747d671cf85833380ce5d6a31d",
+  "sourceHashes": {
+    "src/config.js": "e6e65015059624aa359531f279095418efd974c4ad2222fab5a1dd6218e746b7",
+    "src/shell.js": "e11446e4c74a2b0f705127b520712ff86a2eca9eff77c0ef462437e1f8bb2288",
+    "src/hud.js": "27dcf872b06f9399b15face17f3ab6aa2dec86a91cd57ea76b151808df4054bd",
+    "src/world.js": "4881ddbfc96af7e106920bc59a13d338a7a46284ef4d4b361c3c70519d30008b",
+    "src/scene.js": "c7e443dfacc4710bbd471c01b3af5c33a50afcc04c974c1b54fe8e7346da7de2",
+    "src/combat.js": "4aa6707c260e5584dbd543ddf68f328e3707d95015a27c3297768d0f8748a343",
+    "src/boot.js": "8781ee2d5b16079ebf243060041a70edb420e7cb34449a3b6658003bafe83f26",
+    "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
+    "index.template.html": "ab9f0147dfab3738df3f7d0787eed56d9ac98a22e0c2266c5d84a2302b287ae4",
+    "style.css": "d8ad89793bdc1a9dfcaba1c94c6f010a0c16271c78d094d5f2eae780c7579c08",
+    "tools/assets_r5.py": "72d6b3556cb47269f6ff112bba789355c9bf8e71c94cefdf74d39a134e73941e",
+    "tools/bundle.py": "91d54ab63c1352d2ffd03bce5fcd5d982fbfccfa131cd93394cfaa2a9aa54c73",
+    "tests/r5_acceptance.py": "97f6a009a2c11fb84f420eca69448c4bfada7d004ff092c6583b8e04dd825b5e",
+    "tests/r5_playthrough.py": "51827832507bea52978600be32bb0bd471bbbd66a602f693ffc5d29d2d5c690d"
+  },
+  "status": "Source recovered; not a deployment or a passing CI result"
+}

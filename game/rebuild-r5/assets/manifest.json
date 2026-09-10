@@ -1,0 +1,328 @@
+{
+  "build": "gothic-r5",
+  "renderScale": 2,
+  "assets": [
+    {
+      "key": "spiral",
+      "file": "assets/spiral.png",
+      "width": 52,
+      "height": 52,
+      "bytes": 7317,
+      "sha256": "80095c54004dade80d073696c5e49bf25dc52d101a542427c245009d842468b7",
+      "source": "a_wide_pixel_art_game_sprite_sheet_concept_board.png",
+      "crop": [
+        152,
+        645,
+        242,
+        736
+      ],
+      "use": "raster capture vortex"
+    },
+    {
+      "key": "camera-light",
+      "file": "assets/camera-light.png",
+      "width": 300,
+      "height": 160,
+      "bytes": 9116,
+      "sha256": "e1f71d2abd3ebcf5b279ae599c7c6260c7a3d80b581e885d6e975f8c99fc8ca1",
+      "provenance": "New quantized/dithered optical light FX. Additive compositing; no external asset dependency."
+    },
+    {
+      "key": "lens-halo",
+      "file": "assets/lens-halo.png",
+      "width": 128,
+      "height": 128,
+      "bytes": 3762,
+      "sha256": "81beac5324870431f7047d3bc19c6c7069cb426a576b1947d73187da64caf56a",
+      "provenance": "Dither-scale raster lens halo FX."
+    },
+    {
+      "key": "heart",
+      "file": "assets/heart.png",
+      "width": 9,
+      "height": 9,
+      "bytes": 135,
+      "sha256": "4bcc944b02dceb8d4a0684bc5c26ff7d10469548e842f1e2483ba2b525d83268",
+      "provenance": "New 9px in-game life icon."
+    },
+    {
+      "key": "courtyard",
+      "file": "assets/courtyard.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 706164,
+      "sha256": "04281d0f80a081935a4fc75b6a1d4156bdf8a39eaee50bef7c2c210d8d3cdf2b",
+      "provenance": "Full original 1536px illustration cropped 5,4,1530,845; 1280x720 raster, displayed in 640x360 world units."
+    },
+    {
+      "key": "ramparts",
+      "file": "assets/ramparts.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 693835,
+      "sha256": "d5efa191d8ed22ef7e84ffd699874e9710d6e83ef7938c6e47d3df544d5bcd2c",
+      "provenance": "Continuous full-source ramparts composition at double the prior raster density."
+    },
+    {
+      "key": "arch",
+      "file": "assets/arch.png",
+      "width": 108,
+      "height": 180,
+      "bytes": 12442,
+      "sha256": "ebdd0b8f592773fddc9f8e2f673fedd748480ddf32e0c985fe237ebe46ff1971",
+      "provenance": "Reviewed R4a raster arch; highlight and silhouette contrast pass."
+    },
+    {
+      "key": "column",
+      "file": "assets/column.png",
+      "width": 72,
+      "height": 245,
+      "bytes": 15752,
+      "sha256": "be10d85281f1cfd9450d3884262327aeb398762ef380869b62a70023174a76d3",
+      "provenance": "Complete source column, clean alpha and contrasting stone highlights."
+    },
+    {
+      "key": "statue",
+      "file": "assets/statue.png",
+      "width": 60,
+      "height": 125,
+      "bytes": 14483,
+      "sha256": "f7abefa2646418627f1ba16eaf2800ea3e18c3b7a050f095d846f9695d707dc5",
+      "provenance": "Reviewed statue texture with stone highlight pass."
+    },
+    {
+      "key": "cathedral",
+      "file": "assets/cathedral.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 102138,
+      "sha256": "9b40677a0c9e656cd40daca7796a5894b74d590b2d764a97a47af8c087bf2bc4",
+      "provenance": "1280x720 raster masonry nave: complete piers, source stained glass, full candle alcoves; no sheet labels."
+    },
+    {
+      "key": "catacombs",
+      "file": "assets/catacombs.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 111182,
+      "sha256": "ecfcaa1cea8e66cf3aa6d32c67aa513cb133b5a0055e518fbf4eb473bb3722c5",
+      "provenance": "1280x720 crypt with source niches and statuary, separated structural pillars and sharper masonry."
+    },
+    {
+      "key": "portrait",
+      "file": "assets/portrait.png",
+      "width": 96,
+      "height": 96,
+      "bytes": 23172,
+      "sha256": "c03e591faf126150ef3dea9636386b9ec958db5d203398cfdee1058b79fa721e",
+      "provenance": "Approved character portrait from original board at actual 455,23,622,178 coordinates; hat, beard, Black Watch tartan."
+    },
+    {
+      "key": "hero-walk",
+      "file": "assets/hero-walk.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 51639,
+      "sha256": "3efe8a02d188a3bce5289d4e4d873f495047e89766f0c75cfd5f6e971ee28079",
+      "provenance": "R4a validated raster frames: modest contrast/highlight pass; original silhouettes/poses unchanged.",
+      "frames": 8,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "hero-brace",
+      "file": "assets/hero-brace.png",
+      "width": 448,
+      "height": 112,
+      "bytes": 31665,
+      "sha256": "bfb76769b0522c9d8948e89aba29824c032fc2989e9aed76eb209983516300be",
+      "provenance": "R4a validated raster frames: modest contrast/highlight pass; original silhouettes/poses unchanged.",
+      "frames": 4,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "hero-recoil",
+      "file": "assets/hero-recoil.png",
+      "width": 448,
+      "height": 112,
+      "bytes": 33063,
+      "sha256": "1984949cada1075c5aed406031945da2c88a78dce2f8ac6d0ebfd0d304e8cf97",
+      "provenance": "R4a validated raster frames: modest contrast/highlight pass; original silhouettes/poses unchanged.",
+      "frames": 4,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "hero-jump",
+      "file": "assets/hero-jump.png",
+      "width": 448,
+      "height": 112,
+      "bytes": 33311,
+      "sha256": "f6b17cbec0131628596a82c18d1692d4c62dd837fc9eb8463660f4c51c3a7e3d",
+      "provenance": "R4a validated raster frames: modest contrast/highlight pass; original silhouettes/poses unchanged.",
+      "frames": 4,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "hero-hurt",
+      "file": "assets/hero-hurt.png",
+      "width": 448,
+      "height": 112,
+      "bytes": 28597,
+      "sha256": "85c2420070f17eaa5d9f2bdafde5b3a535a0d674620b0e9884be0163c6b3fd4e",
+      "provenance": "R4a validated raster frames: modest contrast/highlight pass; original silhouettes/poses unchanged.",
+      "frames": 4,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "skeleton",
+      "file": "assets/skeleton.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 57366,
+      "sha256": "5c0caab850119c2c04aa0034ff0dff8e6b6cadad4452640c9f139d1e0fbd3482",
+      "provenance": "R4a validated raster frames: modest contrast/highlight pass; original silhouettes/poses unchanged.",
+      "frames": 8,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "ghoul",
+      "file": "assets/ghoul.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 67065,
+      "sha256": "14683ab527e7b3aab2e37ebd49e2c6bc9469de6c8f303e23508d85addd7b0a91",
+      "provenance": "R4a validated raster frames: modest contrast/highlight pass; original silhouettes/poses unchanged.",
+      "frames": 8,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "vampire",
+      "file": "assets/vampire.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 70619,
+      "sha256": "76c598d36932ff6301ce08afdaeaef00b3e8ca7f1a1effddb6d3ce74ba6fe0fe",
+      "provenance": "R4a validated raster frames: modest contrast/highlight pass; original silhouettes/poses unchanged.",
+      "frames": 8,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "monster",
+      "file": "assets/monster.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 94352,
+      "sha256": "cb07c43a8d03f7372013efbdeb8a9b2f86b7be0e12be2e3583605736afb1bba5",
+      "provenance": "R4a validated raster frames: modest contrast/highlight pass; original silhouettes/poses unchanged.",
+      "frames": 8,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "werewolf",
+      "file": "assets/werewolf.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 98197,
+      "sha256": "8092a5349b687955bf4d4ec989f7e799200a8a8cd51dac26cc532411dd727117",
+      "provenance": "R4a validated raster frames: modest contrast/highlight pass; original silhouettes/poses unchanged.",
+      "frames": 8,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "ghost",
+      "file": "assets/ghost.png",
+      "width": 896,
+      "height": 112,
+      "bytes": 85530,
+      "sha256": "ad10d9049748aa9c867a63d505cdf8ea274241a5e5075694eb277bced18d7063",
+      "provenance": "R4a validated raster frames: modest contrast/highlight pass; original silhouettes/poses unchanged.",
+      "frames": 8,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "hero-stride",
+      "file": "assets/hero-stride.png",
+      "width": 1344,
+      "height": 112,
+      "bytes": 33113,
+      "sha256": "e86cb581c6ac72f2c460295d217d5bc639dd410a865765482fa7b842b72b4d9a",
+      "provenance": "R4a validated raster frames: modest contrast/highlight pass; original silhouettes/poses unchanged.",
+      "frames": 12,
+      "frameWidth": 112,
+      "frameHeight": 112
+    },
+    {
+      "key": "torch",
+      "file": "assets/torch.png",
+      "width": 34,
+      "height": 78,
+      "bytes": 5241,
+      "sha256": "4a2aecbb159549a72bb05773466e537c5be59e260356af6cba9ea18141337a8f",
+      "provenance": "Original source hanging flame/lantern crop 216,310,259,410."
+    },
+    {
+      "key": "branch",
+      "file": "assets/branch.png",
+      "width": 100,
+      "height": 142,
+      "bytes": 14789,
+      "sha256": "cfc5e0d83ef7d63b561e407a92bb717e2c50482a66094d5ef53ae502ebe86f3f",
+      "provenance": "Original isolated leafless tree from environment-prop board."
+    },
+    {
+      "key": "film-reel",
+      "file": "assets/film-reel.png",
+      "width": 28,
+      "height": 26,
+      "bytes": 325,
+      "sha256": "791a96fed0f760fcaf6d9a3c01b7ec40b5f9a34a359d0cf6ea6b557ccc7241a7",
+      "provenance": "New pixel-grid film canister pickup; visually distinct from capture swirl."
+    },
+    {
+      "key": "bone-shot",
+      "file": "assets/bone-shot.png",
+      "width": 17,
+      "height": 9,
+      "bytes": 151,
+      "sha256": "3d635803574b432cfca019658e3f496c026e5aeb654b3fd9fe049a04664f2e0c",
+      "provenance": "Pixel-grid thrown bone with articulated ends, not a film pickup icon."
+    },
+    {
+      "key": "magic-bolt",
+      "file": "assets/magic-bolt.png",
+      "width": 19,
+      "height": 19,
+      "bytes": 216,
+      "sha256": "f56b681f5634c193a3d869d75f652cadddf52f4fb848558a345145a511a3eb94",
+      "provenance": "Pixel-grid vampire energy bolt with a pale core and stepped violet edge."
+    },
+    {
+      "key": "mist",
+      "file": "assets/mist.png",
+      "width": 256,
+      "height": 64,
+      "bytes": 2109,
+      "sha256": "61668b3da57386c1bb6871466223f26cb94269aa8ea65bfe6a17aaff7d75544b",
+      "provenance": "Low-opacity multi-wave raster mist; animated as two small independent depth layers."
+    },
+    {
+      "key": "stone",
+      "file": "assets/stone.png",
+      "width": 448,
+      "height": 62,
+      "bytes": 49661,
+      "sha256": "ae3c07cebb2fd2c35196dbd6b549558b51f897ab79d55e3ec36147e90d99c325",
+      "provenance": "Reviewed collision-aligned stone tile with improved local highlight contrast."
+    }
+  ]
+}
