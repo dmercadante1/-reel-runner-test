@@ -1,18 +1,18 @@
 {
   "edition": 4,
-  "sha256": "cf692cbd45bed16e409f72c0a1940676e69ef8dc60ff1daca6b9f5fd362b9f89",
-  "bytes": 3000183,
+  "sha256": "cb9c1c6c0a9b7a8462fd6c72c5251bb4f5d4cc78ba6f0a7bc90ae84b4c3a354a",
+  "bytes": 3000050,
   "assets": 24,
   "sourceHashes": {
     "src/shell.js": "27aa047bce454d5a227e5084c3ee1d9a7787fb433c55f98f7ebc6649372ef064",
     "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
     "src/config.js": "36b7a3c9f47ffb9b633c2b9baada6a335233dcadcd843cf251709fc6bb561f5f",
-    "src/assets.js": "d54fdf19297c85e29f2db60379162e5c43c69689e3f162ec8997f30e657fb04a",
+    "src/assets.js": "b6cf6813ecaf96a7321f968f0e0fd67e2e4439ac0b33444d5e670e31805f8263",
     "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
     "src/hud.js": "917ef33dfe59c1dee7ea0cda02218e4c9d8aa1cbdb4bf75f5d51b2ab3d166907",
     "src/world.js": "05e346f7f482fd8b37c1a3a91342573ace989d5491247c63a1ca50d9541cf6ac",
     "src/combat.js": "19f5b5b24155db6be969f4f819c57655f7b58f8e71799cb8d281f241c57f3928",
-    "src/scene.js": "c596aedde0e8bc31b717b5c12b11342a86695d9c2fa2a7e13b9de1b509904f41",
+    "src/scene.js": "777575a0ed12fe8e1724884bda59ebc83d8a459a29dfb181f50a2b4e31ba1ef8",
     "src/boot.js": "d6e9d76f5296bdf3bf6325717f911ff63974c5d1c4e0e0000c15f8e8bf47de11"
   }
 }
