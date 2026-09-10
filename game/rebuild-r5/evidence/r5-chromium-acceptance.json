@@ -1,0 +1,639 @@
+{
+  "engine": "chromium",
+  "suite": "isolated mechanics and presentation",
+  "build": {
+    "edition": 5,
+    "sha256": "6d5bf642fbdc44af784a472faa15d15d4c22e5b9b6b5f3ea5943260f9d94c702",
+    "bytes": 4536133,
+    "assets": 31,
+    "sourceHashes": {
+      "src/shell.js": "e11446e4c74a2b0f705127b520712ff86a2eca9eff77c0ef462437e1f8bb2288",
+      "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
+      "src/config.js": "e6e65015059624aa359531f279095418efd974c4ad2222fab5a1dd6218e746b7",
+      "src/assets.js": "4b5bf7cb9772309ae9e668b1ba97d6e01815221cde9868b7ff1efb59c988a9d8",
+      "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
+      "src/hud.js": "27dcf872b06f9399b15face17f3ab6aa2dec86a91cd57ea76b151808df4054bd",
+      "src/world.js": "4881ddbfc96af7e106920bc59a13d338a7a46284ef4d4b361c3c70519d30008b",
+      "src/combat.js": "4aa6707c260e5584dbd543ddf68f328e3707d95015a27c3297768d0f8748a343",
+      "src/scene.js": "c7e443dfacc4710bbd471c01b3af5c33a50afcc04c974c1b54fe8e7346da7de2",
+      "src/boot.js": "01f2b54e5a8e0e5c0dcd8edefa0232f39ebf0f27167f7c5daa6186a106ba696e"
+    }
+  },
+  "passed": 67,
+  "failed": 0,
+  "errors": [],
+  "checks": [
+    {
+      "name": "All 31 assets decode at declared dimensions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Four native 1280x720 environment textures",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Canvas renders at 2x density without changing world units",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Portrait uses approved raster and is in the game HUD",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Portrait contributes visible screen pixels",
+      "passed": true,
+      "detail": [
+        24,
+        16,
+        112,
+        104
+      ]
+    },
+    {
+      "name": "Right arrow moves player",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Left arrow moves player",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Up arrow jumps",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Arrow jump lands",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "A/D bindings retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Film above emergency reserve does not auto-refill",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 190,
+        "bottom": 316,
+        "film": 50,
+        "health": 5,
+        "clock": 4249.829999999998,
+        "stats": {
+          "captures": 0,
+          "damage": 0,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 0,
+          "attacks": 0,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 0
+        },
+        "stage": 0,
+        "tick": 255
+      }
+    },
+    {
+      "name": "No immediate film regeneration after use",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Emergency film recovers only 0.8 units/second",
+      "passed": true,
+      "detail": {
+        "before": {
+          "phase": "running",
+          "x": 190,
+          "bottom": 316,
+          "film": 8,
+          "health": 5,
+          "clock": 5766.449999999997,
+          "stats": {
+            "captures": 0,
+            "damage": 0,
+            "flashes": 0,
+            "blocked": 0,
+            "dodged": 0,
+            "attacks": 0,
+            "checkpoints": 0,
+            "respawns": 0,
+            "pickups": 0,
+            "stages": 0
+          },
+          "stage": 0,
+          "tick": 346
+        },
+        "after": {
+          "phase": "running",
+          "x": 190,
+          "bottom": 316,
+          "film": 8.81328000000001,
+          "health": 5,
+          "clock": 6783.049999999996,
+          "stats": {
+            "captures": 0,
+            "damage": 0,
+            "flashes": 0,
+            "blocked": 0,
+            "dodged": 0,
+            "attacks": 0,
+            "checkpoints": 0,
+            "respawns": 0,
+            "pickups": 0,
+            "stages": 0
+          },
+          "stage": 0,
+          "tick": 407
+        }
+      }
+    },
+    {
+      "name": "Emergency recharge stops at 24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Camera consumes scarce film while held",
+      "passed": true,
+      "detail": {
+        "delta": 8.599319999999999
+      }
+    },
+    {
+      "name": "Physical reel pickup restores 25 units",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 270,
+        "bottom": 316,
+        "film": 55,
+        "health": 5,
+        "clock": 33.33999999999996,
+        "stats": {
+          "captures": 0,
+          "damage": 0,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 0,
+          "attacks": 0,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 1,
+          "stages": 0
+        },
+        "stage": 0,
+        "tick": 2
+      }
+    },
+    {
+      "name": "One-time checkpoint cache adds 20 film",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 1954,
+        "bottom": 316,
+        "film": 50,
+        "health": 5,
+        "clock": 33.33999999999996,
+        "stats": {
+          "captures": 0,
+          "damage": 0,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 0,
+          "attacks": 0,
+          "checkpoints": 1,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 0
+        },
+        "stage": 0,
+        "tick": 2
+      }
+    },
+    {
+      "name": "Checkpoint cache cannot be farmed by walking back",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Film carries between stages instead of resetting to 100",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Flash costs 20 film",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Flash cooldown prevents spamming",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Stage 1 has a real gap longer than a jump",
+      "passed": true,
+      "detail": {
+        "gap": 410,
+        "jump": 138.60909090909092,
+        "noFloor": true,
+        "carrier": true
+      }
+    },
+    {
+      "name": "Stage 1 has an actual moving carrier",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Stage 2 has a real gap longer than a jump",
+      "passed": true,
+      "detail": {
+        "gap": 380,
+        "jump": 138.60909090909092,
+        "noFloor": true,
+        "carrier": true
+      }
+    },
+    {
+      "name": "Stage 2 has an actual moving carrier",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Stage 3 has a real gap longer than a jump",
+      "passed": true,
+      "detail": {
+        "gap": 470,
+        "jump": 138.60909090909092,
+        "noFloor": true,
+        "carrier": true
+      }
+    },
+    {
+      "name": "Stage 3 has an actual moving carrier",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Stage 4 has a real gap longer than a jump",
+      "passed": true,
+      "detail": {
+        "gap": 510,
+        "jump": 138.60909090909092,
+        "noFloor": true,
+        "carrier": true
+      }
+    },
+    {
+      "name": "Stage 4 has an actual moving carrier",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Moving carrier transports resting player without sliding off",
+      "passed": true,
+      "detail": [
+        [
+          1669.7114219766138,
+          1678.3183491829584,
+          0
+        ],
+        [
+          1675.7334930713853,
+          1684.34042027773,
+          0
+        ],
+        [
+          1681.7197478432856,
+          1690.3266750496302,
+          0
+        ],
+        [
+          1686.7232372599512,
+          1695.3301644662959,
+          0
+        ],
+        [
+          1692.8542775946582,
+          1701.4612048010029,
+          0
+        ],
+        [
+          1698.8784970861132,
+          1707.4854242924578,
+          0
+        ],
+        [
+          1703.7334635342904,
+          1712.340390740635,
+          0
+        ],
+        [
+          1708.8390953935493,
+          1717.446022599894,
+          0
+        ],
+        [
+          1715.0143621395023,
+          1723.621289345847,
+          0
+        ],
+        [
+          1719.9418370109088,
+          1728.5487642172534,
+          0
+        ],
+        [
+          1725.6361380927217,
+          1734.2430652990663,
+          0
+        ],
+        [
+          1730.256639310888,
+          1738.8635665172326,
+          0
+        ],
+        [
+          1736.4520448551032,
+          1745.0589720614478,
+          0
+        ],
+        [
+          1739.9299824869881,
+          1748.5369096933327,
+          0
+        ],
+        [
+          1745.2081321666305,
+          1753.8150593729752,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "Attempting to jump entire chasm falls and respawns",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 190,
+        "bottom": 270,
+        "film": 100,
+        "health": 4,
+        "clock": 1166.6199999999994,
+        "stats": {
+          "captures": 0,
+          "damage": 1,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 0,
+          "attacks": 0,
+          "checkpoints": 0,
+          "respawns": 1,
+          "pickups": 0,
+          "stages": 0
+        },
+        "stage": 0,
+        "tick": 70
+      }
+    },
+    {
+      "name": "Restart cycle 1 still accepts input",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Restart cycle 2 still accepts input",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Restart cycle 3 still accepts input",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280x720 screen has no stretch/crop",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "name": "1216x1242 screen has no stretch/crop",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 279,
+        "width": 1216,
+        "height": 684
+      }
+    },
+    {
+      "name": "844x390 screen has no stretch/crop",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 843.90625,
+        "height": 390
+      }
+    },
+    {
+      "name": "844x390 adaptive width uses screen height",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 843.90625,
+        "height": 390
+      }
+    },
+    {
+      "name": "844x390 tap-to-film stays on after release",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390 second tap switches camera off",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390 thumb pad moves and releases",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390 right-hand jump button works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390 rotation clears all touch inputs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "667x375 screen has no stretch/crop",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 666.65625,
+        "height": 375
+      }
+    },
+    {
+      "name": "667x375 adaptive width uses screen height",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 666.65625,
+        "height": 375
+      }
+    },
+    {
+      "name": "667x375 tap-to-film stays on after release",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "667x375 second tap switches camera off",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "667x375 thumb pad moves and releases",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "667x375 right-hand jump button works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "667x375 rotation clears all touch inputs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "568x320 screen has no stretch/crop",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 568,
+        "height": 319.5
+      }
+    },
+    {
+      "name": "568x320 adaptive width uses screen height",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 0,
+        "width": 568,
+        "height": 319.5
+      }
+    },
+    {
+      "name": "568x320 tap-to-film stays on after release",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "568x320 second tap switches camera off",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "568x320 thumb pad moves and releases",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "568x320 right-hand jump button works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "568x320 rotation clears all touch inputs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "390x844 screen has no stretch/crop",
+      "passed": true,
+      "detail": {
+        "x": 0,
+        "y": 312,
+        "width": 390,
+        "height": 219.375
+      }
+    },
+    {
+      "name": "Portrait starts paused with rotate guidance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Alternate arrow/hold/large controls available",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Hold-to-film alternative releases reliably",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unsupported fullscreen offers explicit app instructions instead of silently failing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fullscreen help can be dismissed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Installable app has standalone, landscape and release-scoped start URL",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Apple standalone metadata and all three icons are packaged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Offline worker is confined to this release scope",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No uncaught acceptance exceptions",
+      "passed": true,
+      "detail": []
+    }
+  ]
+}

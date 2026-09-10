@@ -1,0 +1,1544 @@
+{
+  "engine": "webkit",
+  "build": {
+    "edition": 5,
+    "sha256": "6d5bf642fbdc44af784a472faa15d15d4c22e5b9b6b5f3ea5943260f9d94c702",
+    "bytes": 4536133,
+    "assets": 31,
+    "sourceHashes": {
+      "src/shell.js": "e11446e4c74a2b0f705127b520712ff86a2eca9eff77c0ef462437e1f8bb2288",
+      "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
+      "src/config.js": "e6e65015059624aa359531f279095418efd974c4ad2222fab5a1dd6218e746b7",
+      "src/assets.js": "4b5bf7cb9772309ae9e668b1ba97d6e01815221cde9868b7ff1efb59c988a9d8",
+      "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
+      "src/hud.js": "27dcf872b06f9399b15face17f3ab6aa2dec86a91cd57ea76b151808df4054bd",
+      "src/world.js": "4881ddbfc96af7e106920bc59a13d338a7a46284ef4d4b361c3c70519d30008b",
+      "src/combat.js": "4aa6707c260e5584dbd543ddf68f328e3707d95015a27c3297768d0f8748a343",
+      "src/scene.js": "c7e443dfacc4710bbd471c01b3af5c33a50afcc04c974c1b54fe8e7346da7de2",
+      "src/boot.js": "01f2b54e5a8e0e5c0dcd8edefa0232f39ebf0f27167f7c5daa6186a106ba696e"
+    }
+  },
+  "suite": "keyboard-only playthrough",
+  "passed": 27,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "31 validated raster textures, 30 planned encounters",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Enter stage 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Stage 1 optional supply platform route",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 0,
+        "x": 805.2137777777764,
+        "y": 322,
+        "bottom": 316,
+        "vy": 0,
+        "ground": true,
+        "film": 90.11479999999989,
+        "hp": 5,
+        "cap": 1,
+        "total": 1,
+        "clock": 5976.60000000002,
+        "flash": -5976.60000000002,
+        "hurt": -5976.60000000002,
+        "flip": false,
+        "stats": {
+          "captures": 1,
+          "damage": 0,
+          "flashes": 0,
+          "blocked": 0,
+          "dodged": 1,
+          "attacks": 1,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 0,
+          "stages": 0
+        },
+        "gap": [
+          1460,
+          1870
+        ],
+        "exit": 2440,
+        "ferry": {
+          "x": 1780.1113348133724,
+          "top": 260,
+          "vx": -41.89092816195625,
+          "width": 106
+        },
+        "pickups": [
+          {
+            "x": 270,
+            "y": 280
+          },
+          {
+            "x": 680,
+            "y": 190
+          },
+          {
+            "x": 1370,
+            "y": 280
+          },
+          {
+            "x": 2150,
+            "y": 280
+          }
+        ],
+        "enemies": [
+          {
+            "x": 655.1999999999986,
+            "dy": -1,
+            "state": "windup",
+            "type": "ghoul"
+          },
+          {
+            "x": 985.5333333333319,
+            "dy": -1,
+            "state": "windup",
+            "type": "skeleton"
+          },
+          {
+            "x": 1260,
+            "dy": -1,
+            "state": "walk",
+            "type": "vampire"
+          },
+          {
+            "x": 2110,
+            "dy": -1,
+            "state": "walk",
+            "type": "ghoul"
+          },
+          {
+            "x": 2310,
+            "dy": -1,
+            "state": "walk",
+            "type": "werewolf"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stage 1 jumped aboard moving ferry",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 0,
+        "x": 1530.636401373332,
+        "y": 266,
+        "bottom": 260,
+        "vy": 0,
+        "ground": true,
+        "film": 54.773200000000145,
+        "hp": 5,
+        "cap": 4,
+        "total": 4,
+        "clock": 26698.199999999513,
+        "flash": -18989.399999999492,
+        "hurt": -26698.199999999513,
+        "flip": false,
+        "stats": {
+          "captures": 4,
+          "damage": 0,
+          "flashes": 1,
+          "blocked": 2,
+          "dodged": 1,
+          "attacks": 1,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 1,
+          "stages": 0,
+          "ferryBoardings": 1
+        },
+        "gap": [
+          1460,
+          1870
+        ],
+        "exit": 2440,
+        "ferry": {
+          "x": 1527.2552780344242,
+          "top": 260,
+          "vx": -32.0408099769993,
+          "width": 106
+        },
+        "pickups": [
+          {
+            "x": 270,
+            "y": 280
+          },
+          {
+            "x": 680,
+            "y": 190
+          },
+          {
+            "x": 2150,
+            "y": 280
+          }
+        ],
+        "enemies": [
+          {
+            "x": 2110,
+            "dy": 55,
+            "state": "walk",
+            "type": "ghoul"
+          },
+          {
+            "x": 2310,
+            "dy": 55,
+            "state": "walk",
+            "type": "werewolf"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stage 1 rides over unjumpable gap",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 0,
+        "x": 1771.2270880067806,
+        "y": 266,
+        "bottom": 260,
+        "vy": 0,
+        "ground": true,
+        "film": 54.773200000000145,
+        "hp": 5,
+        "cap": 4,
+        "total": 4,
+        "clock": 33705.29999999906,
+        "flash": -25996.499999999036,
+        "hurt": -33705.29999999906,
+        "flip": false,
+        "stats": {
+          "captures": 4,
+          "damage": 0,
+          "flashes": 1,
+          "blocked": 2,
+          "dodged": 1,
+          "attacks": 1,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 1,
+          "stages": 0,
+          "ferryBoardings": 1
+        },
+        "gap": [
+          1460,
+          1870
+        ],
+        "exit": 2440,
+        "ferry": {
+          "x": 1766.3619646678728,
+          "top": 260,
+          "vx": 45.87312143797317,
+          "width": 106
+        },
+        "pickups": [
+          {
+            "x": 270,
+            "y": 280
+          },
+          {
+            "x": 680,
+            "y": 190
+          },
+          {
+            "x": 2150,
+            "y": 280
+          }
+        ],
+        "enemies": [
+          {
+            "x": 2057.583333333323,
+            "dy": 54.99999999999997,
+            "state": "walk",
+            "type": "ghoul"
+          },
+          {
+            "x": 2310,
+            "dy": 54.99999999999997,
+            "state": "walk",
+            "type": "werewolf"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stage 1 exits ferry safely",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 0,
+        "x": 1912.2523066974184,
+        "y": 319.1000000000001,
+        "bottom": 313.1000000000001,
+        "vy": 479.33333333333366,
+        "ground": false,
+        "film": 54.773200000000145,
+        "hp": 5,
+        "cap": 4,
+        "total": 4,
+        "clock": 34702.09999999899,
+        "flash": -26993.299999998966,
+        "hurt": -34702.09999999899,
+        "flip": false,
+        "stats": {
+          "captures": 4,
+          "damage": 0,
+          "flashes": 1,
+          "blocked": 2,
+          "dodged": 1,
+          "attacks": 1,
+          "checkpoints": 0,
+          "respawns": 0,
+          "pickups": 1,
+          "stages": 0,
+          "ferryBoardings": 1
+        },
+        "gap": [
+          1460,
+          1870
+        ],
+        "exit": 2440,
+        "ferry": {
+          "x": 1804.5525737706064,
+          "top": 260,
+          "vx": 27.26692888085745,
+          "width": 106
+        },
+        "pickups": [
+          {
+            "x": 270,
+            "y": 280
+          },
+          {
+            "x": 680,
+            "y": 190
+          },
+          {
+            "x": 2150,
+            "y": 280
+          }
+        ],
+        "enemies": [
+          {
+            "x": 2029.8333333333244,
+            "dy": 1.8999999999999204,
+            "state": "windup",
+            "type": "ghoul"
+          },
+          {
+            "x": 2302.350000000001,
+            "dy": 1.8999999999999204,
+            "state": "walk",
+            "type": "werewolf"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Enter stage 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Stage 2 optional supply platform route",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 1,
+        "x": 770.9978333333318,
+        "y": 322,
+        "bottom": 316,
+        "vy": 0,
+        "ground": true,
+        "film": 55.630400000000215,
+        "hp": 5,
+        "cap": 1,
+        "total": 7,
+        "clock": 6654.200000000029,
+        "flash": -3956.6000000000286,
+        "hurt": -6654.200000000029,
+        "flip": false,
+        "stats": {
+          "captures": 7,
+          "damage": 0,
+          "flashes": 3,
+          "blocked": 4,
+          "dodged": 2,
+          "attacks": 3,
+          "checkpoints": 1,
+          "respawns": 0,
+          "pickups": 4,
+          "stages": 1,
+          "ferryBoardings": 1
+        },
+        "gap": [
+          1480,
+          1860
+        ],
+        "exit": 2800,
+        "ferry": {
+          "x": 1753.2759368483653,
+          "top": 254,
+          "vx": -44.4901238896673,
+          "width": 106
+        },
+        "pickups": [
+          {
+            "x": 1390,
+            "y": 280
+          },
+          {
+            "x": 2010,
+            "y": 280
+          }
+        ],
+        "enemies": [
+          {
+            "x": 742.7833333333322,
+            "dy": -1,
+            "state": "windup",
+            "type": "skeleton"
+          },
+          {
+            "x": 925.1833333333326,
+            "dy": -1,
+            "state": "windup",
+            "type": "ghoul"
+          },
+          {
+            "x": 1250,
+            "dy": -1,
+            "state": "walk",
+            "type": "vampire"
+          },
+          {
+            "x": 2090,
+            "dy": -13.004285463246788,
+            "state": "walk",
+            "type": "ghost"
+          },
+          {
+            "x": 2260,
+            "dy": -1,
+            "state": "walk",
+            "type": "skeleton"
+          },
+          {
+            "x": 2460,
+            "dy": -1,
+            "state": "walk",
+            "type": "ghoul"
+          },
+          {
+            "x": 2690,
+            "dy": -1,
+            "state": "walk",
+            "type": "vampire"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stage 2 jumped aboard moving ferry",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 1,
+        "x": 1547.2722370860527,
+        "y": 260,
+        "bottom": 254,
+        "vy": 0,
+        "ground": true,
+        "film": 20.64687999999972,
+        "hp": 5,
+        "cap": 4,
+        "total": 10,
+        "clock": 27048.199999999502,
+        "flash": -18677.899999999474,
+        "hurt": -27048.199999999502,
+        "flip": false,
+        "stats": {
+          "captures": 10,
+          "damage": 0,
+          "flashes": 4,
+          "blocked": 7,
+          "dodged": 2,
+          "attacks": 4,
+          "checkpoints": 1,
+          "respawns": 0,
+          "pickups": 5,
+          "stages": 1,
+          "ferryBoardings": 2
+        },
+        "gap": [
+          1480,
+          1860
+        ],
+        "exit": 2800,
+        "ferry": {
+          "x": 1549.952743009502,
+          "top": 254,
+          "vx": -33.508976101011285,
+          "width": 106
+        },
+        "pickups": [
+          {
+            "x": 2010,
+            "y": 280
+          }
+        ],
+        "enemies": [
+          {
+            "x": 2090,
+            "dy": 45.84822363089074,
+            "state": "walk",
+            "type": "ghost"
+          },
+          {
+            "x": 2260,
+            "dy": 61,
+            "state": "walk",
+            "type": "skeleton"
+          },
+          {
+            "x": 2460,
+            "dy": 61,
+            "state": "walk",
+            "type": "ghoul"
+          },
+          {
+            "x": 2690,
+            "dy": 61,
+            "state": "walk",
+            "type": "vampire"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stage 2 rides over unjumpable gap",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 1,
+        "x": 1758.730551096483,
+        "y": 260,
+        "bottom": 254,
+        "vy": 0,
+        "ground": true,
+        "film": 24,
+        "hp": 5,
+        "cap": 4,
+        "total": 10,
+        "clock": 34312.299999999035,
+        "flash": -25941.999999999007,
+        "hurt": -34312.299999999035,
+        "flip": false,
+        "stats": {
+          "captures": 10,
+          "damage": 0,
+          "flashes": 4,
+          "blocked": 7,
+          "dodged": 2,
+          "attacks": 4,
+          "checkpoints": 1,
+          "respawns": 0,
+          "pickups": 5,
+          "stages": 1,
+          "ferryBoardings": 2
+        },
+        "gap": [
+          1480,
+          1860
+        ],
+        "exit": 2800,
+        "ferry": {
+          "x": 1756.8310570199321,
+          "top": 254,
+          "vx": 45.683194666835334,
+          "width": 106
+        },
+        "pickups": [
+          {
+            "x": 2010,
+            "y": 280
+          }
+        ],
+        "enemies": [
+          {
+            "x": 2048.199999999986,
+            "dy": 33.69242942950615,
+            "state": "windup",
+            "type": "ghost"
+          },
+          {
+            "x": 2260,
+            "dy": 61,
+            "state": "walk",
+            "type": "skeleton"
+          },
+          {
+            "x": 2460,
+            "dy": 61,
+            "state": "walk",
+            "type": "ghoul"
+          },
+          {
+            "x": 2690,
+            "dy": 61,
+            "state": "walk",
+            "type": "vampire"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stage 2 exits ferry safely",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 1,
+        "x": 1899.7962710076017,
+        "y": 321.3333333333333,
+        "bottom": 315.3333333333333,
+        "vy": 494.00000000000034,
+        "ground": false,
+        "film": 24,
+        "hp": 5,
+        "cap": 4,
+        "total": 10,
+        "clock": 35324.59999999897,
+        "flash": -26954.299999998944,
+        "hurt": -35324.59999999897,
+        "flip": false,
+        "stats": {
+          "captures": 10,
+          "damage": 0,
+          "flashes": 4,
+          "blocked": 7,
+          "dodged": 2,
+          "attacks": 5,
+          "checkpoints": 1,
+          "respawns": 0,
+          "pickups": 5,
+          "stages": 1,
+          "ferryBoardings": 2
+        },
+        "gap": [
+          1480,
+          1860
+        ],
+        "exit": 2800,
+        "ferry": {
+          "x": 1794.6104423009588,
+          "top": 254,
+          "vx": 27.89493449418478,
+          "width": 106
+        },
+        "pickups": [
+          {
+            "x": 2010,
+            "y": 280
+          }
+        ],
+        "enemies": [
+          {
+            "x": 1972.3666666666509,
+            "dy": -29.34947443658399,
+            "state": "recover",
+            "type": "ghost"
+          },
+          {
+            "x": 2247.916666666672,
+            "dy": -0.3333333333333144,
+            "state": "walk",
+            "type": "skeleton"
+          },
+          {
+            "x": 2460,
+            "dy": -0.3333333333333144,
+            "state": "walk",
+            "type": "ghoul"
+          },
+          {
+            "x": 2690,
+            "dy": -0.3333333333333144,
+            "state": "walk",
+            "type": "vampire"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Cathedral stair landing",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 1,
+        "x": 2450.147604340939,
+        "y": 276,
+        "bottom": 270,
+        "vy": 0,
+        "ground": true,
+        "film": 15.382000000000113,
+        "hp": 5,
+        "cap": 8,
+        "total": 14,
+        "clock": 45159.59999999835,
+        "flash": -36789.299999998315,
+        "hurt": -45159.59999999835,
+        "flip": false,
+        "stats": {
+          "captures": 14,
+          "damage": 0,
+          "flashes": 4,
+          "blocked": 8,
+          "dodged": 2,
+          "attacks": 6,
+          "checkpoints": 2,
+          "respawns": 0,
+          "pickups": 6,
+          "stages": 1,
+          "ferryBoardings": 2
+        },
+        "gap": [
+          1480,
+          1860
+        ],
+        "exit": 2800,
+        "ferry": {
+          "x": 1526.1620105093082,
+          "top": 254,
+          "vx": 6.789841350682764,
+          "width": 106
+        },
+        "pickups": [],
+        "enemies": []
+      }
+    },
+    {
+      "name": "Cathedral upper balcony landing",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 1,
+        "x": 2586.2571043409343,
+        "y": 228,
+        "bottom": 222,
+        "vy": 0,
+        "ground": true,
+        "film": 15.382000000000113,
+        "hp": 5,
+        "cap": 8,
+        "total": 14,
+        "clock": 46284.39999999828,
+        "flash": -37914.099999998245,
+        "hurt": -46284.39999999828,
+        "flip": false,
+        "stats": {
+          "captures": 14,
+          "damage": 0,
+          "flashes": 4,
+          "blocked": 8,
+          "dodged": 2,
+          "attacks": 6,
+          "checkpoints": 2,
+          "respawns": 0,
+          "pickups": 6,
+          "stages": 1,
+          "ferryBoardings": 2
+        },
+        "gap": [
+          1480,
+          1860
+        ],
+        "exit": 2800,
+        "ferry": {
+          "x": 1546.9338994632874,
+          "top": 254,
+          "vx": 28.70444834769478,
+          "width": 106
+        },
+        "pickups": [],
+        "enemies": []
+      }
+    },
+    {
+      "name": "Enter stage 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Stage 3 optional supply platform route",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 2,
+        "x": 981.207166666665,
+        "y": 322,
+        "bottom": 316,
+        "vy": 0,
+        "ground": true,
+        "film": 52.891600000000125,
+        "hp": 4,
+        "cap": 1,
+        "total": 15,
+        "clock": 7863.200000000046,
+        "flash": -7863.200000000046,
+        "hurt": -158.4000000000051,
+        "flip": false,
+        "stats": {
+          "captures": 15,
+          "damage": 1,
+          "flashes": 4,
+          "blocked": 8,
+          "dodged": 4,
+          "attacks": 9,
+          "checkpoints": 2,
+          "respawns": 0,
+          "pickups": 8,
+          "stages": 2,
+          "ferryBoardings": 2
+        },
+        "gap": [
+          1430,
+          1900
+        ],
+        "exit": 3000,
+        "ferry": {
+          "x": 1786.4259097722168,
+          "top": 264,
+          "vx": -47.71114687983754,
+          "width": 112
+        },
+        "pickups": [
+          {
+            "x": 1340,
+            "y": 280
+          },
+          {
+            "x": 2190,
+            "y": 280
+          }
+        ],
+        "enemies": [
+          {
+            "x": 745.9999999999991,
+            "dy": -1,
+            "state": "walk",
+            "type": "skeleton"
+          },
+          {
+            "x": 1045.1999999999944,
+            "dy": -1,
+            "state": "walk",
+            "type": "monster"
+          },
+          {
+            "x": 1187.6500000000099,
+            "dy": -1,
+            "state": "walk",
+            "type": "ghoul"
+          },
+          {
+            "x": 2160,
+            "dy": -1,
+            "state": "walk",
+            "type": "skeleton"
+          },
+          {
+            "x": 2390,
+            "dy": -1,
+            "state": "walk",
+            "type": "monster"
+          },
+          {
+            "x": 2680,
+            "dy": -9.117796186538158,
+            "state": "walk",
+            "type": "ghost"
+          },
+          {
+            "x": 2900,
+            "dy": -1,
+            "state": "walk",
+            "type": "werewolf"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stage 3 jumped aboard moving ferry",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 2,
+        "x": 1479.1849525633868,
+        "y": 270,
+        "bottom": 264,
+        "vy": 0,
+        "ground": true,
+        "film": 49.38800000000032,
+        "hp": 3,
+        "cap": 4,
+        "total": 18,
+        "clock": 15128.000000000166,
+        "flash": -15128.000000000166,
+        "hurt": -4770.600000000082,
+        "flip": false,
+        "stats": {
+          "captures": 18,
+          "damage": 2,
+          "flashes": 4,
+          "blocked": 8,
+          "dodged": 4,
+          "attacks": 10,
+          "checkpoints": 2,
+          "respawns": 0,
+          "pickups": 9,
+          "stages": 2,
+          "ferryBoardings": 3
+        },
+        "gap": [
+          1430,
+          1900
+        ],
+        "exit": 3000,
+        "ferry": {
+          "x": 1475.1834561872631,
+          "top": 264,
+          "vx": 1.9494301247214025,
+          "width": 112
+        },
+        "pickups": [
+          {
+            "x": 2190,
+            "y": 280
+          }
+        ],
+        "enemies": [
+          {
+            "x": 2160,
+            "dy": 50.99999999999997,
+            "state": "walk",
+            "type": "skeleton"
+          },
+          {
+            "x": 2390,
+            "dy": 50.99999999999997,
+            "state": "walk",
+            "type": "monster"
+          },
+          {
+            "x": 2680,
+            "dy": 26.092754483896186,
+            "state": "walk",
+            "type": "ghost"
+          },
+          {
+            "x": 2900,
+            "dy": 50.99999999999997,
+            "state": "walk",
+            "type": "werewolf"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stage 3 rides over unjumpable gap",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 2,
+        "x": 1799.0565317197738,
+        "y": 270,
+        "bottom": 264,
+        "vy": 0,
+        "ground": true,
+        "film": 49.38800000000032,
+        "hp": 3,
+        "cap": 4,
+        "total": 18,
+        "clock": 22392.39999999982,
+        "flash": -22392.39999999982,
+        "hurt": -12034.999999999736,
+        "flip": false,
+        "stats": {
+          "captures": 18,
+          "damage": 2,
+          "flashes": 4,
+          "blocked": 8,
+          "dodged": 4,
+          "attacks": 10,
+          "checkpoints": 2,
+          "respawns": 0,
+          "pickups": 9,
+          "stages": 2,
+          "ferryBoardings": 3
+        },
+        "gap": [
+          1430,
+          1900
+        ],
+        "exit": 3000,
+        "ferry": {
+          "x": 1795.0550353436502,
+          "top": 264,
+          "vx": 43.05348130407401,
+          "width": 112
+        },
+        "pickups": [
+          {
+            "x": 2190,
+            "y": 280
+          }
+        ],
+        "enemies": [
+          {
+            "x": 2126.6500000000146,
+            "dy": 50.99999999999997,
+            "state": "walk",
+            "type": "skeleton"
+          },
+          {
+            "x": 2390,
+            "dy": 50.99999999999997,
+            "state": "walk",
+            "type": "monster"
+          },
+          {
+            "x": 2680,
+            "dy": 39.553115983813285,
+            "state": "walk",
+            "type": "ghost"
+          },
+          {
+            "x": 2900,
+            "dy": 50.99999999999997,
+            "state": "walk",
+            "type": "werewolf"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stage 3 exits ferry safely",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 2,
+        "x": 1940.00275640818,
+        "y": 322,
+        "bottom": 316,
+        "vy": 0,
+        "ground": true,
+        "film": 49.38800000000032,
+        "hp": 3,
+        "cap": 4,
+        "total": 18,
+        "clock": 23390.29999999978,
+        "flash": -23390.29999999978,
+        "hurt": -13032.899999999698,
+        "flip": false,
+        "stats": {
+          "captures": 18,
+          "damage": 2,
+          "flashes": 4,
+          "blocked": 8,
+          "dodged": 4,
+          "attacks": 11,
+          "checkpoints": 2,
+          "respawns": 0,
+          "pickups": 9,
+          "stages": 2,
+          "ferryBoardings": 3
+        },
+        "gap": [
+          1430,
+          1900
+        ],
+        "exit": 3000,
+        "ferry": {
+          "x": 1831.5635352846364,
+          "top": 264,
+          "vx": 28.141892400637516,
+          "width": 112
+        },
+        "pickups": [
+          {
+            "x": 2190,
+            "y": 280
+          }
+        ],
+        "enemies": [
+          {
+            "x": 2122.3000000000166,
+            "dy": -1,
+            "state": "attack",
+            "type": "skeleton"
+          },
+          {
+            "x": 2390,
+            "dy": -1,
+            "state": "walk",
+            "type": "monster"
+          },
+          {
+            "x": 2680,
+            "dy": -6.269263003057006,
+            "state": "walk",
+            "type": "ghost"
+          },
+          {
+            "x": 2900,
+            "dy": -1,
+            "state": "walk",
+            "type": "werewolf"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Enter stage 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Stage 4 optional supply platform route",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 3,
+        "x": 871.2603333333311,
+        "y": 322,
+        "bottom": 316,
+        "vy": 0,
+        "ground": true,
+        "film": 59.13080000000045,
+        "hp": 5,
+        "cap": 1,
+        "total": 23,
+        "clock": 6909.200000000033,
+        "flash": -6909.200000000033,
+        "hurt": -6909.200000000033,
+        "flip": false,
+        "stats": {
+          "captures": 23,
+          "damage": 6,
+          "flashes": 6,
+          "blocked": 12,
+          "dodged": 6,
+          "attacks": 19,
+          "checkpoints": 3,
+          "respawns": 1,
+          "pickups": 13,
+          "stages": 3,
+          "ferryBoardings": 3
+        },
+        "gap": [
+          1660,
+          2170
+        ],
+        "exit": 3310,
+        "ferry": {
+          "x": 2084.3699651988322,
+          "top": 260,
+          "vx": -39.745640903202,
+          "width": 120
+        },
+        "pickups": [
+          {
+            "x": 1560,
+            "y": 280
+          },
+          {
+            "x": 2360,
+            "y": 280
+          },
+          {
+            "x": 2870,
+            "y": 186
+          }
+        ],
+        "enemies": [
+          {
+            "x": 782.4499999999991,
+            "dy": -1,
+            "state": "recover",
+            "type": "skeleton"
+          },
+          {
+            "x": 1108.1000000000026,
+            "dy": -1,
+            "state": "windup",
+            "type": "vampire"
+          },
+          {
+            "x": 1420,
+            "dy": -1,
+            "state": "walk",
+            "type": "monster"
+          },
+          {
+            "x": 2410,
+            "dy": -1,
+            "state": "walk",
+            "type": "ghoul"
+          },
+          {
+            "x": 2660,
+            "dy": -1,
+            "state": "walk",
+            "type": "vampire"
+          },
+          {
+            "x": 2930,
+            "dy": -1,
+            "state": "walk",
+            "type": "werewolf"
+          },
+          {
+            "x": 3180,
+            "dy": -1,
+            "state": "walk",
+            "type": "monster"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stage 4 jumped aboard moving ferry",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 3,
+        "x": 1729.543997914042,
+        "y": 266,
+        "bottom": 260,
+        "vy": 0,
+        "ground": true,
+        "film": 17.065359999999675,
+        "hp": 5,
+        "cap": 4,
+        "total": 26,
+        "clock": 52006.6999999979,
+        "flash": -14531.799999998955,
+        "hurt": -23841.899999998463,
+        "flip": false,
+        "stats": {
+          "captures": 26,
+          "damage": 11,
+          "flashes": 9,
+          "blocked": 18,
+          "dodged": 6,
+          "attacks": 27,
+          "checkpoints": 3,
+          "respawns": 2,
+          "pickups": 14,
+          "stages": 3,
+          "ferryBoardings": 4
+        },
+        "gap": [
+          1660,
+          2170
+        ],
+        "exit": 3310,
+        "ferry": {
+          "x": 1728.1251111978202,
+          "top": 260,
+          "vx": -30.126729638575853,
+          "width": 120
+        },
+        "pickups": [
+          {
+            "x": 2360,
+            "y": 280
+          },
+          {
+            "x": 2870,
+            "y": 186
+          }
+        ],
+        "enemies": [
+          {
+            "x": 2410,
+            "dy": 54.99999999999997,
+            "state": "walk",
+            "type": "ghoul"
+          },
+          {
+            "x": 2660,
+            "dy": 54.99999999999997,
+            "state": "walk",
+            "type": "vampire"
+          },
+          {
+            "x": 2930,
+            "dy": 54.99999999999997,
+            "state": "walk",
+            "type": "werewolf"
+          },
+          {
+            "x": 3180,
+            "dy": 54.99999999999997,
+            "state": "walk",
+            "type": "monster"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stage 4 rides over unjumpable gap",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 3,
+        "x": 2070.0782685932163,
+        "y": 266,
+        "bottom": 260,
+        "vy": 0,
+        "ground": true,
+        "film": 24,
+        "hp": 5,
+        "cap": 4,
+        "total": 26,
+        "clock": 60829.89999999733,
+        "flash": -23354.999999998385,
+        "hurt": -32665.099999997892,
+        "flip": false,
+        "stats": {
+          "captures": 26,
+          "damage": 11,
+          "flashes": 9,
+          "blocked": 18,
+          "dodged": 6,
+          "attacks": 27,
+          "checkpoints": 3,
+          "respawns": 2,
+          "pickups": 14,
+          "stages": 3,
+          "ferryBoardings": 4
+        },
+        "gap": [
+          1660,
+          2170
+        ],
+        "exit": 3310,
+        "ferry": {
+          "x": 2067.1993818769943,
+          "top": 260,
+          "vx": 48.675187139615446,
+          "width": 120
+        },
+        "pickups": [
+          {
+            "x": 2360,
+            "y": 280
+          },
+          {
+            "x": 2870,
+            "y": 186
+          }
+        ],
+        "enemies": [
+          {
+            "x": 2358.8166666666566,
+            "dy": 54.99999999999997,
+            "state": "walk",
+            "type": "ghoul"
+          },
+          {
+            "x": 2660,
+            "dy": 54.99999999999997,
+            "state": "walk",
+            "type": "vampire"
+          },
+          {
+            "x": 2930,
+            "dy": 54.99999999999997,
+            "state": "walk",
+            "type": "werewolf"
+          },
+          {
+            "x": 3180,
+            "dy": 54.99999999999997,
+            "state": "walk",
+            "type": "monster"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Stage 4 exits ferry safely",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "stage": 3,
+        "x": 2212.0206991813448,
+        "y": 319.1000000000001,
+        "bottom": 313.1000000000001,
+        "vy": 479.33333333333366,
+        "ground": false,
+        "film": 24,
+        "hp": 5,
+        "cap": 4,
+        "total": 26,
+        "clock": 61842.499999997264,
+        "flash": -24367.599999998318,
+        "hurt": -33677.69999999783,
+        "flip": false,
+        "stats": {
+          "captures": 26,
+          "damage": 11,
+          "flashes": 9,
+          "blocked": 18,
+          "dodged": 6,
+          "attacks": 27,
+          "checkpoints": 3,
+          "respawns": 2,
+          "pickups": 14,
+          "stages": 3,
+          "ferryBoardings": 4
+        },
+        "gap": [
+          1660,
+          2170
+        ],
+        "exit": 3310,
+        "ferry": {
+          "x": 2105.802156765534,
+          "top": 260,
+          "vx": 27.891095631599455,
+          "width": 120
+        },
+        "pickups": [
+          {
+            "x": 2360,
+            "y": 280
+          },
+          {
+            "x": 2870,
+            "y": 186
+          }
+        ],
+        "enemies": [
+          {
+            "x": 2330.4499999999844,
+            "dy": 1.8999999999999204,
+            "state": "windup",
+            "type": "ghoul"
+          },
+          {
+            "x": 2660,
+            "dy": 1.8999999999999204,
+            "state": "walk",
+            "type": "vampire"
+          },
+          {
+            "x": 2930,
+            "dy": 1.8999999999999204,
+            "state": "walk",
+            "type": "werewolf"
+          },
+          {
+            "x": 3180,
+            "dy": 1.8999999999999204,
+            "state": "walk",
+            "type": "monster"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Complete four-stage keyboard traversal",
+      "passed": true,
+      "detail": {
+        "phase": "complete",
+        "stage": 3,
+        "x": 3292.1613333332994,
+        "y": 322,
+        "bottom": 316,
+        "vy": 0,
+        "ground": true,
+        "film": 5.870480000000102,
+        "hp": 5,
+        "cap": 8,
+        "total": 30,
+        "clock": 110493.80000000856,
+        "flash": -3973.6000000014756,
+        "hurt": -9154.000000002416,
+        "flip": false,
+        "stats": {
+          "captures": 30,
+          "damage": 21,
+          "flashes": 12,
+          "blocked": 23,
+          "dodged": 6,
+          "attacks": 40,
+          "checkpoints": 4,
+          "respawns": 4,
+          "pickups": 15,
+          "stages": 4,
+          "ferryBoardings": 4
+        },
+        "gap": [
+          1660,
+          2170
+        ],
+        "exit": 3310,
+        "ferry": {
+          "x": 1720.4244831808128,
+          "top": 260,
+          "vx": -25.35065502285761,
+          "width": 120
+        },
+        "pickups": [
+          {
+            "x": 2870,
+            "y": 186
+          }
+        ],
+        "enemies": []
+      }
+    },
+    {
+      "name": "All thirty encounters captured",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Every stage required a ferry crossing",
+      "passed": true,
+      "detail": {
+        "captures": 30,
+        "damage": 21,
+        "flashes": 12,
+        "blocked": 23,
+        "dodged": 6,
+        "attacks": 40,
+        "checkpoints": 4,
+        "respawns": 4,
+        "pickups": 15,
+        "stages": 4,
+        "ferryBoardings": 4
+      }
+    },
+    {
+      "name": "No uncaught browser errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}
