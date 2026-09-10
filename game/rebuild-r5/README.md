@@ -1,39 +1,33 @@
 # MAN WITH A MOVIE CAMERA — Gothic Horror R5
 
-This directory is the editable R5 source. Older R2/R3/R4 releases are preserved unchanged. The current build status is established by `evidence/release-gates.json` and the separate served-R5 workflow, not by this feature document.
+Editable source for R5. Older releases remain unchanged. Build status comes from `evidence/release-gates.json` and the served-R5 workflow, not from this feature description.
 
-## Gameplay and resources
+## Gameplay
 
-Four expanded stages: Courtyard 6 encounters, Cathedral 8, Catacombs 8, Ramparts 8 (30 total). Each stage has a real 380–510-world-unit gap, longer than a direct jump, crossed by jumping onto and riding a moving stone carrier. Elevated supply routes, the Cathedral balcony exit, a vertical lift and a collapsing ledge remain. Falling costs one life and returns to the active checkpoint; a non-lethal fall does not refill film or health.
+Courtyard 6 encounters; Cathedral 8; Catacombs 8; Ramparts 8: **30 total**, up from 12. Each stage has a real 380–510-unit chasm crossed by jumping onto, riding and jumping off a moving stone carrier. Elevated supply routes, Cathedral balcony exit, a vertical lift and a collapsing ledge remain. Non-lethal falls cost one life and return to the checkpoint without refilling film or health.
 
-Film drains at 12 units/second. It does not automatically refill above a 24-unit emergency reserve. Below that threshold, recovery begins only after 3.2 seconds without camera/flash use, at 0.8 units/second (formerly 14). Collectible reels grant 25, captures return 4 and each checkpoint grants 20 once. Film carries across stages. Flash costs 20 and has a 1.7-second cooldown. Lethal damage restores the checkpoint with recovery supplies, so running out of film does not permanently lock the level. Difficulty and all values remain editable in `src/config.js`.
+Film drains at 12/second. Passive recovery changes from R4's 16/second to an emergency-only 0.8/second, delayed 3.2 seconds after use and capped at 24. Reels grant 25, captures return 4 and checkpoints supply 20 once. Film carries across stages. Flash costs 20 with a 1.7-second cooldown. Lethal damage restores checkpoint recovery supplies to avoid a permanent dead end. Values and stage positions live in `src/config.js`.
 
-## Artwork and HUD
+## Artwork and portrait HUD
 
-The render target is now twice the logical world resolution. Complete source artwork is recovered at 1280x720 for each environment, with an indexed palette, proper nearest-neighbor presentation, separate light/fog/foliage accents, and mild sprite contrast treatment. Camera physics remain in the original 640x360-style units; high-density rendering does not double speeds or collision sizes. Mobile widens the view instead of stretching or shrinking a fixed 16:9 view.
+Twice-density rendering, four 1280x720 environment textures recovered from intact originals, indexed palettes, crisp nearest-neighbor presentation, separate light/fog/foliage accents, improved sprite contrast and projectile artwork. Physics retain the same logical world units. Mobile widens the view instead of distorting or shrinking a fixed 16:9 image.
 
-The portrait is the actual approved hat/beard/plaid cameraman from the original concept board, not a newly invented character. It appears with life hearts, film gauge, stage and encounter counts, checkpoint state and flash cooldown in the native game HUD. HUD buttons have larger touch zones. The walking legs continue to animate while filming.
+The native in-game HUD contains the approved hat/beard/plaid protagonist portrait, life hearts, film gauge, stage/encounter totals, checkpoint status and flash cooldown. HUD buttons have enlarged touch zones. Legs continue striding while filming. This is not a claim of new hand-drawn animation cels or final SOTN-quality art everywhere; pose/camera continuity and repeated scenery remain polish opportunities.
 
-This is an improvement pass, not a claim of newly hand-drawn animation cels or final SOTN-quality art throughout. Character pose/camera continuity and environment repetition still admit further art polish.
+## Controls and mobile
 
-## Controls
+Desktop: Left/Right arrows or A/D move; Up or W jumps; hold Space/C to film; X/Shift flashes; P pauses; R restarts. Quick jump taps are buffered. Phaser captures arrow scrolling.
 
-Desktop: Left/Right arrows or A/D move. Up arrow or W jumps. Hold Space/C to film; X/Shift flashes; P pauses; R restarts. Arrow scrolling is captured by Phaser; quick jump taps are buffered rather than lost between frames.
+Mobile: left horizontal thumb pad; right-side large JUMP and FILM, smaller FLASH above. Tap-to-toggle FILM frees the right thumb to jump while recording. Pause-screen settings offer arrow buttons, hold-to-film and larger action controls. Each touch pointer is tracked independently; rotation, focus loss, restart and recovery clear stale inputs.
 
-Mobile defaults to a left horizontal thumb pad and a right action cluster: large JUMP, FILM beside it and smaller FLASH above. FILM is a toggle by default, freeing the right thumb to jump while filming. Pause-screen settings offer left/right buttons, hold-to-film and enlarged action controls. Simultaneous touch pointers are tracked independently and cleared on blur, rotation, restart and checkpoint recovery.
+Fullscreen requests use the browser API when available, otherwise a visible help dialog. On iPhone browsers without game fullscreen, Safari Share -> Add to Home Screen, keep Open as Web App on when offered, then launch the icon in landscape. A standalone/landscape manifest, Apple app metadata, portrait icons and release-scoped offline worker are included. No push notifications, device-camera access or microphone access are requested.
 
-## Fullscreen / app view
+Linux WebKit and phone emulation are not physical-iPhone or installed-app certification. That remains a real-device review.
 
-The fullscreen control requests native fullscreen when supported. Rejected or unavailable requests produce an explicit help dialog, not a silent no-op. On iPhone browsers that do not expose game fullscreen, use Safari Share -> Add to Home Screen, keep Open as Web App enabled when shown, and launch the new icon in landscape. The build includes a standalone/landscape manifest, Apple app metadata, portrait icons, and a service worker confined to this R5 release URL. No push notifications, account access, microphone or camera access are requested. The film camera is a game mechanic, not device-camera access.
+## Reproducible build and evidence
 
-Browser emulation and Linux WebKit do not certify physical-iPhone behavior or performance. Installed-app appearance still needs physical-device review.
+From the repository root, install Pillow, numpy, Playwright 1.57.0 and Node. Run `python game/rebuild-r5/tools/assets_r5.py`, then `python game/rebuild-r5/tools/bundle.py`. Assets are generated from intact `game/rebuild-r34` originals; do not paste binary PNG data through conversation text.
 
-## Build and test
+Run `tests/r5_acceptance.py` and `tests/r5_playthrough.py` under this directory, for BROWSER=chromium and BROWSER=webkit. GITHUB_ACTIONS=true selects Playwright-managed Chromium instead of `/usr/bin/chromium` locally. Acceptance uses isolated fixtures; the full traversal uses real keyboard input, without teleporting, disabling enemies or refilling film/health. Test-agent deaths are recorded.
 
-From the repository root, install Pillow, numpy and Playwright 1.57.0, with Node available. Run `python game/rebuild-r5/tools/assets_r5.py`, then `python game/rebuild-r5/tools/bundle.py`. The asset tool uses the intact `game/rebuild-r34` source boards already in GitHub. Do not manually paste PNG data into text files.
-
-Tests: `BROWSER=chromium python game/rebuild-r5/tests/r5_acceptance.py` and `BROWSER=chromium python game/rebuild-r5/tests/r5_playthrough.py`, then repeat with `BROWSER=webkit`. Set GITHUB_ACTIONS=true to use Playwright-managed Chromium rather than `/usr/bin/chromium` locally.
-
-The acceptance suite has explicitly isolated mechanics fixtures. The full traversal uses ordinary keyboard input for all 30 captures, all four ferry crossings and completion; it does not teleport the player, disable enemies, refill film or override health. Test-agent deaths are recorded, not hidden as a perfect run.
-
-The new release is `game/releases/gothic-r5/`, built as a self-contained HTML plus manifest, worker and icons. Before promotion, every PNG is decoded and checksummed, JS is syntax checked and fresh Chromium/WebKit reports must pass. After promotion, `audit/check-live-r5.py` checks actual root routing, deployed bytes, old R4 integrity, controls, native HUD, fullscreen handling, multi-touch and offline relaunch.
+The candidate app is under `game/releases/gothic-r5/`. Complete PNG decoding, dimensions, hashes and JS syntax precede fresh browser tests. Actual stage screenshots must also be inspected. After promotion, `audit/check-live-r5.py` verifies deployed bytes, actual root, old R4 integrity, arrows, native HUD, fullscreen response, simultaneous touches and offline relaunch. A passing local run alone is not a verified hosted release.
