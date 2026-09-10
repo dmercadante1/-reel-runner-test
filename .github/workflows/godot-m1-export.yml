@@ -1,0 +1,60 @@
+name: Godot M1 web export baseline
+on:
+  push:
+    branches: [godot-640-foundation]
+    paths: ['.github/workflows/godot-m1-export.yml']
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install pinned engine and single-thread web templates
+        run: |
+          mkdir -p /tmp/godot-toolkit
+          curl --fail --location --retry 2 -o /tmp/godot.zip https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot-toolkit
+          curl --fail --location --retry 2 -o /tmp/templates.tpz https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
+          python - <<'PY'
+          import pathlib,zipfile,shutil,hashlib,json
+          dest=pathlib.Path.home()/'.local/share/godot/export_templates/4.7.2.stable';dest.mkdir(parents=True,exist_ok=True)
+          kit=pathlib.Path('/tmp/godot-toolkit/templates');kit.mkdir()
+          with zipfile.ZipFile('/tmp/templates.tpz') as z:
+              names=[n for n in z.namelist() if pathlib.PurePosixPath(n).name.startswith('web_') and n.endswith('.zip')]
+              assert names, 'No web templates in official archive'
+              for n in names:
+                  name=pathlib.PurePosixPath(n).name;data=z.read(n);(dest/name).write_bytes(data);(kit/name).write_bytes(data)
+          print('Templates:',names)
+          p=pathlib.Path('/tmp/godot-toolkit');(p/'hashes.json').write_text(json.dumps({str(f.relative_to(p)):hashlib.sha256(f.read_bytes()).hexdigest() for f in p.rglob('*') if f.is_file()},indent=2))
+          PY
+          chmod +x /tmp/godot-toolkit/Godot_v4.7.2-stable_linux.x86_64
+      - name: Import unchanged foundation and export actual web build
+        env:
+          GODOT_SILENCE_ROOT_WARNING: 1
+        run: |
+          set -o pipefail
+          mkdir -p build/godot-web-trial evidence
+          /tmp/godot-toolkit/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot --editor --import --quit 2>&1 | tee evidence/import.log
+          ! grep -E 'SCRIPT ERROR|Parse Error' evidence/import.log
+          /tmp/godot-toolkit/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot --export-release 'Web Trial' ../build/godot-web-trial/index.html 2>&1 | tee evidence/export.log
+          ! grep -E 'SCRIPT ERROR|Parse Error|ERROR:' evidence/export.log
+          du -h build/godot-web-trial/*
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: godot-m1-export-source
+          path: |
+            godot/
+            build/godot-web-trial/
+            evidence/
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        with:
+          name: godot-m1-reproducible-toolkit
+          path: /tmp/godot-toolkit/
+          compression-level: 1
+          retention-days: 7
