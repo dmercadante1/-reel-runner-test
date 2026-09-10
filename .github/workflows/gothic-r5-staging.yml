@@ -1,0 +1,92 @@
+name: Gothic R5 staging verification
+on:
+  push:
+    branches: [gothic-r5-release]
+    paths: ['.github/workflows/gothic-r5-staging.yml']
+permissions:
+  contents: write
+concurrency:
+  group: gothic-r5-staging
+  cancel-in-progress: true
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow numpy playwright==1.57.0
+      - name: Import only checksum-verified text source
+        run: python audit/import-r5.py
+      - name: Produce full PNG assets from approved source boards, validate all bytes and bundle R5
+        run: |
+          python game/rebuild-r5/tools/assets_r5.py
+          python game/rebuild-r5/tools/bundle.py
+          mkdir -p game/releases/gothic-r5
+          cp game/rebuild-r5/releases/gothic-r5/* game/releases/gothic-r5/
+          git diff --exit-code -- game/releases/gothic-r4a game/releases/gothic-r3a game/releases/gothic-hud-r2 index.html game/play.html .github/workflows
+      - name: Preserve source and exact candidate on staging only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin gothic-r5-release
+          git merge --ff-only origin/gothic-r5-release
+          git add game/rebuild-r5 game/releases/gothic-r5
+          git diff --cached --quiet || git commit -m 'Preserve exact R5 source and valid raster app; testing pending, R4 live untouched'
+          git push origin HEAD:gothic-r5-release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gothic-r5-source
+          path: game/rebuild-r5/
+          retention-days: 14
+      - name: Clear previous reports
+        run: |
+          rm -f game/rebuild-r5/evidence/r5-chromium-acceptance.json game/rebuild-r5/evidence/r5-webkit-acceptance.json game/rebuild-r5/evidence/r5-chromium-playthrough.json game/rebuild-r5/evidence/r5-webkit-playthrough.json game/rebuild-r5/evidence/release-gates.json
+      - run: python -m playwright install --with-deps chromium webkit
+      - name: Check input, portrait HUD, scarce film, mobile layout, pits and complete traversal in both engines
+        run: |
+          python - <<'PY'
+          import os,subprocess,json,pathlib
+          results=[]
+          for engine in ['chromium','webkit']:
+              for suite,timeout in [('acceptance',240),('playthrough',430)]:
+                  try:
+                      r=subprocess.run(['python',f'game/rebuild-r5/tests/r5_{suite}.py'],env={**os.environ,'BROWSER':engine},timeout=timeout)
+                      results.append({'engine':engine,'suite':suite,'exit':r.returncode})
+                  except subprocess.TimeoutExpired:results.append({'engine':engine,'suite':suite,'exit':'TIMEOUT'})
+          pathlib.Path('game/rebuild-r5/evidence/process-results.json').write_text(json.dumps(results,indent=2))
+          assert all(r['exit']==0 for r in results),results
+          PY
+      - name: Require fresh reports and exact release hash before saving passing staging checkpoint
+        run: |
+          python - <<'PY'
+          import json,pathlib,hashlib,os
+          r=pathlib.Path('game/rebuild-r5');reports={}
+          build=json.loads((r/'releases/gothic-r5/build.json').read_text());data=pathlib.Path('game/releases/gothic-r5/index.html').read_bytes()
+          assert hashlib.sha256(data).hexdigest()==build['sha256'] and len(data)==build['bytes']
+          for engine in ['chromium','webkit']:
+              for suite in ['acceptance','playthrough']:
+                  name=f'r5-{engine}-{suite}.json';report=json.loads((r/'evidence'/name).read_text())
+                  assert report['failed']==0 and not report['errors'] and report['passed']>=20,(name,report)
+                  reports[name]={'passed':report['passed'],'failed':report['failed'],'errors':report['errors']}
+          result={'success':True,'run':os.environ['GITHUB_RUN_ID'],'build':build,'reports':reports,'totalPassed':sum(x['passed'] for x in reports.values()),'physicalDeviceTested':False,'status':'R5 passed staging. Manual screenshot review and served-build verification still required.'}
+          (r/'evidence/release-gates.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
+          PY
+          git fetch origin gothic-r5-release
+          git merge --ff-only origin/gothic-r5-release
+          git add game/rebuild-r5/evidence
+          git commit -m 'R5 passes fresh Chromium and WebKit 30-enemy four-ferry traversals and presentation checks'
+          git push origin HEAD:gothic-r5-release
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gothic-r5-browser-evidence
+          path: game/rebuild-r5/evidence/
+          retention-days: 14
