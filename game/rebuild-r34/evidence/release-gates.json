@@ -1,6 +1,6 @@
 {
   "success": true,
-  "run": "34439350821",
+  "run": "34459599641",
   "reports": {
     "r3-chromium-playthrough.json": {
       "passed": 17,
@@ -13,12 +13,17 @@
       "errors": []
     },
     "r4-chromium-mechanics.json": {
-      "passed": 42,
+      "passed": 45,
       "failed": 0,
       "errors": []
     },
     "r4-chromium-presentation.json": {
       "passed": 36,
+      "failed": 0,
+      "errors": []
+    },
+    "chromium-locomotion.json": {
+      "passed": 9,
       "failed": 0,
       "errors": []
     },
@@ -33,7 +38,7 @@
       "errors": []
     },
     "r4-webkit-mechanics.json": {
-      "passed": 40,
+      "passed": 43,
       "failed": 0,
       "errors": []
     },
@@ -41,47 +46,54 @@
       "passed": 36,
       "failed": 0,
       "errors": []
+    },
+    "webkit-locomotion.json": {
+      "passed": 9,
+      "failed": 0,
+      "errors": []
     }
   },
-  "totalPassed": 230,
+  "totalPassed": 254,
   "physicalDeviceTested": false,
   "artCoordinateCorrection": true,
+  "filmingLocomotion": true,
+  "continuousRampartsArt": true,
   "releases": {
     "r3": {
       "edition": 3,
-      "sha256": "8a5cae07287010b137efbd5be1be46602223cfd5b85d1b4624689ab4b3a51ed3",
-      "bytes": 2994392,
+      "sha256": "145d805b1da2b92ace5f36fa42cbbbfe20a55a74719efff85216a99f7222b6bc",
+      "bytes": 3220943,
       "assets": 24,
       "sourceHashes": {
         "src/shell.js": "27aa047bce454d5a227e5084c3ee1d9a7787fb433c55f98f7ebc6649372ef064",
         "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
         "src/config.js": "36b7a3c9f47ffb9b633c2b9baada6a335233dcadcd843cf251709fc6bb561f5f",
-        "src/assets.js": "d54fdf19297c85e29f2db60379162e5c43c69689e3f162ec8997f30e657fb04a",
+        "src/assets.js": "692c43a6b300e08ccf22b00109a3e7d038496b5ef035b54662df2bf342b0bd74",
         "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
         "src/hud.js": "917ef33dfe59c1dee7ea0cda02218e4c9d8aa1cbdb4bf75f5d51b2ab3d166907",
         "src/world.js": "05e346f7f482fd8b37c1a3a91342573ace989d5491247c63a1ca50d9541cf6ac",
-        "src/scene.js": "c596aedde0e8bc31b717b5c12b11342a86695d9c2fa2a7e13b9de1b509904f41",
+        "src/scene.js": "777575a0ed12fe8e1724884bda59ebc83d8a459a29dfb181f50a2b4e31ba1ef8",
         "src/boot.js": "d6e9d76f5296bdf3bf6325717f911ff63974c5d1c4e0e0000c15f8e8bf47de11"
       }
     },
     "r4": {
       "edition": 4,
-      "sha256": "cf692cbd45bed16e409f72c0a1940676e69ef8dc60ff1daca6b9f5fd362b9f89",
-      "bytes": 3000183,
+      "sha256": "5c07df9c37fe86fd6eba4cb72ce27fa6bef82c23a4c2348ee81d658fc6c6b2d4",
+      "bytes": 3226734,
       "assets": 24,
       "sourceHashes": {
         "src/shell.js": "27aa047bce454d5a227e5084c3ee1d9a7787fb433c55f98f7ebc6649372ef064",
         "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
         "src/config.js": "36b7a3c9f47ffb9b633c2b9baada6a335233dcadcd843cf251709fc6bb561f5f",
-        "src/assets.js": "d54fdf19297c85e29f2db60379162e5c43c69689e3f162ec8997f30e657fb04a",
+        "src/assets.js": "692c43a6b300e08ccf22b00109a3e7d038496b5ef035b54662df2bf342b0bd74",
         "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
         "src/hud.js": "917ef33dfe59c1dee7ea0cda02218e4c9d8aa1cbdb4bf75f5d51b2ab3d166907",
         "src/world.js": "05e346f7f482fd8b37c1a3a91342573ace989d5491247c63a1ca50d9541cf6ac",
         "src/combat.js": "19f5b5b24155db6be969f4f819c57655f7b58f8e71799cb8d281f241c57f3928",
-        "src/scene.js": "c596aedde0e8bc31b717b5c12b11342a86695d9c2fa2a7e13b9de1b509904f41",
+        "src/scene.js": "777575a0ed12fe8e1724884bda59ebc83d8a459a29dfb181f50a2b4e31ba1ef8",
         "src/boot.js": "d6e9d76f5296bdf3bf6325717f911ff63974c5d1c4e0e0000c15f8e8bf47de11"
       }
     }
   },
-  "status": "Corrected art passes staging gates; final screenshots need review before main promotion"
+  "status": "Final candidate passed; main promotion and served-build verification remain"
 }

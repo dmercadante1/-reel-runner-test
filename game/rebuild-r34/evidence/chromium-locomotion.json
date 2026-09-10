@@ -1,0 +1,67 @@
+{
+  "engine": "chromium",
+  "checks": [
+    {
+      "name": "R3 legs animate during camera use",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        1,
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "R3 camera light stays active during stride",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "R3 stationary filming returns to brace",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "R3 jumping overrides stride while light remains active",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "R4 legs animate during camera use",
+      "passed": true,
+      "detail": [
+        0,
+        0,
+        1,
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "R4 camera light stays active during stride",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "R4 stationary filming returns to brace",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "R4 jumping overrides stride while light remains active",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "No uncaught locomotion errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "passed": 9,
+  "failed": 0
+}

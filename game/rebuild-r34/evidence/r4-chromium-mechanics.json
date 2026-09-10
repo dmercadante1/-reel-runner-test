@@ -13,7 +13,7 @@
       "passed": true,
       "detail": {
         "x": 590,
-        "bottom": 261.0666666666665,
+        "bottom": 258.0777777777776,
         "health": 5,
         "film": 100,
         "stats": {
@@ -22,7 +22,7 @@
           "flashes": 0,
           "blocked": 0,
           "dodged": 0,
-          "attacks": 1,
+          "attacks": 0,
           "checkpoints": 0,
           "respawns": 0,
           "pickups": 0,
@@ -45,7 +45,7 @@
           "flashes": 0,
           "blocked": 0,
           "dodged": 0,
-          "attacks": 1,
+          "attacks": 0,
           "checkpoints": 0,
           "respawns": 0,
           "pickups": 0,
@@ -66,228 +66,228 @@
         "groundedSamples": 32,
         "samples": [
           {
-            "playerX": 818.3799632502376,
-            "platformX": 822.1706875710347,
+            "playerX": 778.0863444877076,
+            "platformX": 783.9473219924429,
             "bottom": 216,
             "top": 216,
-            "velocity": 9.433227429777617
+            "velocity": 30.03719150860161
           },
           {
-            "playerX": 819.2551549019205,
-            "platformX": 823.0458792227176,
+            "playerX": 781.5724320931497,
+            "platformX": 787.433409597885,
             "bottom": 216,
             "top": 216,
-            "velocity": 7.792309519348237
+            "velocity": 29.909273623638
           },
           {
-            "playerX": 820.0674127527271,
-            "platformX": 823.8581370735243,
+            "playerX": 785.0027254462225,
+            "platformX": 790.8637029509578,
             "bottom": 216,
             "top": 216,
-            "velocity": 5.850154409868082
+            "velocity": 28.901292320906578
           },
           {
-            "playerX": 820.5824209520118,
-            "platformX": 824.373145272809,
+            "playerX": 788.3249715052826,
+            "platformX": 794.1859490100179,
             "bottom": 216,
             "top": 216,
-            "velocity": 4.167412640937073
+            "velocity": 28.285958118991402
           },
           {
-            "playerX": 820.9698281938303,
-            "platformX": 824.7605525146274,
+            "playerX": 791.5055840639023,
+            "platformX": 797.3665615686376,
             "bottom": 216,
             "top": 216,
-            "velocity": 2.189300872091735
+            "velocity": 27.80647609162679
           },
           {
-            "playerX": 821.1178395875602,
-            "platformX": 824.9085639083573,
+            "playerX": 794.5891704347889,
+            "platformX": 800.4501479395242,
             "bottom": 216,
             "top": 216,
-            "velocity": 0.48657013618503697
+            "velocity": 26.52729762150284
           },
           {
-            "playerX": 821.0752237997405,
-            "platformX": 824.8659481205376,
+            "playerX": 797.5278436927573,
+            "platformX": 803.3888211974926,
             "bottom": 216,
             "top": 216,
-            "velocity": -1.5005594074837063
+            "velocity": 25.214393672515143
           },
           {
-            "playerX": 820.8542608725081,
-            "platformX": 824.6449851933053,
+            "playerX": 800.3107305600037,
+            "platformX": 806.1717080647389,
             "bottom": 216,
             "top": 216,
-            "velocity": -3.20078184598151
+            "velocity": 23.538775450267167
           },
           {
-            "playerX": 820.3821255986962,
-            "platformX": 824.1728499194934,
+            "playerX": 802.9166483830892,
+            "platformX": 808.7776258878245,
             "bottom": 216,
             "top": 216,
-            "velocity": -5.171743327242439
+            "velocity": 22.287036555240775
           },
           {
-            "playerX": 819.795088245078,
-            "platformX": 823.5858125658751,
+            "playerX": 805.3829144897232,
+            "platformX": 811.2438919944585,
             "bottom": 216,
             "top": 216,
-            "velocity": -6.8447881808479
+            "velocity": 20.97785625004599
           },
           {
-            "playerX": 818.8998874571619,
-            "platformX": 822.690611777959,
+            "playerX": 808.0029686559843,
+            "platformX": 813.8639461607196,
             "bottom": 216,
             "top": 216,
-            "velocity": -8.771822422359037
+            "velocity": 19.40504119925663
           },
           {
-            "playerX": 817.7813812648479,
-            "platformX": 821.5721055856451,
+            "playerX": 810.0682053122197,
+            "platformX": 815.929182816955,
             "bottom": 216,
             "top": 216,
-            "velocity": -10.665288178199262
+            "velocity": 17.939347021274443
           },
           {
-            "playerX": 816.6482373064136,
-            "platformX": 820.4389616272108,
+            "playerX": 811.9613459369355,
+            "platformX": 817.8223234416707,
             "bottom": 216,
             "top": 216,
-            "velocity": -12.257772302768899
+            "velocity": 14.145085973004825
           },
           {
-            "playerX": 815.1270711195658,
-            "platformX": 818.917795440363,
+            "playerX": 813.6098784237206,
+            "platformX": 819.4708559284559,
             "bottom": 216,
             "top": 216,
-            "velocity": -14.070494039582627
+            "velocity": 12.47347581109807
           },
           {
-            "playerX": 813.6568969837017,
-            "platformX": 817.4476213044989,
+            "playerX": 814.874602147873,
+            "platformX": 820.7355796526083,
             "bottom": 216,
             "top": 216,
-            "velocity": -15.576929075782573
+            "velocity": 11.264459917066233
           },
           {
-            "playerX": 811.1737201953849,
-            "platformX": 814.9644445161821,
+            "playerX": 815.9726390151242,
+            "platformX": 821.8336165198594,
             "bottom": 216,
             "top": 216,
-            "velocity": -17.757152408759794
+            "velocity": 10.480347748014538
           },
           {
-            "playerX": 809.0204788583558,
-            "platformX": 812.8112031791529,
+            "playerX": 817.226776165435,
+            "platformX": 823.0877536701703,
             "bottom": 216,
             "top": 216,
-            "velocity": -19.374853063541195
+            "velocity": 8.108382284965046
           },
           {
-            "playerX": 807.0271814404715,
-            "platformX": 810.8179057612687,
+            "playerX": 818.1426203835937,
+            "platformX": 824.003597888329,
             "bottom": 216,
             "top": 216,
-            "velocity": -20.704648413890936
+            "velocity": 5.63186562381361
           },
           {
-            "playerX": 804.537241391359,
-            "platformX": 808.3279657121561,
+            "playerX": 818.6699273287766,
+            "platformX": 824.5309048335118,
             "bottom": 216,
             "top": 216,
-            "velocity": -22.17833047615386
+            "velocity": 3.3080456069210413
           },
           {
-            "playerX": 802.2692675817038,
-            "platformX": 806.059991902501,
+            "playerX": 818.9519853514068,
+            "platformX": 824.8129628561421,
             "bottom": 216,
             "top": 216,
-            "velocity": -23.369585409868705
+            "velocity": 2.0820931161015324
           },
           {
-            "playerX": 799.4764876784996,
-            "platformX": 803.2672119992967,
+            "playerX": 819.0849090447979,
+            "platformX": 824.9458865495332,
             "bottom": 216,
             "top": 216,
-            "velocity": -24.67833236127899
+            "velocity": -0.3992628824835265
           },
           {
-            "playerX": 796.9643332644451,
-            "platformX": 800.7550575852423,
+            "playerX": 818.9033668222504,
+            "platformX": 824.7643443269857,
             "bottom": 216,
             "top": 216,
-            "velocity": -25.727529767292253
+            "velocity": -2.753132418439236
           },
           {
-            "playerX": 793.9051077050988,
-            "platformX": 797.6958320258959,
+            "playerX": 818.4860815670125,
+            "platformX": 824.3470590717478,
             "bottom": 216,
             "top": 216,
-            "velocity": -26.85655952741945
+            "velocity": -4.744187727230383
           },
           {
-            "playerX": 790.7197880933933,
-            "platformX": 794.5105124141904,
+            "playerX": 817.7354917813846,
+            "platformX": 823.5964692861198,
             "bottom": 216,
             "top": 216,
-            "velocity": -27.877410354817584
+            "velocity": -7.153350660947581
           },
           {
-            "playerX": 782.5333588100656,
-            "platformX": 786.3240831308627,
+            "playerX": 816.8299409577954,
+            "platformX": 822.6909184625307,
             "bottom": 216,
             "top": 216,
-            "velocity": -29.911347749268316
+            "velocity": -8.782098834721182
           },
           {
-            "playerX": 779.5180351622445,
-            "platformX": 783.3087594830416,
+            "playerX": 815.8798493743141,
+            "platformX": 821.7408268790493,
             "bottom": 216,
             "top": 216,
-            "velocity": -30.474375167463222
+            "velocity": -10.370240450230085
           },
           {
-            "playerX": 775.9343969876672,
-            "platformX": 779.7251213084644,
+            "playerX": 814.3984567980322,
+            "platformX": 820.2594343027674,
             "bottom": 216,
             "top": 216,
-            "velocity": -31.014473906016974
+            "velocity": -12.09645250961239
           },
           {
-            "playerX": 772.2941175447544,
-            "platformX": 776.0848418655515,
+            "playerX": 812.616018177961,
+            "platformX": 818.4769956826963,
             "bottom": 216,
             "top": 216,
-            "velocity": -31.428132582652324
+            "velocity": -15.563708136690366
           },
           {
-            "playerX": 768.6115624951625,
-            "platformX": 772.4022868159597,
+            "playerX": 810.7828767593488,
+            "platformX": 816.6438542640841,
             "bottom": 216,
             "top": 216,
-            "velocity": -31.723699121568643
+            "velocity": -16.253400262908144
           },
           {
-            "playerX": 765.4316386530929,
-            "platformX": 769.2223629738901,
+            "playerX": 808.4928020845043,
+            "platformX": 814.3537795892396,
             "bottom": 216,
             "top": 216,
-            "velocity": -31.884862574280305
+            "velocity": -18.754665326488976
           },
           {
-            "playerX": 761.706811836775,
-            "platformX": 765.4975361575722,
+            "playerX": 806.2968824847168,
+            "platformX": 812.157859989452,
             "bottom": 216,
             "top": 216,
-            "velocity": -31.955798626325304
+            "velocity": -19.198463094628096
           },
           {
-            "playerX": 757.980457777445,
-            "platformX": 761.7711820982422,
+            "playerX": 803.6339564081862,
+            "platformX": 809.4949339129215,
             "bottom": 216,
             "top": 216,
-            "velocity": -31.897756714663046
+            "velocity": -21.915135685957466
           }
         ]
       }
@@ -296,8 +296,8 @@
       "name": "Moving platform carries resting player",
       "passed": true,
       "detail": {
-        "playerTravel": 63.13738181011513,
-        "platformTravel": 63.13738181011513,
+        "playerTravel": 40.998564557090276,
+        "platformTravel": 40.998564557090276,
         "relativeOffsetVariation": 0.0
       }
     },
@@ -378,14 +378,14 @@
         "x": 110,
         "bottom": 316,
         "health": 5,
-        "film": 83.86640000000001,
+        "film": 83.86655999999998,
         "stats": {
           "captures": 0,
           "damage": 0,
           "flashes": 1,
-          "blocked": 2,
+          "blocked": 1,
           "dodged": 0,
-          "attacks": 1,
+          "attacks": 0,
           "checkpoints": 0,
           "respawns": 0,
           "pickups": 0,
@@ -416,14 +416,14 @@
         "x": 110,
         "bottom": 316,
         "health": 5,
-        "film": 96.84999999999995,
+        "film": 97.61280000000002,
         "stats": {
           "captures": 0,
           "damage": 0,
           "flashes": 0,
-          "blocked": 2,
+          "blocked": 1,
           "dodged": 0,
-          "attacks": 1,
+          "attacks": 0,
           "checkpoints": 0,
           "respawns": 0,
           "pickups": 0,
@@ -433,33 +433,274 @@
       }
     },
     {
-      "name": "Jump evades ground shockwave",
+      "name": "Jump evades ground shockwave at 300 ms",
       "passed": true,
       "detail": {
-        "x": 110,
-        "bottom": 307.4666666666664,
-        "health": 5,
-        "film": 100,
-        "stats": {
-          "captures": 0,
-          "damage": 0,
-          "flashes": 0,
-          "blocked": 0,
-          "dodged": 1,
-          "attacks": 1,
-          "checkpoints": 0,
-          "respawns": 0,
-          "pickups": 0,
-          "stages": 0
+        "jumpDelaySimulationMs": 300,
+        "afterProjectilePassed": {
+          "x": 110,
+          "bottom": 296.57777777777756,
+          "health": 5,
+          "film": 100,
+          "stats": {
+            "captures": 0,
+            "damage": 0,
+            "flashes": 0,
+            "blocked": 0,
+            "dodged": 1,
+            "attacks": 0,
+            "checkpoints": 0,
+            "respawns": 0,
+            "pickups": 0,
+            "stages": 0
+          },
+          "phase": "running"
         },
-        "phase": "running"
+        "afterLanding": {
+          "x": 110,
+          "bottom": 316,
+          "health": 5,
+          "film": 100,
+          "stats": {
+            "captures": 0,
+            "damage": 0,
+            "flashes": 0,
+            "blocked": 0,
+            "dodged": 1,
+            "attacks": 0,
+            "checkpoints": 0,
+            "respawns": 0,
+            "pickups": 0,
+            "stages": 0
+          },
+          "phase": "running"
+        }
       }
+    },
+    {
+      "name": "Jump evades ground shockwave at 360 ms",
+      "passed": true,
+      "detail": {
+        "jumpDelaySimulationMs": 360,
+        "afterProjectilePassed": {
+          "x": 110,
+          "bottom": 282.07777777777767,
+          "health": 5,
+          "film": 100,
+          "stats": {
+            "captures": 0,
+            "damage": 0,
+            "flashes": 0,
+            "blocked": 0,
+            "dodged": 1,
+            "attacks": 0,
+            "checkpoints": 0,
+            "respawns": 0,
+            "pickups": 0,
+            "stages": 0
+          },
+          "phase": "running"
+        },
+        "afterLanding": {
+          "x": 110,
+          "bottom": 316,
+          "health": 5,
+          "film": 100,
+          "stats": {
+            "captures": 0,
+            "damage": 0,
+            "flashes": 0,
+            "blocked": 0,
+            "dodged": 1,
+            "attacks": 0,
+            "checkpoints": 0,
+            "respawns": 0,
+            "pickups": 0,
+            "stages": 0
+          },
+          "phase": "running"
+        }
+      }
+    },
+    {
+      "name": "Jump evades ground shockwave at 420 ms",
+      "passed": true,
+      "detail": {
+        "jumpDelaySimulationMs": 420,
+        "afterProjectilePassed": {
+          "x": 110,
+          "bottom": 269.7777777777777,
+          "health": 5,
+          "film": 100,
+          "stats": {
+            "captures": 0,
+            "damage": 0,
+            "flashes": 0,
+            "blocked": 0,
+            "dodged": 1,
+            "attacks": 0,
+            "checkpoints": 0,
+            "respawns": 0,
+            "pickups": 0,
+            "stages": 0
+          },
+          "phase": "running"
+        },
+        "afterLanding": {
+          "x": 110,
+          "bottom": 316,
+          "health": 5,
+          "film": 100,
+          "stats": {
+            "captures": 0,
+            "damage": 0,
+            "flashes": 0,
+            "blocked": 0,
+            "dodged": 1,
+            "attacks": 0,
+            "checkpoints": 0,
+            "respawns": 0,
+            "pickups": 0,
+            "stages": 0
+          },
+          "phase": "running"
+        }
+      }
+    },
+    {
+      "name": "Shockwave dodge works across three reaction timings",
+      "passed": true,
+      "detail": [
+        {
+          "jumpDelaySimulationMs": 300,
+          "afterProjectilePassed": {
+            "x": 110,
+            "bottom": 296.57777777777756,
+            "health": 5,
+            "film": 100,
+            "stats": {
+              "captures": 0,
+              "damage": 0,
+              "flashes": 0,
+              "blocked": 0,
+              "dodged": 1,
+              "attacks": 0,
+              "checkpoints": 0,
+              "respawns": 0,
+              "pickups": 0,
+              "stages": 0
+            },
+            "phase": "running"
+          },
+          "afterLanding": {
+            "x": 110,
+            "bottom": 316,
+            "health": 5,
+            "film": 100,
+            "stats": {
+              "captures": 0,
+              "damage": 0,
+              "flashes": 0,
+              "blocked": 0,
+              "dodged": 1,
+              "attacks": 0,
+              "checkpoints": 0,
+              "respawns": 0,
+              "pickups": 0,
+              "stages": 0
+            },
+            "phase": "running"
+          }
+        },
+        {
+          "jumpDelaySimulationMs": 360,
+          "afterProjectilePassed": {
+            "x": 110,
+            "bottom": 282.07777777777767,
+            "health": 5,
+            "film": 100,
+            "stats": {
+              "captures": 0,
+              "damage": 0,
+              "flashes": 0,
+              "blocked": 0,
+              "dodged": 1,
+              "attacks": 0,
+              "checkpoints": 0,
+              "respawns": 0,
+              "pickups": 0,
+              "stages": 0
+            },
+            "phase": "running"
+          },
+          "afterLanding": {
+            "x": 110,
+            "bottom": 316,
+            "health": 5,
+            "film": 100,
+            "stats": {
+              "captures": 0,
+              "damage": 0,
+              "flashes": 0,
+              "blocked": 0,
+              "dodged": 1,
+              "attacks": 0,
+              "checkpoints": 0,
+              "respawns": 0,
+              "pickups": 0,
+              "stages": 0
+            },
+            "phase": "running"
+          }
+        },
+        {
+          "jumpDelaySimulationMs": 420,
+          "afterProjectilePassed": {
+            "x": 110,
+            "bottom": 269.7777777777777,
+            "health": 5,
+            "film": 100,
+            "stats": {
+              "captures": 0,
+              "damage": 0,
+              "flashes": 0,
+              "blocked": 0,
+              "dodged": 1,
+              "attacks": 0,
+              "checkpoints": 0,
+              "respawns": 0,
+              "pickups": 0,
+              "stages": 0
+            },
+            "phase": "running"
+          },
+          "afterLanding": {
+            "x": 110,
+            "bottom": 316,
+            "health": 5,
+            "film": 100,
+            "stats": {
+              "captures": 0,
+              "damage": 0,
+              "flashes": 0,
+              "blocked": 0,
+              "dodged": 1,
+              "attacks": 0,
+              "checkpoints": 0,
+              "respawns": 0,
+              "pickups": 0,
+              "stages": 0
+            },
+            "phase": "running"
+          }
+        }
+      ]
     },
     {
       "name": "Same ground shockwave damages grounded player",
       "passed": true,
       "detail": {
-        "x": 67.66666666666676,
+        "x": 68.60026666666668,
         "bottom": 316,
         "health": 4,
         "film": 100,
@@ -469,7 +710,7 @@
           "flashes": 0,
           "blocked": 0,
           "dodged": 0,
-          "attacks": 1,
+          "attacks": 0,
           "checkpoints": 0,
           "respawns": 0,
           "pickups": 0,
@@ -497,7 +738,7 @@
           "flashes": 0,
           "blocked": 0,
           "dodged": 0,
-          "attacks": 1,
+          "attacks": 0,
           "checkpoints": 0,
           "respawns": 1,
           "pickups": 0,
@@ -578,6 +819,6 @@
     }
   ],
   "errors": [],
-  "passed": 42,
+  "passed": 45,
   "failed": 0
 }
