@@ -4,8 +4,8 @@ on:
     branches: [main]
     paths:
       - 'index.html'
-      - 'game/releases/gothic-r3/**'
-      - 'game/releases/gothic-r4/**'
+      - 'game/releases/gothic-r3a/**'
+      - 'game/releases/gothic-r4a/**'
       - 'audit/check-live-r34.py'
       - '.github/workflows/gothic-live-check.yml'
 permissions:
