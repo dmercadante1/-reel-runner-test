@@ -1,0 +1,84 @@
+name: Verify exact Gothic R3 and R4 candidate
+on:
+  push:
+    branches: [gothic-r3-r4-release]
+    paths: ['.github/workflows/verify-gothic-r34-candidate.yml']
+permissions:
+  contents: write
+concurrency:
+  group: gothic-r34-staging
+  cancel-in-progress: false
+jobs:
+  verify-candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow playwright==1.57.0
+      - name: Apply cross-browser test harness corrections only
+        run: python audit/refine-r34-checks.py
+      - name: Decode every PNG and prove editable source reproduces the exact staged game
+        run: |
+          python game/rebuild-r34/tools/bundle.py 3
+          python game/rebuild-r34/tools/bundle.py 4
+          cmp game/rebuild-r34/releases/gothic-r3/index.html game/releases/gothic-r3/index.html
+          cmp game/rebuild-r34/releases/gothic-r4/index.html game/releases/gothic-r4/index.html
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add game/rebuild-r34/tests/playthrough.py audit/check-live-r34.py
+          git diff --cached --quiet || git commit -m 'Fix RGBA screenshot assertion and replay test synchronization; game artifacts unchanged'
+          git push origin HEAD:gothic-r3-r4-release
+      - name: Remove stale results before this acceptance run
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('game/rebuild-r34/evidence')
+          for engine in ['chromium','webkit']:
+              for name in [f'r3-{engine}-playthrough.json',f'r4-{engine}-playthrough.json',f'r4-{engine}-mechanics.json',f'r4-{engine}-presentation.json']:(p/name).unlink(missing_ok=True)
+          (p/'release-gates.json').unlink(missing_ok=True)
+          PY
+      - run: python -m playwright install --with-deps chromium webkit
+      - name: Exercise every suite in both browsers and retain all failures
+        run: |
+          python - <<'PY'
+          import os,subprocess
+          failures=[]
+          for engine in ['chromium','webkit']:
+              for args in [['playthrough.py','3'],['playthrough.py','4'],['mechanics.py'],['presentation.py']]:
+                  env={**os.environ,'BROWSER':engine}
+                  r=subprocess.run(['python','game/rebuild-r34/tests/'+args[0],*args[1:]],env=env,timeout=240)
+                  if r.returncode:failures.append([engine,args,r.returncode])
+          print('Script exit failures:',failures)
+          PY
+      - name: Require all eight fresh JSON reports before saving a passing release checkpoint
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          root=pathlib.Path('game/rebuild-r34');reports={}
+          for engine in ['chromium','webkit']:
+              for file in [f'r3-{engine}-playthrough.json',f'r4-{engine}-playthrough.json',f'r4-{engine}-mechanics.json',f'r4-{engine}-presentation.json']:
+                  r=json.loads((root/'evidence'/file).read_text());reports[file]={'passed':r['passed'],'failed':r['failed'],'errors':r['errors']}
+          print(json.dumps(reports,indent=2))
+          assert all(r['failed']==0 and not r['errors'] and r['passed']>10 for r in reports.values()),'Acceptance failed; main must not be promoted'
+          result={'success':True,'run':__import__('os').environ['GITHUB_RUN_ID'],'reports':reports,'totalPassed':sum(r['passed'] for r in reports.values()),'physicalDeviceTested':False,'releases':{f'r{n}':json.loads((root/f'releases/gothic-r{n}/build.json').read_text()) for n in [3,4]},'status':'Passed exact-byte staging gates; public root not yet promoted'}
+          (root/'evidence/release-gates.json').write_text(json.dumps(result,indent=2))
+          PY
+          git fetch origin gothic-r3-r4-release
+          git merge --ff-only origin/gothic-r3-r4-release
+          git add game/rebuild-r34/evidence
+          git commit -m 'R3/R4 pass all fresh Chromium and WebKit progression, combat, platform and HUD checks'
+          git push origin HEAD:gothic-r3-r4-release
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gothic-r34-candidate-proof
+          path: game/rebuild-r34/evidence/
+          retention-days: 14
