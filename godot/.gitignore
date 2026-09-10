@@ -1,4 +1,4 @@
 .godot/
-export_credentials.cfg
+evidence/*
+!evidence/.gitkeep
 tests/latest-native-results.json
-*.tmp

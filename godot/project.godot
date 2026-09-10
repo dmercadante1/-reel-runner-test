@@ -3,7 +3,7 @@ config_version=5
 
 [application]
 config/name="MovieCameraPrototype"
-run/main_scene="res://scenes/movement_lab.tscn"
+run/main_scene="res://scenes/web_trial.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]

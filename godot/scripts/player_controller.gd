@@ -1,13 +1,20 @@
 extends CharacterBody2D
-## Motion/collision only. Production artwork will be an independent visual scene.
+## Physics only; the production visual scene is deliberately not supplied by M1.
 signal jumped
 signal landed
-
 @export var tuning: MovementTuning = preload("res://data/default_movement.tres")
 var facing: int = 1
 var _coyote: float = 0.0
 var _buffer: float = 0.0
 var _was_grounded: bool = false
+var _released_jump: bool = false
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("jump") and not event.is_echo():
+		_buffer = tuning.jump_buffer_seconds
+		_released_jump = false
+	if event.is_action_released("jump"):
+		_released_jump = true
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
@@ -15,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		_coyote = maxf(0.0, _coyote - delta)
 	_buffer = maxf(0.0, _buffer - delta)
+	# action_press in native tests also works; browser/touch edges are buffered in _input.
 	if Input.is_action_just_pressed("jump"):
 		_buffer = tuning.jump_buffer_seconds
 	var direction := Input.get_axis("move_left", "move_right")
@@ -29,8 +37,9 @@ func _physics_process(delta: float) -> void:
 		_buffer = 0.0
 		_coyote = 0.0
 		jumped.emit()
-	if Input.is_action_just_released("jump") and velocity.y < 0.0:
+	if (_released_jump or Input.is_action_just_released("jump")) and velocity.y < 0.0:
 		velocity.y *= tuning.release_jump_multiplier
+		_released_jump = false
 	move_and_slide()
 	if is_on_floor() and not _was_grounded:
 		landed.emit()
@@ -43,4 +52,5 @@ func reset_at(point: Vector2) -> void:
 	velocity = Vector2.ZERO
 	_coyote = 0.0
 	_buffer = 0.0
+	_released_jump = false
 	_was_grounded = false
