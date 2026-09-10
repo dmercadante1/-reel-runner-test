@@ -1,0 +1,95 @@
+name: Final Gothic R3 R4 release verification
+on:
+  push:
+    branches: [gothic-r34-art-review]
+    paths: ['.github/workflows/gothic-r34-final.yml']
+permissions:
+  contents: write
+concurrency:
+  group: gothic-r34-final
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow playwright==1.57.0
+      - name: Finish animation state priority and preserve corrected stage artwork
+        run: |
+          python audit/finish-r34-locomotion.py
+          python game/rebuild-r34/tools/bundle.py 3
+          python game/rebuild-r34/tools/bundle.py 4
+          cp game/rebuild-r34/releases/gothic-r3/* game/releases/gothic-r3a/
+          cp game/rebuild-r34/releases/gothic-r4/* game/releases/gothic-r4a/
+          git diff --exit-code -- game/releases/gothic-r3 game/releases/gothic-r4 game/releases/gothic-hud-r2 .github/workflows
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add game/rebuild-r34/src game/rebuild-r34/releases game/releases/gothic-r3a game/releases/gothic-r4a
+          git diff --cached --quiet || git commit -m 'Animate walking legs during filming; candidate awaits fresh final verification'
+          git push origin HEAD:gothic-r34-art-review
+      - name: Export complete editable source and exact candidate bytes for independent inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: gothic-r34-final-source
+          path: |
+            game/rebuild-r34/
+            audit/check-live-r34.py
+          retention-days: 14
+      - name: Remove stale browser evidence
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('game/rebuild-r34/evidence')
+          for engine in ['chromium','webkit']:
+              for name in [f'r3-{engine}-playthrough.json',f'r4-{engine}-playthrough.json',f'r4-{engine}-mechanics.json',f'r4-{engine}-presentation.json',f'{engine}-locomotion.json']:(p/name).unlink(missing_ok=True)
+          (p/'release-gates.json').unlink(missing_ok=True)
+          PY
+      - run: python -m playwright install --with-deps chromium webkit
+      - name: Full keyboard traversals and isolated mechanics, layout and filming locomotion
+        run: |
+          python - <<'PY'
+          import os,subprocess,json,pathlib
+          failures=[]
+          for engine in ['chromium','webkit']:
+              for args in [['playthrough.py','3'],['playthrough.py','4'],['mechanics.py'],['presentation.py'],['locomotion.py']]:
+                  try:
+                      r=subprocess.run(['python','game/rebuild-r34/tests/'+args[0],*args[1:]],env={**os.environ,'BROWSER':engine},timeout=240)
+                      if r.returncode:failures.append([engine,args,r.returncode])
+                  except subprocess.TimeoutExpired:failures.append([engine,args,'timeout'])
+          pathlib.Path('game/rebuild-r34/evidence/script-exit-results.json').write_text(json.dumps({'failures':failures},indent=2))
+          assert not failures,failures
+          PY
+      - name: Require all ten reports and exact artifact hashes
+        run: |
+          python - <<'PY'
+          import json,pathlib,os,hashlib
+          root=pathlib.Path('game/rebuild-r34');reports={}
+          for engine in ['chromium','webkit']:
+              for name in [f'r3-{engine}-playthrough.json',f'r4-{engine}-playthrough.json',f'r4-{engine}-mechanics.json',f'r4-{engine}-presentation.json',f'{engine}-locomotion.json']:
+                  r=json.loads((root/'evidence'/name).read_text());assert r['failed']==0 and not r['errors'] and r['passed']>=9,(name,r);reports[name]={'passed':r['passed'],'failed':r['failed'],'errors':r['errors']}
+          releases={}
+          for n in [3,4]:
+              p=pathlib.Path(f'game/releases/gothic-r{n}a');meta=json.loads((p/'build.json').read_text());data=(p/'index.html').read_bytes();assert hashlib.sha256(data).hexdigest()==meta['sha256'] and len(data)==meta['bytes'];releases[f'r{n}']=meta
+          result={'success':True,'run':os.environ['GITHUB_RUN_ID'],'reports':reports,'totalPassed':sum(r['passed'] for r in reports.values()),'physicalDeviceTested':False,'artCoordinateCorrection':True,'filmingLocomotion':True,'releases':releases,'status':'Final candidate passed; main promotion and served-build verification remain'}
+          (root/'evidence/release-gates.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
+          PY
+          git fetch origin gothic-r34-art-review
+          git merge --ff-only origin/gothic-r34-art-review
+          git add game/rebuild-r34/evidence
+          git commit -m 'Final R3/R4 corrected art and filming locomotion pass all ten Chromium/WebKit suites'
+          git push origin HEAD:gothic-r34-art-review
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gothic-r34-final-proof
+          path: game/rebuild-r34/evidence/
+          retention-days: 14
