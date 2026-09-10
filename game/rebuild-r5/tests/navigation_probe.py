@@ -1,37 +1,34 @@
-"""Keyboard-only waypoint steering with braking and frame-observed arrival.
-A fixed 35-ms host polling loop can miss a five-pixel waypoint on a busy CI
-renderer, reverse at full speed, and oscillate until timeout. This observer waits
-inside requestAnimationFrame and accounts for the game's real stopping distance.
-It never writes player position, velocity, health, film, or enemy state.
+"""Frame-local browser keyboard navigation. Only dispatches input events.
+Headless CI runs software rendering around 17fps: round trips for each steering
+change can overshoot narrow waypoints by 20px. Keep navigation in the browser's
+animation loop, still exercising the real keyboard handlers/physics. Acceptance
+also checks arrows with Playwright's native keyboard API separately.
 """
-import time
-
-def _sample(page):
-    return page.evaluate('''(()=>{const s=GOTHIC.scene,p=s.player;return {phase:GOTHIC.phase,stage:s.stageIndex,x:p.x,bottom:p.body.bottom,vx:p.body.velocity.x,vy:p.body.velocity.y,clock:s.clock,tick:s.tick,fps:GOTHIC.game.loop.actualFps,left:s.cursors.left.isDown,right:s.cursors.right.isDown,ground:p.body.blocked.down||p.body.touching.down,respawns:s.stats.respawns}})()''')
-
 def walk_to(page, keys, info, target, limit=15):
-    end=time.monotonic()+limit;trace=[]
-    while time.monotonic()<end:
-        s=_sample(page);trace.append(s)
-        if abs(s['x']-target)<5 and abs(s['vx'])<4:
-            keys(set());return
-        direction=1 if s['x']<target else -1
-        predicted=s['x']+s['vx']*abs(s['vx'])/(2*1600)
-        if abs(predicted-target)<5 or abs(s['x']-target)<5:
-            keys(set())
-        else:
-            keys({'ArrowRight' if direction>0 else 'ArrowLeft'})
-            page.wait_for_function('''a=>{const p=GOTHIC.scene.player;const v=p.body.velocity.x;const stop=v*v/(2*GOTHIC_CONFIG.hero.drag);return GOTHIC.phase!=='running'||a.direction*(p.x-a.target)>=-Math.max(3,stop+Math.abs(v)*.035)}''',arg={'direction':direction,'target':target},timeout=max(1000,int((end-time.monotonic())*1000)))
-            keys(set())
-        page.wait_for_function("GOTHIC.phase!=='running'||Math.abs(GOTHIC.scene.player.body.velocity.x)<3",timeout=2500)
-        if info()['phase']!='running':raise AssertionError(('Navigation interrupted',target,trace))
-    raise AssertionError(('Waypoint steering timeout',target,trace))
+    keys(set())
+    report=page.evaluate('''({target,limit})=>new Promise(resolve=>{
+      const started=performance.now(),trace=[];let held=0,previous=started;
+      const send=(name,type,code)=>window.dispatchEvent(new KeyboardEvent(type,{key:name,code:name,keyCode:code,which:code,bubbles:true,cancelable:true}));
+      const steer=direction=>{if(direction===held)return;if(held)send(held>0?'ArrowRight':'ArrowLeft','keyup',held>0?39:37);held=direction;if(held)send(held>0?'ArrowRight':'ArrowLeft','keydown',held>0?39:37);};
+      const finish=(ok,reason)=>{steer(0);resolve({ok,reason,target,trace});};
+      const frame=()=>{const now=performance.now(),s=GOTHIC.scene,p=s.player,v=p.body.velocity.x,d=target-p.x;
+        const dt=Math.min(.12,Math.max(1/60,(now-previous)/1000));previous=now;
+        trace.push({x:p.x,vx:v,bottom:p.body.bottom,clock:s.clock,fps:GOTHIC.game.loop.actualFps,left:s.cursors.left.isDown,right:s.cursors.right.isDown});
+        if(GOTHIC.phase!=='running'){finish(false,'Scene interrupted');return;}
+        if(Math.abs(d)<5&&Math.abs(v)<4){finish(true,'Arrived');return;}
+        if(now-started>limit*1000){finish(false,'Keyboard waypoint timeout');return;}
+        const brake=v*v/(2*GOTHIC_CONFIG.hero.drag)+Math.abs(v)*dt;
+        const stop=Math.abs(d)<4||(Math.sign(v)===Math.sign(d)&&brake>=Math.abs(d));
+        steer(stop?0:Math.sign(d));requestAnimationFrame(frame);
+      };requestAnimationFrame(frame);
+    })''',{'target':target,'limit':limit})
+    keys(set())
+    if not report['ok']:raise AssertionError(report)
 
 def jump_to(page, keys, info, target):
-    start=_sample(page);direction='ArrowRight' if start['x']<target else 'ArrowLeft'
+    start=info();direction='ArrowRight' if start['x']<target else 'ArrowLeft'
     keys({'ArrowUp',direction})
     page.wait_for_function('GOTHIC.scene.player.body.velocity.y<-40',timeout=2500)
-    keys({direction})
-    walk_to(page,keys,info,target,limit=7)
+    keys({direction});walk_to(page,keys,info,target,limit=7)
     page.wait_for_function('GOTHIC.scene.player.body.blocked.down||GOTHIC.scene.player.body.touching.down',timeout=4000)
-    if info()['stats']['respawns']!=start['respawns']:raise AssertionError(('Jump waypoint caused a fall',target,info()))
+    if info()['stats']['respawns']!=start['stats']['respawns']:raise AssertionError(('Jump caused a fall',target,info()))
