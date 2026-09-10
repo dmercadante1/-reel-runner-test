@@ -1,0 +1,36 @@
+name: Verify served Gothic R5
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'game/play.html'
+      - 'game/releases/gothic-r5/**'
+      - 'audit/check-live-r5.py'
+      - '.github/workflows/gothic-r5-live.yml'
+permissions:
+  contents: read
+concurrency:
+  group: gothic-r5-live
+  cancel-in-progress: true
+jobs:
+  verify-public-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install playwright==1.57.0
+      - run: python -m playwright install --with-deps chromium webkit
+      - name: Exact served bytes and desktop/mobile-emulated browser behavior
+        run: python audit/check-live-r5.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gothic-r5-live-evidence
+          path: r5-live-evidence/
+          retention-days: 14
