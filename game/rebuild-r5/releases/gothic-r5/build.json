@@ -1,7 +1,7 @@
 {
   "edition": 5,
-  "sha256": "38831b564d73a3a694354611de349f25803155f6c453ab3383b5803ce1f8b13d",
-  "bytes": 4535015,
+  "sha256": "6d5bf642fbdc44af784a472faa15d15d4c22e5b9b6b5f3ea5943260f9d94c702",
+  "bytes": 4536133,
   "assets": 31,
   "sourceHashes": {
     "src/shell.js": "e11446e4c74a2b0f705127b520712ff86a2eca9eff77c0ef462437e1f8bb2288",
@@ -13,6 +13,6 @@
     "src/world.js": "4881ddbfc96af7e106920bc59a13d338a7a46284ef4d4b361c3c70519d30008b",
     "src/combat.js": "4aa6707c260e5584dbd543ddf68f328e3707d95015a27c3297768d0f8748a343",
     "src/scene.js": "c7e443dfacc4710bbd471c01b3af5c33a50afcc04c974c1b54fe8e7346da7de2",
-    "src/boot.js": "8781ee2d5b16079ebf243060041a70edb420e7cb34449a3b6658003bafe83f26"
+    "src/boot.js": "01f2b54e5a8e0e5c0dcd8edefa0232f39ebf0f27167f7c5daa6186a106ba696e"
   }
 }

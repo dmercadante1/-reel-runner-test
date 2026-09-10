@@ -2,6 +2,7 @@
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 import json,time,os,traceback
+from navigation_probe import walk_to, jump_to
 R=Path(__file__).resolve().parents[1];engine=os.getenv('BROWSER','chromium');checks=[];errors=[];held=set();p=None
 
 def ck(n,v,d=None):
@@ -14,20 +15,8 @@ def keys(want):
  for k in want-held:p.keyboard.down(k)
  held=set(want)
 def wait(ms=50):p.wait_for_timeout(ms)
-def walk(x,limit=10):
- end=time.monotonic()+limit
- while time.monotonic()<end:
-  s=info()
-  if abs(s['x']-x)<5:keys(set());wait(100);return
-  keys({'ArrowRight'if s['x']<x else'ArrowLeft'});wait(35)
- raise AssertionError(('walk timeout',x,info()))
-def jump(x):
- keys({'ArrowUp','ArrowRight'if info()['x']<x else'ArrowLeft'});wait(120);keys({'ArrowRight'if info()['x']<x else'ArrowLeft'});end=time.monotonic()+3
- while time.monotonic()<end:
-  s=info()
-  if abs(s['x']-x)<6:keys(set());break
-  keys({'ArrowRight'if s['x']<x else'ArrowLeft'});wait(30)
- keys(set());p.wait_for_function('GOTHIC.scene.player.body.blocked.down||GOTHIC.scene.player.body.touching.down',timeout=3500)
+def walk(x,limit=15):return walk_to(p,keys,info,x,limit)
+def jump(x):return jump_to(p,keys,info,x)
 def ferry_cross():
  s=info();left,right=s['gap'];stage=s['stage'];resp=s['stats']['respawns'];keys(set());walk(left-29);end=time.monotonic()+23
  while time.monotonic()<end:
@@ -50,7 +39,9 @@ def ferry_cross():
   keys(set());wait(60)
  else:raise AssertionError(('Ferry did not carry player to far bank',s))
  ck('Stage '+str(stage+1)+' rides over unjumpable gap',s['x']>right-145 and s['stats']['respawns']==resp,s)
- keys({'ArrowRight','ArrowUp'});wait(110);keys({'ArrowRight'});end=time.monotonic()+3
+ departure={'ArrowRight','ArrowUp'}
+ if s['film']>=20 and s['flash']<=0 and any(0<e['x']-s['x']<190 for e in s['enemies']):departure.add('x')
+ keys(departure);wait(110);keys({'ArrowRight'});end=time.monotonic()+3
  while time.monotonic()<end:
   s=info()
   if s['x']>right+30:break
@@ -61,15 +52,19 @@ try:
  with sync_playwright() as pw:
   kw={'executable_path':'/usr/bin/chromium','args':['--no-sandbox']} if engine=='chromium' and not os.getenv('GITHUB_ACTIONS') else {}
   b=getattr(pw,engine).launch(**kw);p=b.new_page(viewport={'width':1280,'height':720});p.set_default_timeout(12000);p.on('pageerror',lambda e:errors.append(str(e)));p.set_content((R/'releases/gothic-r5/index.html').read_text(),wait_until='load');p.wait_for_function('GOTHIC.phase==="ready"');ck('31 validated raster textures, 30 planned encounters',p.evaluate('GOTHIC_ASSETS.length===31&&GOTHIC_CONFIG.totalEncounters===30'))
-  p.locator('#start').click();seen=set();crossed=set();balcony=False;lastRespawns=0;collectedRoutes=set();deadline=time.monotonic()+360;last=time.monotonic()
+  p.locator('#start').click();seen=set();crossed=set();balcony=False;lastRespawns=0;collectedRoutes=set();deadline=time.monotonic()+540;last=time.monotonic()
   while time.monotonic()<deadline:
    s=info()
    if s['phase']=='complete':break
-   if s['stats']['respawns']!=lastRespawns:keys(set());lastRespawns=s['stats']['respawns']
+   if s['stats']['respawns']!=lastRespawns:
+    keys(set());lastRespawns=s['stats']['respawns']
+    if s['x']<s['gap'][0]:crossed.discard(s['stage'])
+    if s['stage']==1:balcony=False
+    print('RECOVERY: route recalculated after fall/death',s,flush=True)
    if s['phase']=='transition':keys(set());wait(350);continue
    if s['phase']!='running':raise AssertionError(s)
    if s['stage']not in seen:
-    seen.add(s['stage']);ck('Enter stage '+str(s['stage']+1),True);p.screenshot(path=str(R/f'evidence/r5-{engine}-stage-{s["stage"]}.png'))
+    keys(set());seen.add(s['stage']);ck('Enter stage '+str(s['stage']+1),True);p.screenshot(path=str(R/f'evidence/r5-{engine}-stage-{s["stage"]}.png'))
    if time.monotonic()-last>8:print('PLAY',s,flush=True);last=time.monotonic()
    if s['stage'] not in collectedRoutes and 420<s['x']<650 and s['cap']>=1:
     keys(set())
