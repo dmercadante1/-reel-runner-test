@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="1"]
+
+[sub_resource type="RectangleShape2D" id="body"]
+size = Vector2(20, 56)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1")
+floor_snap_length = 4.0
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28)
+shape = SubResource("body")
+
+[node name="InternalOnlyMarker" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-10, -56, 10, -56, 10, 0, -10, 0)
+color = Color(0.5, 0.75, 0.9, 1)

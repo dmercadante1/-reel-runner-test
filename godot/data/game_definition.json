@@ -1,0 +1,13 @@
+{
+  "id": "movie_camera_game",
+  "display_title": "MAN WITH A MOVIE CAMERA",
+  "base_viewport": [640, 360],
+  "stages_per_genre": 4,
+  "genres": ["gothic", "horror", "western", "science_fiction", "noir", "documentary", "action", "comedy", "fantasy"],
+  "characters": [
+    {"id": "everyday", "label": "The Everyday Cameraman", "status": "first to produce", "outfit": "Hartford Whalers cap; Black Watch navy-green plaid shirt; jeans; sneakers"},
+    {"id": "cinematographer", "label": "The Cinematographer", "status": "woman; final design pending"},
+    {"id": "director", "label": "The Director", "status": "Hitchcock-inspired older man; final design pending"},
+    {"id": "documentarian", "label": "The Documentarian", "status": "proposed fourth character; not final approval"}
+  ]
+}

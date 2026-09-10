@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/lab.gd" id="2"]
+
+[sub_resource type="RectangleShape2D" id="floor_shape"]
+size = Vector2(640, 40)
+
+[node name="InternalMovementLab" type="Node2D"]
+script = ExtResource("2")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(320, 316)
+
+[node name="Collision" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("floor_shape")
+
+[node name="Marker" type="Polygon2D" parent="Floor"]
+polygon = PackedVector2Array(-320, -20, 320, -20, 320, 20, -320, 20)
+color = Color(0.2, 0.25, 0.3, 1)
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(90, 240)
+
+[node name="DebugOverlay" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="DebugOverlay"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 620.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 14
+text = "INTERNAL MOVEMENT LAB — NOT PRODUCTION ART\nLEFT / RIGHT or A / D move · UP or W jump\nCapture, final sprites, environments and mobile input are not built yet."

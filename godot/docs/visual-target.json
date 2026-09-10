@@ -1,0 +1,13 @@
+{
+  "status": "composition and art-direction target approved by user; production assets not yet approved",
+  "reference_filename": "Gothic-Courtyard-Max-Detail-640x360.png",
+  "reference_sha256": "64a3fc02e319e95fcb9d1472f92c475ba79d0c7757b655e661814e8db3f9c072",
+  "reference_bytes": 461522,
+  "native_size": [640, 360],
+  "source": "Exact conversation PNG; 2x preview contains no additional detail. Reference PNG is retained in the conversation, not uploaded in this source commit.",
+  "art_direction": "Naturalistic richly illustrated pixel art; realistic adult proportions, coherent materials and pixel density. Blue moonlight, warm torchlight, layered castle architecture, ivy, statues and waterfall depth.",
+  "not_approved": ["final anatomy", "final camera geometry", "animation frames", "platform collisions", "HUD typeface", "all character costumes", "a production-ready layered environment"],
+  "rules": ["No collage-heading crops in game textures", "Do not make sprites by articulating one concept pose and calling it a finished walk cycle", "Do not use the flattened reference as the playable scene", "Readability and motion quality take priority over texture noise", "Do not change internal resolution without explicit approval"],
+  "proposed_character_standing_height_pixels": [60, 72],
+  "frozen_reference_commit": "cb242c3cefccb47ea73822f6be0051cf6ca8806a"
+}
