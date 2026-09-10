@@ -17,7 +17,9 @@ var _frame_ms: Array[float] = []
 var _bridge: JavaScriptObject
 var _command_callback: JavaScriptObject
 var _record: bool = false
-var _flash_left: float = 0.0
+var _reload_requested: bool = false
+var film_stock = preload("res://scripts/film_inventory.gd").new()
+var _reels: Array[Vector2] = [Vector2(145, 284), Vector2(220, 251), Vector2(420, 253)]
 var _calibration: Texture2D
 const SPAWN := Vector2(85, 220)
 
@@ -70,7 +72,7 @@ func _web_command(args: Array) -> void:
 		return
 	var name: String = str(args[0])
 	var pressed: bool = bool(args[1])
-	if name in ["move_left", "move_right", "jump", "record", "defend"]:
+	if name in ["move_left", "move_right", "jump", "record", "reload"]:
 		if _phase == "running" or not pressed:
 			var event := InputEventAction.new()
 			event.action = name
@@ -79,7 +81,12 @@ func _web_command(args: Array) -> void:
 	else:
 		_command(name, pressed)
 
+func _input(event: InputEvent) -> void:
+	if _phase == "running" and event.is_action_pressed("reload") and not event.is_echo():
+		_reload_requested = true
+
 func _command(name: String, value: bool = true) -> void:
+	_reload_requested = false
 	match name:
 		"start", "resume":
 			player.clear_buffered_input()
@@ -100,6 +107,8 @@ func _command(name: String, value: bool = true) -> void:
 			Controls.release_all()
 			player.reset_at(SPAWN)
 			_record = false
+			film_stock.reset()
+			_reels = [Vector2(145, 284), Vector2(220, 251), Vector2(420, 253)]
 			_jumps = 0
 			_lands = 0
 			_respawns = 0
@@ -117,11 +126,15 @@ func _physics_process(delta: float) -> void:
 	if _phase == "running":
 		_tick += 1
 		_elapsed += delta
-		_record = Input.is_action_pressed("record")
-		if Input.is_action_just_pressed("defend"):
-			_flash_left = 0.14
+		if _reload_requested and film_stock.start_reload():
 			_chirp()
-		_flash_left = maxf(0.0, _flash_left - delta)
+		_reload_requested = false
+		_record = film_stock.advance(delta, Input.is_action_pressed("record"))
+		for i in range(_reels.size() - 1, -1, -1):
+			if absf(player.position.x - _reels[i].x) < 18.0 and absf(player.position.y - 20.0 - _reels[i].y) < 25.0:
+				if film_stock.collect_reel():
+					_reels.remove_at(i)
+					_chirp()
 		if player.position.y > 450.0:
 			_respawns += 1
 			Controls.release_all()
@@ -163,7 +176,8 @@ func _report() -> void:
 		"fps": Engine.get_frames_per_second(), "frame_p95_ms": p95, "frame_samples": samples.size(),
 		"viewport": [get_viewport_rect().size.x, get_viewport_rect().size.y],
 		"actions": {"move_left": Input.is_action_pressed("move_left"), "move_right": Input.is_action_pressed("move_right"), "jump": Input.is_action_pressed("jump"), "record": Input.is_action_pressed("record")},
-		"engine": Engine.get_version_info().string, "build": "m1-01", "production_art": false}
+		"film": film_stock.film, "film_capacity": film_stock.CAPACITY, "spares": film_stock.spares, "max_spares": film_stock.MAX_SPARES, "reload_left": film_stock.reload_left, "reloads": film_stock.reloads, "pickups": _reels.size(),
+		"engine": Engine.get_version_info().string, "build": "m1-02", "production_art": false}
 	if _bridge != null:
 		_bridge.report(JSON.stringify(state))
 
@@ -194,6 +208,12 @@ func _draw() -> void:
 		if _record:
 			var lens := p + Vector2(10 * player.facing, -39)
 			draw_colored_polygon(PackedVector2Array([lens, lens + Vector2(110 * player.facing, -20), lens + Vector2(110 * player.facing, 22)]), Color(0.9, 0.78, 0.45, 0.22))
-		if _flash_left > 0.0:
-			draw_arc(p + Vector2(0, -30), 30, 0, TAU, 24, Color("e5d291"), 2)
-	draw_string(_font, Vector2(14, 352), "ARROWS / WASD  |  UP = JUMP  |  SPACE = RECORD TEST  |  X = FLASH TEST", HORIZONTAL_ALIGNMENT_LEFT, -1, 9, Color("aab7bd"))
+		if film_stock.reload_left > 0.0:
+			draw_string(_font, p + Vector2(-23, -77), "RELOADING", HORIZONTAL_ALIGNMENT_LEFT, -1, 9, Color("e5d291"))
+	for reel in _reels:
+		draw_circle(reel, 7, Color("c3ac7a"))
+		draw_circle(reel, 2, Color("142536"))
+	draw_rect(Rect2(15, 65, 100, 7), Color("2b3947"))
+	draw_rect(Rect2(15, 65, 100 * film_stock.film / film_stock.CAPACITY, 7), Color("c3ac7a"))
+	draw_string(_font, Vector2(123, 73), "FILM %d%%   SPARE REELS %d / %d" % [roundi(film_stock.film / film_stock.CAPACITY * 100), film_stock.spares, film_stock.MAX_SPARES], HORIZONTAL_ALIGNMENT_LEFT, -1, 11, Color("dbe4df"))
+	draw_string(_font, Vector2(14, 352), "ARROWS / WASD  |  UP = JUMP  |  SPACE = FILM  |  R = RELOAD  |  GOLD REELS = PICKUPS", HORIZONTAL_ALIGNMENT_LEFT, -1, 9, Color("aab7bd"))

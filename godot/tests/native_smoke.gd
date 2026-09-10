@@ -57,6 +57,23 @@ func _run() -> void:
 		if event is InputEventKey and event.keycode == KEY_UP:
 			has_up = true
 	check_result("Up-arrow binding is present", has_up)
+	var stock = preload("res://scripts/film_inventory.gd").new()
+	check_result("Full camera does not waste a spare", not stock.start_reload() and stock.spares == 2)
+	check_result("Pickups stack only to three", stock.collect_reel() and not stock.collect_reel() and stock.spares == 3)
+	stock.advance(3.0, true)
+	check_result("Filming consumes film", stock.film == 9.0)
+	check_result("Reload commits exactly one spare", stock.start_reload() and stock.spares == 2 and not stock.start_reload())
+	check_result("Reload suspends filming", not stock.advance(0.3, true) and stock.film == 9.0)
+	stock.advance(0.35, false)
+	check_result("Reload restores full film", stock.film == stock.CAPACITY and stock.reloads == 1)
+	stock.advance(20.0, true)
+	check_result("Empty camera cannot film or go negative", stock.film == 0.0 and not stock.advance(1.0, true))
+	stock.spares = 0
+	check_result("No free refill without spare reels", not stock.start_reload() and stock.film == 0.0)
+	stock.collect_reel()
+	stock.start_reload()
+	stock.advance(1.0, false)
+	check_result("Pickup recovers an empty camera", stock.film == stock.CAPACITY and stock.spares == 0)
 	var failed := 0
 	for entry in checks:
 		if not entry.passed:

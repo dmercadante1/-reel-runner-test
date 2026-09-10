@@ -12,11 +12,10 @@ func _ready() -> void:
 	_bind("jump", KEY_W, true)
 	_bind("record", KEY_SPACE, false)
 	_bind("record", KEY_C, true)
-	_bind("defend", KEY_X, true)
-	_bind("defend", KEY_SHIFT, false)
+	_bind("reload", KEY_R, true)
 	_bind("pause_game", KEY_ESCAPE, false)
 	_bind("pause_game", KEY_P, true)
-	_bind("reset_trial", KEY_R, true)
+	_bind("reset_trial", KEY_T, true)
 
 func _bind(action: StringName, code: Key, physical: bool) -> void:
 	if not InputMap.has_action(action):
@@ -36,7 +35,7 @@ func _input(event: InputEvent) -> void:
 		command.emit("reset", true)
 
 func release_all() -> void:
-	for action in ["move_left", "move_right", "jump", "record", "defend"]:
+	for action in ["move_left", "move_right", "jump", "record", "reload"]:
 		Input.action_release(action)
 
 func _notification(what: int) -> void:
