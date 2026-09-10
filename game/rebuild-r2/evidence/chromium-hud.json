@@ -1,0 +1,575 @@
+{
+  "checks": [
+    {
+      "name": "1280x816 HUD stays within viewport",
+      "passed": true,
+      "detail": {
+        "w": 1280,
+        "overflow": false,
+        "items": [
+          {
+            "id": "life-meter",
+            "x": 14,
+            "y": 757.5,
+            "right": 387.75,
+            "bottom": 770.5,
+            "w": 373.75,
+            "h": 13
+          },
+          {
+            "id": "film-meter",
+            "x": 415.75,
+            "y": 755,
+            "right": 864.25,
+            "bottom": 773,
+            "w": 448.5,
+            "h": 18
+          },
+          {
+            "id": "capture-value",
+            "x": 1154.90625,
+            "y": 755,
+            "right": 1182,
+            "bottom": 773,
+            "w": 27.09375,
+            "h": 18
+          },
+          {
+            "id": "checkpoint",
+            "x": 967.828125,
+            "y": 790,
+            "right": 1072.1875,
+            "bottom": 800,
+            "w": 104.359375,
+            "h": 10
+          },
+          {
+            "id": "pause",
+            "x": 1138.71875,
+            "y": 783,
+            "right": 1185.8125,
+            "bottom": 807,
+            "w": 47.09375,
+            "h": 24
+          }
+        ],
+        "footer": {
+          "x": 0,
+          "y": 743,
+          "width": 1280,
+          "height": 73,
+          "top": 743,
+          "right": 1280,
+          "bottom": 816,
+          "left": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 36,
+          "width": 1280,
+          "height": 707,
+          "top": 36,
+          "right": 1280,
+          "bottom": 743,
+          "left": 0
+        }
+      }
+    },
+    {
+      "name": "1280x816 HUD does not overlap gameplay area",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280x816 start button visible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280x816 starts and ticks",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "HUD starts with five life units",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Film readout and bar track gameplay film",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Damage dims exactly one heart",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "HUD pause changes to resume",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "HUD resume unpauses",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Capture slots and checkpoint update",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1216x1242 HUD stays within viewport",
+      "passed": true,
+      "detail": {
+        "w": 1216,
+        "overflow": false,
+        "items": [
+          {
+            "id": "life-meter",
+            "x": 14,
+            "y": 1183.5,
+            "right": 367.75,
+            "bottom": 1196.5,
+            "w": 353.75,
+            "h": 13
+          },
+          {
+            "id": "film-meter",
+            "x": 395.75,
+            "y": 1181,
+            "right": 820.25,
+            "bottom": 1199,
+            "w": 424.5,
+            "h": 18
+          },
+          {
+            "id": "capture-value",
+            "x": 1090.90625,
+            "y": 1181,
+            "right": 1118,
+            "bottom": 1199,
+            "w": 27.09375,
+            "h": 18
+          },
+          {
+            "id": "checkpoint",
+            "x": 903.828125,
+            "y": 1216,
+            "right": 1008.1875,
+            "bottom": 1226,
+            "w": 104.359375,
+            "h": 10
+          },
+          {
+            "id": "pause",
+            "x": 1074.71875,
+            "y": 1209,
+            "right": 1121.8125,
+            "bottom": 1233,
+            "w": 47.09375,
+            "h": 24
+          }
+        ],
+        "footer": {
+          "x": 0,
+          "y": 1169,
+          "width": 1216,
+          "height": 73,
+          "top": 1169,
+          "right": 1216,
+          "bottom": 1242,
+          "left": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 36,
+          "width": 1216,
+          "height": 1133,
+          "top": 36,
+          "right": 1216,
+          "bottom": 1169,
+          "left": 0
+        }
+      }
+    },
+    {
+      "name": "1216x1242 HUD does not overlap gameplay area",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1216x1242 start button visible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1216x1242 starts and ticks",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390 HUD stays within viewport",
+      "passed": true,
+      "detail": {
+        "w": 844,
+        "overflow": false,
+        "items": [
+          {
+            "id": "life-meter",
+            "x": 12,
+            "y": 347.5,
+            "right": 266.1875,
+            "bottom": 357.5,
+            "w": 254.1875,
+            "h": 10
+          },
+          {
+            "id": "film-meter",
+            "x": 282.1875,
+            "y": 345,
+            "right": 561.796875,
+            "bottom": 360,
+            "w": 279.609375,
+            "h": 15
+          },
+          {
+            "id": "capture-value",
+            "x": 756.515625,
+            "y": 345,
+            "right": 780,
+            "bottom": 360,
+            "w": 23.484375,
+            "h": 15
+          },
+          {
+            "id": "checkpoint",
+            "x": 12,
+            "y": 370.5,
+            "right": 104.765625,
+            "bottom": 379.5,
+            "w": 92.765625,
+            "h": 9
+          },
+          {
+            "id": "pause",
+            "x": 717.734375,
+            "y": 364.5,
+            "right": 759.828125,
+            "bottom": 385.5,
+            "w": 42.09375,
+            "h": 21
+          }
+        ],
+        "footer": {
+          "x": 0,
+          "y": 336,
+          "width": 844,
+          "height": 54,
+          "top": 336,
+          "right": 844,
+          "bottom": 390,
+          "left": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 26,
+          "width": 844,
+          "height": 310,
+          "top": 26,
+          "right": 844,
+          "bottom": 336,
+          "left": 0
+        }
+      }
+    },
+    {
+      "name": "844x390 HUD does not overlap gameplay area",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390 start button visible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390 starts and ticks",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "667x375 HUD stays within viewport",
+      "passed": true,
+      "detail": {
+        "w": 667,
+        "overflow": false,
+        "items": [
+          {
+            "id": "life-meter",
+            "x": 12,
+            "y": 332.5,
+            "right": 209.09375,
+            "bottom": 342.5,
+            "w": 197.09375,
+            "h": 10
+          },
+          {
+            "id": "film-meter",
+            "x": 225.09375,
+            "y": 330,
+            "right": 441.890625,
+            "bottom": 345,
+            "w": 216.796875,
+            "h": 15
+          },
+          {
+            "id": "capture-value",
+            "x": 579.515625,
+            "y": 330,
+            "right": 603,
+            "bottom": 345,
+            "w": 23.484375,
+            "h": 15
+          },
+          {
+            "id": "checkpoint",
+            "x": 12,
+            "y": 355.5,
+            "right": 104.765625,
+            "bottom": 364.5,
+            "w": 92.765625,
+            "h": 9
+          },
+          {
+            "id": "pause",
+            "x": 540.734375,
+            "y": 349.5,
+            "right": 582.828125,
+            "bottom": 370.5,
+            "w": 42.09375,
+            "h": 21
+          }
+        ],
+        "footer": {
+          "x": 0,
+          "y": 321,
+          "width": 667,
+          "height": 54,
+          "top": 321,
+          "right": 667,
+          "bottom": 375,
+          "left": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 26,
+          "width": 667,
+          "height": 295,
+          "top": 26,
+          "right": 667,
+          "bottom": 321,
+          "left": 0
+        }
+      }
+    },
+    {
+      "name": "667x375 HUD does not overlap gameplay area",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "667x375 start button visible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "667x375 starts and ticks",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "568x320 HUD stays within viewport",
+      "passed": true,
+      "detail": {
+        "w": 568,
+        "overflow": false,
+        "items": [
+          {
+            "id": "life-meter",
+            "x": 12,
+            "y": 278.5,
+            "right": 188,
+            "bottom": 287.5,
+            "w": 176,
+            "h": 9
+          },
+          {
+            "id": "film-meter",
+            "x": 196,
+            "y": 276,
+            "right": 372,
+            "bottom": 290,
+            "w": 176,
+            "h": 14
+          },
+          {
+            "id": "capture-value",
+            "x": 534.3125,
+            "y": 276,
+            "right": 556,
+            "bottom": 290,
+            "w": 21.6875,
+            "h": 14
+          },
+          {
+            "id": "checkpoint",
+            "x": 12,
+            "y": 300.5,
+            "right": 104.765625,
+            "bottom": 309.5,
+            "w": 92.765625,
+            "h": 9
+          },
+          {
+            "id": "pause",
+            "x": 441.734375,
+            "y": 294.5,
+            "right": 483.828125,
+            "bottom": 315.5,
+            "w": 42.09375,
+            "h": 21
+          }
+        ],
+        "footer": {
+          "x": 0,
+          "y": 267,
+          "width": 568,
+          "height": 53,
+          "top": 267,
+          "right": 568,
+          "bottom": 320,
+          "left": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 26,
+          "width": 568,
+          "height": 241,
+          "top": 26,
+          "right": 568,
+          "bottom": 267,
+          "left": 0
+        }
+      }
+    },
+    {
+      "name": "568x320 HUD does not overlap gameplay area",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "568x320 start button visible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "568x320 starts and ticks",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "390x844 HUD stays within viewport",
+      "passed": true,
+      "detail": {
+        "w": 390,
+        "overflow": false,
+        "items": [
+          {
+            "id": "life-meter",
+            "x": 12,
+            "y": 802.5,
+            "right": 128.65625,
+            "bottom": 811.5,
+            "w": 116.65625,
+            "h": 9
+          },
+          {
+            "id": "film-meter",
+            "x": 136.65625,
+            "y": 800,
+            "right": 253.328125,
+            "bottom": 814,
+            "w": 116.671875,
+            "h": 14
+          },
+          {
+            "id": "capture-value",
+            "x": 356.296875,
+            "y": 800,
+            "right": 377.984375,
+            "bottom": 814,
+            "w": 21.6875,
+            "h": 14
+          },
+          {
+            "id": "checkpoint",
+            "x": 12,
+            "y": 824.5,
+            "right": 104.765625,
+            "bottom": 833.5,
+            "w": 92.765625,
+            "h": 9
+          },
+          {
+            "id": "pause",
+            "x": 263.734375,
+            "y": 818.5,
+            "right": 305.828125,
+            "bottom": 839.5,
+            "w": 42.09375,
+            "h": 21
+          }
+        ],
+        "footer": {
+          "x": 0,
+          "y": 791,
+          "width": 390,
+          "height": 53,
+          "top": 791,
+          "right": 390,
+          "bottom": 844,
+          "left": 0
+        },
+        "main": {
+          "x": 0,
+          "y": 26,
+          "width": 390,
+          "height": 765,
+          "top": 26,
+          "right": 390,
+          "bottom": 791,
+          "left": 0
+        }
+      }
+    },
+    {
+      "name": "390x844 HUD does not overlap gameplay area",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "390x844 portrait prevents hidden start",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "HUD/launch checks no uncaught errors",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

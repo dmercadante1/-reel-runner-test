@@ -1,0 +1,3 @@
+'use strict';
+GOTHIC.audio={context:null,unlock(){try{this.context??=new (window.AudioContext||window.webkitAudioContext)();if(this.context.state==='suspended')this.context.resume().catch(()=>{});}catch{}},
+play(kind){const a=this.context;if(!a||a.state!=='running')return;const notes=kind==='capture'?[330,495,660]:kind==='hurt'?[95,67]:kind==='jump'?[190,270]:[240,360];notes.forEach((f,i)=>{const o=a.createOscillator(),g=a.createGain(),t=a.currentTime+i*.065;o.type=kind==='hurt'?'sawtooth':'triangle';o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(.045,t);g.gain.exponentialRampToValueAtTime(.0001,t+.17);o.connect(g).connect(a.destination);o.start(t);o.stop(t+.18);});}};

@@ -1,0 +1,8 @@
+{
+  "archiveSHA256": "73e413af85d24ae0921af6439566ecd34ea5ca92ab555f7e19cddc5e1386cd80",
+  "htmlSHA256": "99676e652482b652eadfcb87bf7411ebbfe11bcefffa87b7aa60fdfc98962839",
+  "htmlBytes": 2334349,
+  "validRasterAssets": 14,
+  "importRun": "34427201446",
+  "publication": "staging only; browser tests still required"
+}

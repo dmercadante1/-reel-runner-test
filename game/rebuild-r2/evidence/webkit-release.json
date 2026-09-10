@@ -1,0 +1,32 @@
+{
+  "engine": "webkit",
+  "htmlSHA256": "99676e652482b652eadfcb87bf7411ebbfe11bcefffa87b7aa60fdfc98962839",
+  "httpRoot": "http://127.0.0.1:40723/",
+  "acceptancePassed": 33,
+  "hudPassed": 30,
+  "extraChecks": [
+    {
+      "name": "Replay 1 moves and jumps",
+      "passed": true
+    },
+    {
+      "name": "Replay 2 moves and jumps",
+      "passed": true
+    },
+    {
+      "name": "Replay 3 moves and jumps",
+      "passed": true
+    },
+    {
+      "name": "Replay 4 moves and jumps",
+      "passed": true
+    },
+    {
+      "name": "Phone emulation real Start/Pause/Resume taps",
+      "passed": true
+    }
+  ],
+  "uncaughtErrors": [],
+  "physicalDeviceTested": false,
+  "success": true
+}

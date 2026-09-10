@@ -1,0 +1,364 @@
+{
+  "build": {
+    "build": "gothic-hud-r2",
+    "sha256": "99676e652482b652eadfcb87bf7411ebbfe11bcefffa87b7aa60fdfc98962839",
+    "bytes": 2334349,
+    "files": {
+      "src/shell.js": "9d92f6c06da69c16ddfe080475a88d91a788006999d0d33ed7057cbfbc5a1c99",
+      "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
+      "src/config.js": "be0caef0945dcc521ca3a3189eb185a4dd6b263bfeafe350d1c4e0464b80af57",
+      "src/assets.js": "243f14c2f890d7a6c6d12aff2aa029498ef9e95bff330c8ec2c267c54043a6a6",
+      "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
+      "src/hud.js": "acd21980f485a81f5d20402fa94983149f504e9df20a07e2154568941158983d",
+      "src/scene.js": "29945b8ee612287088bd1ae243700792004ceec8fb561abdeaa55f2dda0dc577",
+      "src/boot.js": "d393920e527e0cad21f3e3b0c97720705bcf85dd0034cc22b9ab44582e1a2480"
+    },
+    "artAssets": 14
+  },
+  "scope": "chromium hosted exact R2 bytes; physical devices not tested",
+  "passed": 42,
+  "failed": 0,
+  "fatal": null,
+  "checks": [
+    {
+      "name": "Ready state after asset validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "14 textures have exact expected dimensions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Game loop advances",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Desktop 16:9 canvas",
+      "passed": true,
+      "detail": {
+        "x": 11,
+        "y": 36,
+        "width": 1256.875,
+        "height": 707
+      }
+    },
+    {
+      "name": "Player lands on floor",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 110,
+        "y": 322,
+        "vy": 0,
+        "film": 100,
+        "health": 5,
+        "captured": 0,
+        "ticks": 50,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Player contributes actual visible raster pixels",
+      "passed": true,
+      "detail": {
+        "changedPixels": 7403,
+        "bounds": [
+          176,
+          484,
+          278,
+          657
+        ]
+      }
+    },
+    {
+      "name": "Move right",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Move left",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Jump moves upward",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Jump lands",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Blur pauses",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Paused player stays still",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Focus resumes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Camera consumes film",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Capture skeleton",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 141.898538888889,
+        "y": 322,
+        "vy": 0,
+        "film": 99.28316000000008,
+        "health": 5,
+        "captured": 1,
+        "ticks": 338,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Capture ghoul",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 620.4036833333303,
+        "y": 322,
+        "vy": 0,
+        "film": 95.66742000000009,
+        "health": 5,
+        "captured": 2,
+        "ticks": 629,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Capture vampire",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 1024.5214166666597,
+        "y": 322,
+        "vy": 0,
+        "film": 93.26746000000009,
+        "health": 5,
+        "captured": 3,
+        "ticks": 901,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Capture ghost",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 1421.4349000000072,
+        "y": 322,
+        "vy": 0,
+        "film": 96.8674200000001,
+        "health": 5,
+        "captured": 4,
+        "ticks": 1152,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Capture monster",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 1837.5502833333555,
+        "y": 322,
+        "vy": 0,
+        "film": 87.26791999999999,
+        "health": 5,
+        "captured": 5,
+        "ticks": 1459,
+        "checkpoint": 1440
+      }
+    },
+    {
+      "name": "Capture werewolf",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 2246.466116666704,
+        "y": 322,
+        "vy": 0,
+        "film": 92.06706000000028,
+        "health": 5,
+        "captured": 6,
+        "ticks": 1739,
+        "checkpoint": 1440
+      }
+    },
+    {
+      "name": "Full level clears via keyboard",
+      "passed": true,
+      "detail": {
+        "phase": "complete",
+        "x": 2712.4494500000546,
+        "y": 322,
+        "vy": 0,
+        "film": 100,
+        "health": 5,
+        "captured": 6,
+        "ticks": 1938,
+        "checkpoint": 1440
+      }
+    },
+    {
+      "name": "Checkpoint reached in playthrough",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Restart resets encounters",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Lower raster ledge is reachable",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 678.516883333333,
+        "y": 269,
+        "vy": 0,
+        "film": 100,
+        "health": 5,
+        "captured": 0,
+        "ticks": 100,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Enemy attack causes damage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Invulnerability blocks immediate repeat damage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Death respawns at checkpoint",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 1440,
+        "y": 230.73333333333332,
+        "vy": 29.333333333333332,
+        "film": 100,
+        "health": 5,
+        "captured": 0,
+        "ticks": 152,
+        "checkpoint": 1440
+      }
+    },
+    {
+      "name": "Empty film enforces cooldown",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Film recharges",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Desktop no uncaught JS exceptions",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Canvas renderer fallback starts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Canvas movement works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Touch controls visible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Mobile 16:9 canvas",
+      "passed": true,
+      "detail": {
+        "x": 146,
+        "y": 26,
+        "width": 551.109375,
+        "height": 310
+      }
+    },
+    {
+      "name": "Real simultaneous move/camera touches",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 144.56276666666656,
+        "y": 322,
+        "vy": 0,
+        "film": 93.80944,
+        "health": 5,
+        "captured": 0,
+        "ticks": 94,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Touch release clears inputs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Mobile touch jump",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Portrait pauses",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Rotation instruction shown",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Landscape resumes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Suite has no uncaught JS errors",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Corrupt asset fails visibly without fake character",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "uncaughtErrors": [],
+  "recordedAt": "2026-09-10T01:55:26Z"
+}

@@ -1,0 +1,304 @@
+{
+  "build": {
+    "build": "gothic-hud-r2",
+    "sha256": "99676e652482b652eadfcb87bf7411ebbfe11bcefffa87b7aa60fdfc98962839",
+    "bytes": 2334349,
+    "files": {
+      "src/shell.js": "9d92f6c06da69c16ddfe080475a88d91a788006999d0d33ed7057cbfbc5a1c99",
+      "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
+      "src/config.js": "be0caef0945dcc521ca3a3189eb185a4dd6b263bfeafe350d1c4e0464b80af57",
+      "src/assets.js": "243f14c2f890d7a6c6d12aff2aa029498ef9e95bff330c8ec2c267c54043a6a6",
+      "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
+      "src/hud.js": "acd21980f485a81f5d20402fa94983149f504e9df20a07e2154568941158983d",
+      "src/scene.js": "29945b8ee612287088bd1ae243700792004ceec8fb561abdeaa55f2dda0dc577",
+      "src/boot.js": "d393920e527e0cad21f3e3b0c97720705bcf85dd0034cc22b9ab44582e1a2480"
+    },
+    "artAssets": 14
+  },
+  "scope": "webkit hosted exact R2 bytes; physical devices not tested",
+  "passed": 33,
+  "failed": 0,
+  "fatal": null,
+  "checks": [
+    {
+      "name": "Ready state after asset validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "14 textures have exact expected dimensions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Game loop advances",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Desktop 16:9 canvas",
+      "passed": true,
+      "detail": {
+        "x": 11,
+        "y": 36,
+        "width": 1256.875,
+        "height": 707
+      }
+    },
+    {
+      "name": "Player lands on floor",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 110,
+        "y": 322,
+        "vy": 0,
+        "film": 100,
+        "health": 5,
+        "captured": 0,
+        "ticks": 52,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Player contributes actual visible raster pixels",
+      "passed": true,
+      "detail": {
+        "changedPixels": 14736,
+        "bounds": [
+          174,
+          480,
+          901,
+          657
+        ]
+      }
+    },
+    {
+      "name": "Move right",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Move left",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Jump moves upward",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Jump lands",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Blur pauses",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Paused player stays still",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Focus resumes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Camera consumes film",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Capture skeleton",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 138.61983333333336,
+        "y": 322,
+        "vy": 0,
+        "film": 99.20706666666649,
+        "health": 5,
+        "captured": 1,
+        "ticks": 369,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Capture ghoul",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 619.5652777777748,
+        "y": 322,
+        "vy": 0,
+        "film": 95.5941999999998,
+        "health": 5,
+        "captured": 2,
+        "ticks": 666,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Capture vampire",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 1023.6232777777714,
+        "y": 322,
+        "vy": 0,
+        "film": 93.08019999999972,
+        "health": 5,
+        "captured": 3,
+        "ticks": 933,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Capture ghost",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 1420.356944444452,
+        "y": 322,
+        "vy": 0,
+        "film": 96.74739999999977,
+        "health": 5,
+        "captured": 4,
+        "ticks": 1174,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Capture monster",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 1836.6816111111334,
+        "y": 322,
+        "vy": 0,
+        "film": 86.87639999999969,
+        "health": 5,
+        "captured": 5,
+        "ticks": 1476,
+        "checkpoint": 1440
+      }
+    },
+    {
+      "name": "Capture werewolf",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 2246.9711111111487,
+        "y": 322,
+        "vy": 0,
+        "film": 91.70159999999976,
+        "health": 5,
+        "captured": 6,
+        "ticks": 1752,
+        "checkpoint": 1440
+      }
+    },
+    {
+      "name": "Full level clears via keyboard",
+      "passed": true,
+      "detail": {
+        "phase": "complete",
+        "x": 2713.2079444445,
+        "y": 322,
+        "vy": 0,
+        "film": 100,
+        "health": 5,
+        "captured": 6,
+        "ticks": 1948,
+        "checkpoint": 1440
+      }
+    },
+    {
+      "name": "Checkpoint reached in playthrough",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Restart resets encounters",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Lower raster ledge is reachable",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 673.6854999999997,
+        "y": 269,
+        "vy": 0,
+        "film": 100,
+        "health": 5,
+        "captured": 0,
+        "ticks": 98,
+        "checkpoint": 110
+      }
+    },
+    {
+      "name": "Enemy attack causes damage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Invulnerability blocks immediate repeat damage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Death respawns at checkpoint",
+      "passed": true,
+      "detail": {
+        "phase": "running",
+        "x": 1440,
+        "y": 230,
+        "vy": 0,
+        "film": 100,
+        "health": 5,
+        "captured": 0,
+        "ticks": 147,
+        "checkpoint": 1440
+      }
+    },
+    {
+      "name": "Empty film enforces cooldown",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Film recharges",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Desktop no uncaught JS exceptions",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Canvas renderer fallback starts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Canvas movement works",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Corrupt asset fails visibly without fake character",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "uncaughtErrors": [],
+  "recordedAt": "2026-09-10T01:56:45Z"
+}

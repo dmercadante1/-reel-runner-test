@@ -1,0 +1,16 @@
+{
+  "build": "gothic-hud-r2",
+  "sha256": "99676e652482b652eadfcb87bf7411ebbfe11bcefffa87b7aa60fdfc98962839",
+  "bytes": 2334349,
+  "files": {
+    "src/shell.js": "9d92f6c06da69c16ddfe080475a88d91a788006999d0d33ed7057cbfbc5a1c99",
+    "vendor/phaser-3.90.0.min.js": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7",
+    "src/config.js": "be0caef0945dcc521ca3a3189eb185a4dd6b263bfeafe350d1c4e0464b80af57",
+    "src/assets.js": "243f14c2f890d7a6c6d12aff2aa029498ef9e95bff330c8ec2c267c54043a6a6",
+    "src/audio.js": "70491c075cf70d8f29b2b5502de090cc37b663d45845ba99e146cf97f5efce94",
+    "src/hud.js": "acd21980f485a81f5d20402fa94983149f504e9df20a07e2154568941158983d",
+    "src/scene.js": "29945b8ee612287088bd1ae243700792004ceec8fb561abdeaa55f2dda0dc577",
+    "src/boot.js": "d393920e527e0cad21f3e3b0c97720705bcf85dd0034cc22b9ab44582e1a2480"
+  },
+  "artAssets": 14
+}
