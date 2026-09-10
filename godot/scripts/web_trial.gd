@@ -82,11 +82,13 @@ func _web_command(args: Array) -> void:
 func _command(name: String, value: bool = true) -> void:
 	match name:
 		"start", "resume":
+			player.clear_buffered_input()
 			_phase = "running"
 			Controls.release_all()
 			get_tree().paused = false
 			_chirp()
 		"pause", "focus_lost", "portrait":
+			player.clear_buffered_input()
 			Controls.release_all()
 			player.velocity = Vector2.ZERO
 			_record = false

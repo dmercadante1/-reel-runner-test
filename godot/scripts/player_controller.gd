@@ -47,6 +47,10 @@ func _physics_process(delta: float) -> void:
 	if global_position.y > 520.0:
 		reset_at(Vector2(90, 240))
 
+func clear_buffered_input() -> void:
+	_buffer = 0.0
+	_released_jump = false
+
 func reset_at(point: Vector2) -> void:
 	global_position = point
 	velocity = Vector2.ZERO
