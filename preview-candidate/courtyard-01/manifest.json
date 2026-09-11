@@ -1,0 +1,46 @@
+{
+  "source_commit": "4bf8071f1821be083426ca40a94aae633868281b",
+  "private_character_files": {
+    "air.png": "f51e38205f90de58544912789023b2ca2b6750dbe25d500ee57ee90a1851b374",
+    "model.png": "6d99fdf9d4dbbbb29c6138722e632fca8fe54d3dbad9c811107bd7121803e43c",
+    "run.png": "c9122baf5f996e36ff5f95b6782cd617d5f348a4981c4e7dc0b6bef48618cf24",
+    "ground.png": "709266120df56525b6de7b682562e5f65bba5a911a50793f0292a3440610f319",
+    "atlas.json": "9ce40ac319089d3aae26c1e11fb967aa8266692d3d5869e36a0027a1d11cbe38"
+  },
+  "engine": "Godot 4.7.2",
+  "canvas": [
+    640,
+    360
+  ],
+  "publication": "User explicitly approved GitHub Pages publication including photo-based cameraman artwork on 2026-09-10.",
+  "files": {
+    "index.wasm": {
+      "bytes": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0"
+    },
+    "index.html": {
+      "bytes": 9127,
+      "sha256": "6140f527a75bd9bfbdbfd47f173d408e2e1885b940b53f7509acef1db1682cea"
+    },
+    "index.png": {
+      "bytes": 21443,
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e"
+    },
+    "index.audio.worklet.js": {
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3"
+    },
+    "index.js": {
+      "bytes": 279814,
+      "sha256": "7ae834bce024f55120a0e73f16abd5fc9ad080f4b90edc52f5240fb91d020962"
+    },
+    "index.audio.position.worklet.js": {
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8"
+    },
+    "index.pck": {
+      "bytes": 10785096,
+      "sha256": "9ed2b8a9a36a68224de8f1adb1cbb10678ccdfa41e4488c5401b3649790636ed"
+    }
+  }
+}

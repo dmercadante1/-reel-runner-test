@@ -47,5 +47,6 @@ const url=process.env.TRIAL_URL||'http://127.0.0.1:8765';
  report.gl_errors=[];for(let i=0;i<12;i++){await page.waitForTimeout(100);report.gl_errors.push(await page.evaluate(()=>document.querySelector('canvas').getContext('webgl2').getError()))}check('sustained GL error polling is clean',report.gl_errors.every(x=>x===0),report.gl_errors);
  check('no browser script or engine console errors',report.errors.length===0,report.errors);
  }catch(e){report.failure=String(e);failed++;if(page)await page.screenshot({path:path.join(out,`${name}-failure.png`),fullPage:true}).catch(()=>{});}finally{if(browser)await browser.close();report.passed=report.checks.filter(c=>c.passed).length;report.failed=report.failure?1:0;fs.writeFileSync(path.join(out,`${name}-browser.json`),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));}}
+ if(require("fs").existsSync("preview-candidate/courtyard-01/index.html")){try{require("child_process").execFileSync(process.execPath,["godot/tests/courtyard_browser.cjs"],{stdio:"inherit"});}catch(e){failed++;}}
  process.exitCode=failed?1:0;
 })().catch(e=>{console.error(e);process.exit(1)});
