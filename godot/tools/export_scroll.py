@@ -15,5 +15,5 @@ p.write_text(s.replace(old,'context.defaultFboForbidBlitFramebuffer=true;'))
 manifest=json.loads(Path('godot/web/room.webmanifest').read_text());manifest['name']='Man With A Movie Camera — Gothic Horror';manifest['short_name']='Movie Camera'
 (out/'room.webmanifest').write_text(json.dumps(manifest,indent=2))
 files={p.name:{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in out.iterdir() if p.is_file() and p.name!='manifest.json'}
-(out/'manifest.json').write_text(json.dumps({'build':'courtyard-scroll-02','engine':'4.7.2.stable','render':[1920,1080],'world':[640,360],'files':files},indent=2))
+(out/'manifest.json').write_text(json.dumps({'build':'courtyard-scroll-03','engine':'4.7.2.stable','render':[1920,1080],'world':[640,360],'files':files},indent=2))
 print('Prepared chapter:',out)

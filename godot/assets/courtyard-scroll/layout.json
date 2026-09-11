@@ -1,7 +1,7 @@
 [
   {
     "stage": "The Courtyard",
-    "name": "THE COURTYARD \u00b7 THE IRON KEY",
+    "name": "THE COURTYARD \u00b7 THE LOST SLATE",
     "bg": "sky",
     "floor": 270,
     "spawn": [
@@ -13,7 +13,7 @@
       270
     ],
     "required": 8,
-    "hint": "Capture eight creatures to awaken the fountain key.",
+    "hint": "Capture eight creatures to awaken the film slate.",
     "surfaces": [
       [
         0,
@@ -417,12 +417,12 @@
     ],
     "rare": [
       [
-        1100,
-        153
+        1510,
+        332
       ],
       [
-        3940,
-        155
+        3580,
+        332
       ]
     ],
     "hearts": [
@@ -431,11 +431,19 @@
         247
       ],
       [
-        2320,
+        1631,
         247
       ],
       [
-        4250,
+        2322,
+        247
+      ],
+      [
+        3353,
+        247
+      ],
+      [
+        4254,
         247
       ]
     ]

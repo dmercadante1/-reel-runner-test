@@ -81,3 +81,31 @@ func _draw() -> void:
 	var rect := Rect2(float(box[0]), float(box[1]), float(box[2]), float(box[3]))
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2(direction, 1))
 	draw_texture_rect_region(_images[source], Rect2(Vector2((rect.position.x - float(anchor[0])) * scale_factor, (rect.position.y - float(anchor[1])) * scale_factor), rect.size * scale_factor), rect)
+
+func lens_offset()->Vector2:
+	# Measured front-glass locations, in the same source coordinates/anchors as the art.
+	var point:=Vector2(13.3,-45.6)
+	if pose in ["crouch","crouch_walk","crouch_film"]:
+		var index:=0
+		if pose=="crouch_walk":index=[1,2,3,4][int(pose_time*8)%4]
+		elif pose=="crouch_film":index=5
+		var lenses:=[Vector2(365,227),Vector2(321,226),Vector2(357,226),Vector2(356,227),Vector2(370,221),Vector2(357,198)]
+		point=(lenses[index]-Vector2(184.32,481.28))*0.105
+	elif aiming_up and pose in ["film","film_run"]:
+		point=(Vector2(310,56)-Vector2(184,517))*0.14
+	elif pose in ["run","film_run"]:
+		var index:=int(pose_time*stride_rate)%8
+		if reverse_stride:index=7-index
+		var lenses:=[Vector2(359,140),Vector2(803,138),Vector2(1230,140),Vector2(1707,135),Vector2(386,574),Vector2(815,568),Vector2(1235,571),Vector2(1707,573)]
+		var frame:Dictionary=_atlas.run[index]
+		point=(lenses[index]-Vector2(frame.anchor[0],frame.anchor[1]))*float(frame.scale)
+	elif pose in ["jump","fall","land","hurt"]:
+		var index:=3
+		if pose=="jump":index=0 if pose_time<0.045 else (1 if pose_time<0.20 else 2)
+		elif pose=="land":index=4+mini(1,int(pose_time*10))
+		elif pose=="hurt":index=6+mini(1,int(pose_time*5))
+		var frame:Dictionary=_atlas.air[index]
+		var box:Array=frame.rect
+		var lenses:=[Vector2(300,257),Vector2(670,166),Vector2(1052,167),Vector2(1430,165),Vector2(305,794),Vector2(671,725),Vector2(1036,689),Vector2(1445,682)]
+		point=(lenses[index]-Vector2(frame.anchor[0],frame.anchor[1]))*float(frame.scale)
+	return point*Vector2(direction,1)

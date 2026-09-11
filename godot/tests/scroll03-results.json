@@ -1,0 +1,98 @@
+{
+  "checks": [
+    {
+      "name": "Eight screens and four reel pickups",
+      "passed": true
+    },
+    {
+      "name": "Crouch changes collision and slows walking",
+      "passed": true
+    },
+    {
+      "name": "Cannot stand inside low tunnel",
+      "passed": true
+    },
+    {
+      "name": "Stands once clear of tunnel",
+      "passed": true
+    },
+    {
+      "name": "Food pickup restores half a heart",
+      "passed": true
+    },
+    {
+      "name": "Two food pickups restore one heart",
+      "passed": true
+    },
+    {
+      "name": "Half-heart survivor resumes without reset",
+      "passed": true
+    },
+    {
+      "name": "Hit at half a heart defeats player",
+      "passed": true
+    },
+    {
+      "name": "Crouch passage rewards a silver reel",
+      "passed": true
+    },
+    {
+      "name": "Lens reflects with facing at fixed camera anchor",
+      "passed": true
+    },
+    {
+      "name": "Hit rebound resists movement input",
+      "passed": true
+    },
+    {
+      "name": "Cannot walk through enemy body",
+      "passed": true
+    },
+    {
+      "name": "Jump-acquired film lock follows vertical separation",
+      "passed": true
+    },
+    {
+      "name": "Lock ends when vulnerability ends",
+      "passed": true
+    },
+    {
+      "name": "Skeleton captures in under half a second exposed",
+      "passed": true
+    },
+    {
+      "name": "Seven captures keep key asleep",
+      "passed": true
+    },
+    {
+      "name": "Eight captures unlock key",
+      "passed": true
+    },
+    {
+      "name": "Key opens stage exit",
+      "passed": true
+    },
+    {
+      "name": "Shortened-stage service passage works",
+      "passed": true
+    },
+    {
+      "name": "Can finish without capturing every enemy",
+      "passed": true
+    },
+    {
+      "name": "Death resets stage and supplies",
+      "passed": true
+    },
+    {
+      "name": "Eight-screen route traversable with actual controller",
+      "passed": true
+    },
+    {
+      "name": "Action Foley emitted during traversal",
+      "passed": true
+    }
+  ],
+  "failed": 0,
+  "method": "Native gameplay checks with arranged states for individual mechanics; input-only route traversal isolates geometry. Physical Safari and audio listening not certified."
+}
