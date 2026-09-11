@@ -7,13 +7,16 @@ function check(name,ok){checks.push({name,passed:ok,room:s().room});log.textCont
 async function capture(name){await new Promise(requestAnimationFrame);const blob=await new Promise(r=>canvas.toBlob(r,'image/png'));await fetch('/capture/'+name+'.png',{method:'POST',body:blob})}
 async function walk(x,time=12000){const t=performance.now();let last=s().x,stuck=0;while(Math.abs(s().x-x)>12){if(performance.now()-t>time)throw Error('Walk blocked toward '+x+' '+JSON.stringify(s()));const gap=x-s().x;if(Math.abs(gap)<Math.max(14,Math.abs(s().vx)*.18+7)){stop();await wait(180);if(Math.abs(s().x-x)<16)break;}const right=s().x<x;act('move_right',right);act('move_left',!right);await wait(60);stuck=Math.abs(s().x-last)<.2?stuck+60:0;last=s().x;if(stuck>800&&s().grounded){act('jump');await wait(350);act('jump',false);stuck=0}}stop();await wait(160)}
 async function leap(x){await until(()=>s().grounded);const right=s().x<x,t=performance.now();act('move_right',right);act('move_left',!right);while(right?s().x<x-5:s().x>x+5){if(performance.now()-t>15000)throw Error('Jump route blocked '+JSON.stringify(s()));if(s().grounded){act('jump');await wait(350);act('jump',false);await wait(90)}else await wait(35)}stop();await until(()=>s().grounded);await wait(100)}
+// Verify landing height as well as horizontal reach; a missed jump is retried with normal inputs.
+async function stairs(){for(let n=0;n<5;n++){if(s().feet>275){await walk(361);await leap(414);}if(Math.abs(s().feet-260)<5){await walk(440);await leap(500);}if(Math.abs(s().feet-210)<5)return;}throw Error('Cathedral stair landing failed '+JSON.stringify(s()));}
 async function fight(){let lastJump=0,beam=false,pull=false;const t=performance.now();while(!s().gate_open){if(s().phase==='defeated')throw Error('Defeated '+JSON.stringify(s()));if(performance.now()-t>90000)throw Error('Combat timeout '+JSON.stringify(s()));
  if(s().room===5&&s().feet>310){await leap(375);continue;}
  const enemy=s().enemies.find(e=>!['capturing','captured'].includes(e.phase));if(!enemy){stop();await wait(80);continue;}
  if(s().room===7&&enemy.kind==='vampire'&&s().feet>275){await walk(453);await leap(505);continue;}
  if(s().grounded&&enemy.y-s().feet>47){stop();cmd('drop');M1Bridge.send('drop',false);await wait(450);continue;}
  const gap=enemy.x-s().x;const facing=gap>=0?1:-1;let direction=0;let film=false;
- if(enemy.kind==='dracula'&&enemy.phase==='exposed'&&s().super_charges>0&&s().super_left<=0&&Math.abs(gap)<180){const before=enemy.exposure;stop();act(facing>0?'move_right':'move_left',true);await wait(100);stop();cmd('super_shot');await wait(160);check('Rare reel powers boss Super',s().enemies[0].exposure>=before+1.5);await capture('chapter-super-shot');}
+ if(enemy.kind==='dracula'&&enemy.phase==='exposed'&&enemy.clock<1.4&&s().super_charges>0&&s().super_left<=0&&Math.abs(gap)<180&&Math.abs(enemy.y-s().feet)<40){stop();act(facing>0?'move_right':'move_left',true);await until(()=>s().facing===facing);stop();const before=s().enemies[0].exposure,charges=s().super_charges;cmd('super_shot');await until(()=>s().super_charges<charges);await wait(180);check('Rare reel powers boss Super',s().enemies[0].exposure>=Math.min(s().enemies[0].required,before+1.5)-.001);await capture('chapter-super-shot');}
+
 
  if(enemy.phase==='watch'){if(Math.abs(gap)>145)direction=facing;else if(Math.abs(gap)<105)direction=-facing;}
  else if(enemy.phase==='windup'){if(Math.abs(gap)<195)direction=-facing;}
@@ -41,7 +44,7 @@ const run=async(event)=>{checks.length=0;sent={};try{const startRoom=event.targe
  if(room===0&&s().feet>235){await leap(370)}
  if(room===3&&s().feet>310){await leap(330)}
  if(room===5&&s().feet>310){await leap(380)}
- if(room===4){await walk(361);await leap(414);await walk(436);await leap(500)}
+ if(room===4){await stairs()}
  if(room===5){await walk(447);await leap(504)}
  if(room===7){await walk(455);await leap(520)}
  act('move_right');await until(()=>s().phase==='transition'||s().phase==='chapter_complete');stop();check('Room '+room+' exit reached',true);
