@@ -1,0 +1,115 @@
+{
+  "source_commit": "d1399d783e20de360ab312452b08566a3d674313",
+  "native": {
+    "checks": [
+      {
+        "name": "Eight screens and four reel pickups",
+        "passed": true
+      },
+      {
+        "name": "Crouch changes collision and slows walking",
+        "passed": true
+      },
+      {
+        "name": "Cannot stand inside low tunnel",
+        "passed": true
+      },
+      {
+        "name": "Stands once clear of tunnel",
+        "passed": true
+      },
+      {
+        "name": "Heart pickup restores health",
+        "passed": true
+      },
+      {
+        "name": "Hit rebound resists movement input",
+        "passed": true
+      },
+      {
+        "name": "Cannot walk through enemy body",
+        "passed": true
+      },
+      {
+        "name": "Jump-acquired film lock follows vertical separation",
+        "passed": true
+      },
+      {
+        "name": "Lock ends when vulnerability ends",
+        "passed": true
+      },
+      {
+        "name": "Skeleton captures in under half a second exposed",
+        "passed": true
+      },
+      {
+        "name": "Seven captures keep key asleep",
+        "passed": true
+      },
+      {
+        "name": "Eight captures unlock key",
+        "passed": true
+      },
+      {
+        "name": "Key opens stage exit",
+        "passed": true
+      },
+      {
+        "name": "Shortened-stage service passage works",
+        "passed": true
+      },
+      {
+        "name": "Can finish without capturing every enemy",
+        "passed": true
+      },
+      {
+        "name": "Death resets stage and supplies",
+        "passed": true
+      },
+      {
+        "name": "Eight-screen route traversable with actual controller",
+        "passed": true
+      },
+      {
+        "name": "Action Foley emitted during traversal",
+        "passed": true
+      }
+    ],
+    "failed": 0,
+    "method": "Native gameplay checks with arranged states for individual mechanics; input-only route traversal isolates geometry. Physical Safari and audio listening not certified."
+  },
+  "browser": [
+    {
+      "name": "Crouch walking in browser",
+      "passed": true
+    },
+    {
+      "name": "Standing restored",
+      "passed": true
+    },
+    {
+      "name": "Backward filming retained",
+      "passed": true
+    },
+    {
+      "name": "Revised enemy capture works",
+      "passed": true
+    }
+  ],
+  "fullscreen": {
+    "native": true,
+    "immersive": true,
+    "viewport": [
+      1280,
+      800
+    ],
+    "canvas": [
+      1280,
+      720
+    ]
+  },
+  "limitations": [
+    "Physical Safari on M3 MacBook Pro and iPhone16 Pro unavailable; browser check used in-app Chromium.",
+    "Audio quality and difficulty require human review."
+  ]
+}
