@@ -23,7 +23,9 @@ for(const [name,type] of Object.entries({chromium,webkit})){
  await page.goto('http://127.0.0.1:8767');
  const until=fn=>page.waitForFunction(fn,null,{timeout:90000}),s=()=>page.evaluate(()=>M1Bridge.state),wait=ms=>page.waitForTimeout(ms),act=(n,v=true)=>page.evaluate(([n,v])=>M1Bridge.send(n,v),[n,v]);
  await until(()=>M1Bridge.state?.phase==='ready');check('1080p chapter loaded',(await s()).viewport.join(',')==='1920,1080'&&(await s()).room_count===9);
- await page.locator('#start').click();await until(()=>M1Bridge.state.grounded);
+ await page.locator('#start').click();await until(()=>M1Bridge.state.grounded);await wait(300);
+ const canvasPixels=async()=>require('pngjs').PNG.sync.read(Buffer.from((await page.locator('#canvas').evaluate(c=>c.toDataURL('image/png'))).split(',')[1],'base64'));
+ const firstPixels=await canvasPixels();
  await page.keyboard.down('ArrowRight');await wait(250);await page.keyboard.up('ArrowRight');await wait(180);check('Desktop movement releases',(await s()).x>85&&Math.abs((await s()).vx)<1);
  await page.keyboard.down('Space');await wait(350);await page.keyboard.up('Space');await wait(100);check('Film spends active reel',(await s()).film<12);
  await page.keyboard.press('r');await wait(180);check('Reload spends one spare',(await s()).reload_left>0&&(await s()).spares===1);await wait(700);check('Reload restores full film',(await s()).film===12);
@@ -35,7 +37,8 @@ for(const [name,type] of Object.entries({chromium,webkit})){
  check('All nine rooms captured and exited',report.playthrough.passed&&report.playthrough.checks.filter(c=>c.name.startsWith("Room ")).length===18,report.playthrough);
  check('Dracula captured',(await s()).phase==='chapter_complete'&&(await s()).enemies[0].phase==='captured');
  await page.reload();await until(()=>M1Bridge.state?.phase==='ready');check('Checkpoint survives browser reload',(await s()).room===8);
- await page.locator('#new-game').click();await until(()=>M1Bridge.state.room===0&&M1Bridge.state.grounded);check('New chapter resets progress',(await s()).super_charges===0&&(await s()).health===4);
+ await page.locator('#new-game').click();await until(()=>M1Bridge.state.room===0&&M1Bridge.state.grounded);check('New chapter resets progress',(await s()).super_charges===0&&(await s()).health===4);await wait(400);
+ const resetPixels=await canvasPixels();let same=0,total=0;for(let y=400;y<500;y++)for(let x=300;x<600;x++){const i=(y*1920+x)*4;total++;if(firstPixels.data.readUInt32BE(i)===resetPixels.data.readUInt32BE(i))same++;}check('New chapter redraws the Courtyard background',same/total>.999,{same,total});
  await page.setViewportSize({width:844,height:390});await wait(200);
  await page.locator('[data-action]').evaluateAll(bs=>bs.forEach(b=>b.setPointerCapture=()=>{}));
  const pointer=async(n,id,down)=>page.locator(`[data-action="${n}"]`).dispatchEvent(down?'pointerdown':'pointerup',{pointerId:id,pointerType:'touch',bubbles:true});
