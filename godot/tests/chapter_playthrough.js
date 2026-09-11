@@ -13,7 +13,7 @@ async function fight(){let lastJump=0,beam=false,pull=false;const t=performance.
  if(s().room===7&&enemy.kind==='vampire'&&s().feet>275){await walk(453);await leap(505);continue;}
  if(s().grounded&&enemy.y-s().feet>47){stop();cmd('drop');M1Bridge.send('drop',false);await wait(450);continue;}
  const gap=enemy.x-s().x;const facing=gap>=0?1:-1;let direction=0;let film=false;
- if(enemy.kind==='dracula'&&enemy.phase==='exposed'&&s().super_charges>0&&Math.abs(gap)<180){const before=enemy.exposure;stop();act(facing>0?'move_right':'move_left',true);await wait(100);stop();cmd('super_shot');await wait(160);check('Rare reel powers boss Super',s().enemies[0].exposure>=before+1.5);await capture('chapter-super-shot');}
+ if(enemy.kind==='dracula'&&enemy.phase==='exposed'&&s().super_charges>0&&s().super_left<=0&&Math.abs(gap)<180){const before=enemy.exposure;stop();act(facing>0?'move_right':'move_left',true);await wait(100);stop();cmd('super_shot');await wait(160);check('Rare reel powers boss Super',s().enemies[0].exposure>=before+1.5);await capture('chapter-super-shot');}
 
  if(enemy.phase==='watch'){if(Math.abs(gap)>145)direction=facing;else if(Math.abs(gap)<105)direction=-facing;}
  else if(enemy.phase==='windup'){if(Math.abs(gap)<195)direction=-facing;}
