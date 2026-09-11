@@ -4,8 +4,15 @@ evidence/*
 tests/latest-native-results.json
 export_credentials.cfg
 *.tmp
-# Likeness-derived artwork remains local until publication is explicitly approved.
-assets/private-character/
+# Publish only the explicitly authorized production sheets; keep other references local.
+assets/private-character/*
+!assets/private-character/model.png
+!assets/private-character/run.png
+!assets/private-character/ground.png
+!assets/private-character/air.png
+!assets/private-character/atlas.json
+!assets/private-character/*.png.import
+!assets/private-character/README.md
 
 tests/latest-courtyard-results.json
 
