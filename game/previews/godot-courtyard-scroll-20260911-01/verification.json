@@ -1,0 +1,29 @@
+{
+  "build": "courtyard-scroll-01",
+  "source_commit": "b7daeaf",
+  "native_checks": 13,
+  "native_failed": 0,
+  "browser_checks": [
+    {
+      "name": "Film while retreating",
+      "passed": true
+    },
+    {
+      "name": "First enemy captured with actual input",
+      "passed": true
+    },
+    {
+      "name": "Scrolling camera follows movement",
+      "passed": true
+    }
+  ],
+  "browser": "Available in-app Chromium fallback",
+  "landscape_layout_reviewed": true,
+  "physical_safari_mac_tested": false,
+  "physical_iphone16pro_tested": false,
+  "limitations": [
+    "Direct Safari control requires unavailable computer-use permission; no permission requested per user instruction.",
+    "Local WebKit could not launch in sandbox. No slow-machine or broad browser matrix run.",
+    "Native full-stage traversal isolates geometry with enemies removed; human full-stage playfeel and difficulty review remain open."
+  ]
+}
