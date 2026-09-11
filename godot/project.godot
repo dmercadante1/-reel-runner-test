@@ -5,6 +5,7 @@ config_version=5
 config/name="MovieCameraPrototype"
 run/main_scene="res://scenes/web_trial.tscn"
 run/main_scene.courtyard="res://scenes/gothic_room.tscn"
+run/main_scene.chapter="res://scenes/gothic_chapter.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]

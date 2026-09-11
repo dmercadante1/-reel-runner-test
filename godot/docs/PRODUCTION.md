@@ -1,3 +1,15 @@
+# Current direction — 1080p Gothic Horror chapter
+
+The user approved 1080p on 2026-09-10 after playing the resolution comparison, and explicitly authorized building the chapter overnight. Preserve 2D charm and pixel-art inspiration. World geometry remains 640×360 logical units; rendering is 1920×1080 with CanvasItems scaling, so artwork and effects receive the higher resolution without changing movement reach.
+
+The everyday cameraman wears a navy cap, Black Watch plaid, jeans and brown leather boots under the jeans. The user authorized publication of the photo-based artwork to separate GitHub Pages previews. R5, its root redirect, and all earlier previews are immutable.
+
+The approved chapter is Courtyard → Catacombs → Cathedral → Castle → Dracula’s chamber. Enemies are skeletons, werewolves, ghouls, monsters, phantoms and vampire henchmen; Dracula is the final boss. Build the blue glowing capture beam, animated film-strip pull and rare silver-reel Super Shot. Reload and carried spare reels remain the resource mechanic.
+
+This authorization supersedes the older 640p target, sneakers, proposed Ramparts stage, and instruction to wait before expanding M4. It does not establish that new content has passed testing or art approval. Fresh evidence and remaining limitations belong in OVERNIGHT-HANDOFF.md.
+
+---
+
 # Fresh production plan — approved 640 x 360 direction
 
 ## Decisions carried forward

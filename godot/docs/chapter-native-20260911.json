@@ -1,0 +1,367 @@
+{
+  "checks": [
+    {
+      "detail": null,
+      "name": "skeleton guarded exposure stays zero",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "skeleton requires facing",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "skeleton recovery can be filmed",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "skeleton Super Shot rule",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "skeleton enters capture animation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "skeleton finishes in the camera",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "werewolf guarded exposure stays zero",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "werewolf requires facing",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "werewolf recovery can be filmed",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "werewolf Super Shot rule",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "werewolf enters capture animation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "werewolf finishes in the camera",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "ghoul guarded exposure stays zero",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "ghoul requires facing",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "ghoul recovery can be filmed",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "ghoul Super Shot rule",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "ghoul enters capture animation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "ghoul finishes in the camera",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "monster guarded exposure stays zero",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "monster requires facing",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "monster recovery can be filmed",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "monster Super Shot rule",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "monster enters capture animation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "monster finishes in the camera",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "phantom guarded exposure stays zero",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "phantom requires facing",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "phantom recovery can be filmed",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "phantom Super Shot rule",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "phantom enters capture animation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "phantom finishes in the camera",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "vampire guarded exposure stays zero",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "vampire requires facing",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "vampire recovery can be filmed",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "vampire Super Shot rule",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "vampire enters capture animation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "vampire finishes in the camera",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "dracula guarded exposure stays zero",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "dracula requires facing",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "dracula recovery can be filmed",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "dracula Super Shot rule",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "dracula enters capture animation",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "dracula finishes in the camera",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Chapter starts with four health and no unearned Super",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Chapter has all five named stages",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Empty Super Shot is rejected",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Charged Super fires once",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Repeated Super cannot double-spend",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Super captures a normal guarded enemy",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Captured foe opens the gate",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Dracula shield survives Super",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Super damages exposed Dracula without skipping boss",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Pause freezes enemy and Super timers",
+      "passed": true
+    },
+    {
+      "detail": "(65.0, 230.0)",
+      "name": "Room 0 spawn stands on authored floor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Room 0 has distinct encounter data",
+      "passed": true
+    },
+    {
+      "detail": "(52.0, 286.0)",
+      "name": "Room 1 spawn stands on authored floor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Room 1 has distinct encounter data",
+      "passed": true
+    },
+    {
+      "detail": "(45.0, 320.0)",
+      "name": "Room 2 spawn stands on authored floor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Room 2 has distinct encounter data",
+      "passed": true
+    },
+    {
+      "detail": "(50.0, 300.0)",
+      "name": "Room 3 spawn stands on authored floor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Room 3 has distinct encounter data",
+      "passed": true
+    },
+    {
+      "detail": "(45.0, 310.0)",
+      "name": "Room 4 spawn stands on authored floor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Room 4 has distinct encounter data",
+      "passed": true
+    },
+    {
+      "detail": "(45.0, 300.0)",
+      "name": "Room 5 spawn stands on authored floor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Room 5 has distinct encounter data",
+      "passed": true
+    },
+    {
+      "detail": "(45.0, 286.0)",
+      "name": "Room 6 spawn stands on authored floor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Room 6 has distinct encounter data",
+      "passed": true
+    },
+    {
+      "detail": "(45.0, 300.0)",
+      "name": "Room 7 spawn stands on authored floor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Room 7 has distinct encounter data",
+      "passed": true
+    },
+    {
+      "detail": "(70.0, 300.0)",
+      "name": "Room 8 spawn stands on authored floor",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Room 8 has distinct encounter data",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Pause clears held filming",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "New chapter clears progress",
+      "passed": true
+    }
+  ],
+  "failed": 0,
+  "passed": 72,
+  "physical_phone_tested": false
+}

@@ -1,0 +1,46 @@
+{
+  "build": "gothic-chapter-01",
+  "engine": "4.7.2.stable",
+  "render": [
+    1920,
+    1080
+  ],
+  "world": [
+    640,
+    360
+  ],
+  "files": {
+    "room.webmanifest": {
+      "bytes": 218,
+      "sha256": "6025012979ca5e378987972296e722de0a51d9a0a29d8c291035f1e76e5c55d6"
+    },
+    "index.wasm": {
+      "bytes": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0"
+    },
+    "index.html": {
+      "bytes": 13371,
+      "sha256": "73449b04fb55f7142463f31ce214a46af8b8e5bf0d46f855263fbde4cece806f"
+    },
+    "index.png": {
+      "bytes": 21443,
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e"
+    },
+    "index.audio.worklet.js": {
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3"
+    },
+    "index.js": {
+      "bytes": 279814,
+      "sha256": "7ae834bce024f55120a0e73f16abd5fc9ad080f4b90edc52f5240fb91d020962"
+    },
+    "index.audio.position.worklet.js": {
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8"
+    },
+    "index.pck": {
+      "bytes": 26559724,
+      "sha256": "0db3691d291712b71248381d4c3fb98cc8c67c1487a0c722b9e570eaf1e64de6"
+    }
+  }
+}
