@@ -1,0 +1,97 @@
+{
+  "checks": [
+    {
+      "name": "Optional upper route 1",
+      "passed": true,
+      "position": [
+        324.716796875,
+        197.925231933594
+      ],
+      "room": 1
+    },
+    {
+      "name": "Silver reel reachable 1",
+      "passed": true,
+      "position": [
+        324.716796875,
+        197.925231933594
+      ],
+      "room": 1
+    },
+    {
+      "name": "Optional upper route 2",
+      "passed": true,
+      "position": [
+        356.372802734375,
+        229.925231933594
+      ],
+      "room": 2
+    },
+    {
+      "name": "Silver reel reachable 2",
+      "passed": true,
+      "position": [
+        356.372802734375,
+        229.925231933594
+      ],
+      "room": 2
+    },
+    {
+      "name": "Optional upper route 6",
+      "passed": true,
+      "position": [
+        375.706176757812,
+        185.925277709961
+      ],
+      "room": 6
+    },
+    {
+      "name": "Silver reel reachable 6",
+      "passed": true,
+      "position": [
+        375.706176757812,
+        185.925277709961
+      ],
+      "room": 6
+    },
+    {
+      "name": "Optional upper route 7",
+      "passed": true,
+      "position": [
+        332.217010498047,
+        199.925277709961
+      ],
+      "room": 7
+    },
+    {
+      "name": "Boss supply platform reachable",
+      "passed": true,
+      "position": [
+        195.484039306641,
+        249.994567871094
+      ],
+      "room": 8
+    },
+    {
+      "name": "Lower crypt silver reel reachable",
+      "passed": true,
+      "position": [
+        558.927917480469,
+        341.988006591797
+      ],
+      "room": 0
+    },
+    {
+      "name": "Crypt bottom cannot be dropped through",
+      "passed": true,
+      "position": [
+        260.0,
+        350.0
+      ],
+      "room": 3
+    }
+  ],
+  "failed": 0,
+  "method": "Native controller inputs with enemies removed to isolate optional route geometry",
+  "passed": 10
+}

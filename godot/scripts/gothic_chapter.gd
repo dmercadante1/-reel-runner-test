@@ -42,7 +42,7 @@ func _ready() -> void:
  _super_audio.stream=load("res://assets/chapter/audio/super.wav")
  _super_audio.volume_db=-6
  add_child(_super_audio)
- for name in ["catacombs","cathedral","castle","dracula_chamber","werewolf","ghoul","monster","phantom","vampire","dracula"]:
+ for name in ["bell","catacombs","cathedral","castle","dracula_chamber","werewolf","ghoul","monster","phantom","vampire","dracula"]:
   var path:="res://assets/chapter/%s.png"%name
   if ResourceLoader.exists(path): _textures[name]=load(path)
  if FileAccess.file_exists("res://assets/chapter/atlas.json"):
@@ -363,18 +363,6 @@ func _draw() -> void:
  var bg:String=room.bg
  if _textures.has(bg):draw_texture_rect(_textures[bg],Rect2(0,0,640,360),false)
  else:draw_rect(Rect2(0,0,640,360),Color("0b1420"))
- if _textures.has("architecture"):
-  var texture:Texture2D=_textures.architecture
-  var cell:=texture.get_size()/Vector2(3,2)
-  for rect in surfaces:
-   if rect.size.y>10:
-    for x in range(int(rect.position.x),int(rect.end.x),32):
-     var width:=minf(32,rect.end.x-x)
-     draw_texture_rect_region(texture,Rect2(x,rect.position.y,width,rect.size.y),Rect2(Vector2(0,cell.y+cell.y*0.063),Vector2(cell.x*width/32,cell.y*0.5)))
-   else:
-    draw_texture_rect_region(texture,rect,Rect2(Vector2(0,cell.y+cell.y*0.08),Vector2(cell.x,cell.y*0.22)))
-    draw_line(rect.position+Vector2(2,10),rect.end-Vector2(2,0),Color("35434f"),2)
-   draw_line(rect.position,Vector2(rect.end.x,rect.position.y),Color("a1adae"),1)
  for i in range(3):
   draw_rect(Rect2(fmod(_time*3+i*250,850)-180,278+i*19,210,5),Color(0.3,0.5,0.6,0.04))
  for reel in _reels:_draw_reel(reel+Vector2(0,sin(_time*3+reel.x)*2),false)
@@ -389,6 +377,20 @@ func _draw() -> void:
    draw_circle(p.position,4,color)
    draw_circle(p.position-Vector2(1,1),1.6,Color("f0eac9"))
 
+func _draw_surfaces() -> void:
+ if _textures.has("architecture"):
+  var texture:Texture2D=_textures.architecture
+  var cell:=texture.get_size()/Vector2(3,2)
+  for rect in surfaces:
+   if rect.size.y!=10:
+    for x in range(int(rect.position.x),int(rect.end.x),32):
+     var width:=minf(32,rect.end.x-x)
+     _keyed.draw_texture_rect_region(texture,Rect2(x,rect.position.y,width,rect.size.y),Rect2(Vector2(0,cell.y+cell.y*0.063),Vector2(cell.x*width/32,cell.y*0.5)))
+   else:
+    _keyed.draw_texture_rect_region(texture,rect,Rect2(Vector2(0,cell.y+cell.y*0.08),Vector2(cell.x,cell.y*0.22)))
+    _keyed.draw_line(rect.position+Vector2(2,10),rect.end-Vector2(2,0),Color("35434f"),2)
+   _keyed.draw_line(rect.position,Vector2(rect.end.x,rect.position.y),Color("a1adae"),1)
+
 func _draw_reel(point: Vector2,rare: bool) -> void:
  if rare:
   draw_circle(point,11,Color(0.3,0.7,1,0.10))
@@ -398,6 +400,12 @@ func _draw_reel(point: Vector2,rare: bool) -> void:
  for angle in [0.0,2.1,4.2]:draw_circle(point+Vector2(cos(angle),sin(angle))*3,1,Color("343843"))
 
 func _draw_props() -> void:
+ _draw_surfaces()
+ if room_index==5 and _textures.has("bell"):
+  _keyed.draw_line(Vector2(308,46),Vector2(308,80),Color("54545a"),2)
+  _keyed.draw_set_transform(Vector2(308,80),0.0 if reduced_motion else sin(_time*0.65)*0.025)
+  _keyed.draw_texture_rect(_textures.bell,Rect2(-52,0,105,105),false)
+  _keyed.draw_set_transform(Vector2.ZERO)
  if room.is_empty() or not _textures.has("architecture"):return
  var texture:Texture2D=_textures.architecture
  var c:=texture.get_size()/Vector2(3,2)

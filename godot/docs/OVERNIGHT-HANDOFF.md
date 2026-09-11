@@ -24,3 +24,9 @@ Local server is work/courtyard-server.cjs on 127.0.0.1:8768; chapter test copy i
 Next: finish actual nine-room traversal; fix only demonstrated issues, inspect each stage/enemy/capture/Super, verify phone layouts and checkpoint restart, run actual Chromium and WebKit against the exact candidate, then publish a new immutable preview and verify live bytes. Continue art/motion/audio polish as time permits. Do not call this a finished game or final art approval.
 
 Hourly heartbeat gothic-horror-chapter-overnight was created around 2026-09-11 03:41 UTC. Pause it after eight hours (about 11:41 UTC) or after a complete reviewable first pass and handoff. Do not overlap edits with an active turn.
+
+## Verification update at 04:50 UTC
+
+Source e02e67b / test revision 0cfaeeb ran in workflow 34563084261. WebKit passed all 22 browser checks, the complete nine-room route and two earned Super Shots (21 playthrough checks). Chromium passed startup/input checks but its 14 FPS software renderer caused the bot to overshoot the first bridge approach; no script/engine errors. The bot now anticipates braking and can jump out of recovery steps. Immutable older comparison candidates are no longer redundantly replayed by the chapter workflow; their bytes are unchanged and their previously verified tests remain available. The old Chromium comparison timing test also missed its no-damage window under software rendering.
+
+Visual inspection found a thin magenta edge in the lowest floor strip. All modular surfaces now draw through the same key-cleaned architecture layer. The crypt bottom is solid so Drop cannot pass through it. A generated bronze bell gives the Bell Gallery a distinct prop. Ten optional-route checks are being run, including rare reels and the bottom-floor Drop regression. A fresh candidate export and both-browser pass are still required for publication.

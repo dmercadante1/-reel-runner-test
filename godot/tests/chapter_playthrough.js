@@ -5,7 +5,7 @@ let sent={};const act=(n,v=true)=>{if(sent[n]!==v){M1Bridge.send(n,v);sent[n]=v}
 async function until(fn,time=15000){const t=performance.now();while(!fn()){if(performance.now()-t>time)throw Error('Timeout '+JSON.stringify(s()));await wait(30)}}
 function check(name,ok){checks.push({name,passed:ok,room:s().room});log.textContent=checks.map(c=>(c.passed?'PASS ':'FAIL ')+c.name).join('\n');if(!ok)throw Error(name)}
 async function capture(name){await new Promise(requestAnimationFrame);const blob=await new Promise(r=>canvas.toBlob(r,'image/png'));await fetch('/capture/'+name+'.png',{method:'POST',body:blob})}
-async function walk(x,time=8000){const t=performance.now();while(Math.abs(s().x-x)>5){if(performance.now()-t>time)throw Error('Walk blocked toward '+x+' '+JSON.stringify(s()));const right=s().x<x;act('move_right',right);act('move_left',!right);await wait(30)}stop();await wait(160)}
+async function walk(x,time=12000){const t=performance.now();let last=s().x,stuck=0;while(Math.abs(s().x-x)>12){if(performance.now()-t>time)throw Error('Walk blocked toward '+x+' '+JSON.stringify(s()));const gap=x-s().x;if(Math.abs(gap)<Math.max(14,Math.abs(s().vx)*.18+7)){stop();await wait(180);if(Math.abs(s().x-x)<16)break;}const right=s().x<x;act('move_right',right);act('move_left',!right);await wait(60);stuck=Math.abs(s().x-last)<.2?stuck+60:0;last=s().x;if(stuck>800&&s().grounded){act('jump');await wait(350);act('jump',false);stuck=0}}stop();await wait(160)}
 async function leap(x){await until(()=>s().grounded);const right=s().x<x,t=performance.now();act('move_right',right);act('move_left',!right);while(right?s().x<x-5:s().x>x+5){if(performance.now()-t>15000)throw Error('Jump route blocked '+JSON.stringify(s()));if(s().grounded){act('jump');await wait(350);act('jump',false);await wait(90)}else await wait(35)}stop();await until(()=>s().grounded);await wait(100)}
 async function fight(){let lastJump=0,beam=false,pull=false;const t=performance.now();while(!s().gate_open){if(s().phase==='defeated')throw Error('Defeated '+JSON.stringify(s()));if(performance.now()-t>90000)throw Error('Combat timeout '+JSON.stringify(s()));
  if(s().room===5&&s().feet>310){await leap(375);continue;}
@@ -34,7 +34,7 @@ async function fight(){let lastJump=0,beam=false,pull=false;const t=performance.
  }stop();await wait(150);}
 const run=async(event)=>{checks.length=0;sent={};try{const startRoom=event.target.id==='chapter-continue'?s().room:0;cmd(startRoom?'resume':'new_game');await until(()=>s()?.phase==='running'&&s().grounded);for(let room=startRoom;room<9;room++){
  await until(()=>s().room===room&&s().phase==='running');await wait(250);await capture('chapter-'+room+'-start');
- if(room===0){await walk(249);await leap(367)}
+ if(room===0){await walk(227);await leap(367)}
  if(room===3){await walk(214);await leap(328)}
  if(room===5){await walk(252);await leap(369)}
  await fight();check('Room '+room+' encounters captured',s().gate_open);await capture('chapter-'+room+'-clear');

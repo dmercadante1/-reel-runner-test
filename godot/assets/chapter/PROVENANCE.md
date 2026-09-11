@@ -6,6 +6,7 @@ Generated image identifiers (session 01a08c4d-bdbd-7941-b1ae-ed0faade18ee):
 
 | Asset | Final source |
 |---|---|
+| Cathedral bell | exec-e0bfc2cc-014d-4490-8470-d5d1dd44a1ce.png |
 | werewolf | exec-5350d3dd-cafe-4d42-9d85-e5d529986bb5.png |
 | ghoul | exec-887fcb26-6d57-4702-b856-b55a3bf76cde.png |
 | monster | exec-7081b5a0-11c7-41f2-974b-63478b2f4f26.png |

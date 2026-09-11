@@ -10,3 +10,5 @@ assets/private-character/
 tests/latest-courtyard-results.json
 
 tests/latest-chapter-results.json
+
+tests/latest-chapter-routes.json
