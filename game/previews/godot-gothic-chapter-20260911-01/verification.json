@@ -1,0 +1,14 @@
+{
+  "build": "gothic-chapter-01",
+  "runtime_source": "69ef98d",
+  "verification_source": "71d7505",
+  "webkit_workflow": "https://github.com/dmercadante1/-reel-runner-test/actions/runs/34589296009",
+  "webkit_browser_checks": 22,
+  "webkit_playthrough_checks": 21,
+  "local_playthrough_checks": 20,
+  "local_captures": 12,
+  "native_gameplay_checks": 72,
+  "native_route_checks": 10,
+  "physical_iphone_tested": false,
+  "remaining": "Headless Chromium software-renderer staircase automation remains open. New restart-pixel and fresh-source CI checks are running. This is a review build, not final art or playfeel approval."
+}
