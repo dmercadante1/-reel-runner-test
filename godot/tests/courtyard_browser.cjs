@@ -1,6 +1,6 @@
 const {chromium,webkit}=require('playwright');
 const fs=require('fs'),path=require('path'),http=require('http');
-const root=path.resolve('preview-candidate/courtyard-01'),out=path.resolve('godot/evidence');
+const root=path.resolve('preview-candidate/courtyard-02'),out=path.resolve('godot/evidence');
 const server=http.createServer((req,res)=>{const name=req.url.split('?')[0]==='/'?'index.html':req.url.split('?')[0].slice(1);if(!/^[a-z0-9.\-]+$/.test(name)){res.writeHead(404);return res.end()};const p=path.join(root,name);if(!fs.existsSync(p)){res.writeHead(404);return res.end()};res.setHeader('Content-Type',name.endsWith('.wasm')?'application/wasm':name.endsWith('.js')?'text/javascript':name.endsWith('.html')?'text/html':'application/octet-stream');res.end(fs.readFileSync(p))});
 (async()=>{await new Promise(r=>server.listen(8766,'127.0.0.1',r));let failed=0;
 for(const [name,type] of Object.entries({chromium,webkit})){
@@ -20,6 +20,14 @@ await act('reset');await wait(200);await page.setViewportSize({width:844,height:
 r.touch_method="DOM pointer events with capture stub; not physical iPhone";await page.locator("[data-action]").evaluateAll(bs=>bs.forEach(b=>b.setPointerCapture=()=>{}));
 await page.locator('[data-action="record"]').dispatchEvent('pointerdown',{pointerId:1,pointerType:'touch',bubbles:true});await wait(250);await page.locator('[data-action="record"]').dispatchEvent('pointerup',{pointerId:1,pointerType:'touch',bubbles:true});await wait(100);check('Touch Film button consumes film',(await s()).film<12);await page.locator('[data-action="reload"]').dispatchEvent('pointerdown',{pointerId:2,pointerType:'touch',bubbles:true});await page.locator('[data-action="reload"]').dispatchEvent('pointerup',{pointerId:2,pointerType:'touch',bubbles:true});await wait(850);check('Touch Reload restores film',(await s()).film===12&&(await s()).spares===1);
 for(const [w,h] of [[844,390],[390,844]]){await page.setViewportSize({width:w,height:h});await wait(250);check(`Layout ${w}x${h}`,await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
+
+await page.setViewportSize({width:844,height:390});await wait(250);await page.locator('#fullscreen').click();await wait(350);
+const screenFit=()=>page.evaluate(()=>{const c=document.getElementById('canvas'),r=c.getBoundingClientRect();return {width:r.width,height:r.height,aspect:r.width/r.height,active:document.body.classList.contains('immersive'),pixels:[c.width,c.height]}});
+let fit=await screenFit();check('Full-screen fills available height without stretching',fit.active&&fit.height>380&&Math.abs(fit.aspect-640/360)<.001&&fit.pixels.join(',')==='640,360',fit);
+await page.locator('#screen-controls').click();check('Hide controls clears artwork view',!(await page.locator('#touch').isVisible()));await page.locator('#screen-controls').click();check('Controls can be restored',await page.locator('#touch').isVisible());
+await page.locator('#screen-scale').click();fit=await screenFit();check('Whole-pixel scale uses integer multiples',Math.abs(fit.width/640-Math.round(fit.width/640))<.001,fit);
+await page.locator('#screen-exit').click();await wait(150);check('Exit full-screen restores page',!(await screenFit()).active);
+await page.evaluate(()=>document.getElementById('frame').requestFullscreen=undefined);await page.locator('#fullscreen').click();await wait(150);check('Unsupported API still opens screen-filling view',(await screenFit()).active&&await page.locator('#screen-hint').isVisible());await page.locator('#screen-exit').click();
 await page.evaluate(()=>window.dispatchEvent(new Event('blur')));await wait(200);check('Focus loss pauses',(await s()).phase==='paused');check('No script or engine errors',r.errors.length===0,r.errors);r.passed=true;
 }catch(e){r.passed=false;r.failure=String(e);failed++;if(page)await page.screenshot({path:path.join(out,`courtyard-${name}-failure.png`)}).catch(()=>{});}finally{if(browser)await browser.close();fs.writeFileSync(path.join(out,`courtyard-${name}.json`),JSON.stringify(r,null,2));console.log(JSON.stringify(r));}}
 server.close();process.exitCode=failed?1:0;
