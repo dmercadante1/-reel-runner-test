@@ -1,6 +1,7 @@
 const {chromium,webkit}=require('playwright');
 const fs=require('fs'),path=require('path'),http=require('http');
-const root=path.resolve('preview-candidate/courtyard-02'),out=path.resolve('godot/evidence');
+const root=path.resolve(process.env.COURTYARD_ROOT||'preview-candidate/courtyard-02'),out=path.resolve('godot/evidence');
+const expected=JSON.parse(process.env.COURTYARD_RESOLUTION||'[640,360]');const tag=process.env.COURTYARD_TAG||'courtyard';
 const server=http.createServer((req,res)=>{const name=req.url.split('?')[0]==='/'?'index.html':req.url.split('?')[0].slice(1);if(!/^[a-z0-9.\-]+$/.test(name)){res.writeHead(404);return res.end()};const p=path.join(root,name);if(!fs.existsSync(p)){res.writeHead(404);return res.end()};res.setHeader('Content-Type',name.endsWith('.wasm')?'application/wasm':name.endsWith('.js')?'text/javascript':name.endsWith('.html')?'text/html':'application/octet-stream');res.end(fs.readFileSync(p))});
 (async()=>{await new Promise(r=>server.listen(8766,'127.0.0.1',r));let failed=0;
 for(const [name,type] of Object.entries({chromium,webkit})){
@@ -8,13 +9,13 @@ const r={browser:name,checks:[],errors:[],physical_iphone_tested:false};let brow
 const check=(name,ok,detail)=>{r.checks.push({name,passed:!!ok,detail});if(!ok)throw Error(name)};
 try{browser=await type.launch();page=await browser.newPage({viewport:{width:1304,height:1000},hasTouch:true});page.on('pageerror',e=>r.errors.push(String(e)));page.on('console',m=>{if(m.type()==='error')r.errors.push(m.text())});await page.goto('http://127.0.0.1:8766');
 const until=fn=>page.waitForFunction(fn,null,{timeout:90000});const s=()=>page.evaluate(()=>M1Bridge.state);const act=(a,v=true)=>page.evaluate(([a,v])=>M1Bridge.send(a,v),[a,v]);const wait=ms=>page.waitForTimeout(ms);
-await until(()=>M1Bridge.state?.phase==='ready');await page.locator('#start').click();await until(()=>M1Bridge.state.grounded);check('640x360 engine ready',(await s()).viewport.join(',')==='640,360');
+await until(()=>M1Bridge.state?.phase==='ready');await page.locator('#start').click();await until(()=>M1Bridge.state.grounded);check('Expected native render resolution ready',(await s()).viewport.join(',')===expected.join(','));
 await page.keyboard.down('ArrowRight');await wait(250);await page.keyboard.up('ArrowRight');await wait(200);check('Desktop keyboard moves and releases',(await s()).x>85&&Math.abs((await s()).vx)<1);await act('reset');await wait(200);
 await page.keyboard.down('Space');await wait(420);await page.keyboard.up('Space');await wait(150);check('Film drains',(await s()).film<12);await page.keyboard.press('r');await wait(200);check('Keyboard reload spends one spare',(await s()).reload_left>0&&(await s()).spares===1);await wait(650);check('Reload fills film',(await s()).film===12);
 await act('move_right');await until(()=>M1Bridge.state.x>232);await act('jump');await wait(350);await act('jump',false);await until(()=>M1Bridge.state.x>367);await act('move_right',false);await wait(170);check('Cross bridge and collect film',(await s()).checkpoint&&(await s()).pickups===1);
 await act('pause');await wait(180);const before=await s();await wait(240);check('Pause freezes encounter',(await s()).guardian_clock===before.guardian_clock);await act('resume');await until(()=>M1Bridge.state.guardian==='windup'&&M1Bridge.state.guardian_clock>.67);await act('jump');await wait(350);await act('jump',false);await act('record');await until(()=>M1Bridge.state.guardian==='captured');await act('record',false);check('Capture guardian without damage',(await s()).health===3);await act('move_right');await until(()=>M1Bridge.state.complete);await act('move_right',false);check('Exit opens',(await s()).phase==='complete');
-await act('review');await wait(80);await page.locator('#canvas').screenshot({path:path.join(out,`courtyard-${name}-render.png`)});
-const {PNG}=require('pngjs');const png=PNG.sync.read(fs.readFileSync(path.join(out,`courtyard-${name}-render.png`)));const colors=new Set();for(let i=0;i<png.data.length;i+=4)colors.add(png.data.readUInt32BE(i));check('Rendered scene has nonblank artwork',colors.size>1000,{colors:colors.size});
+await act('review');await wait(80);await wait(180);const data=await page.locator('#canvas').evaluate(c=>c.toDataURL('image/png'));fs.writeFileSync(path.join(out,`${tag}-${name}-render.png`),Buffer.from(data.split(',')[1],'base64'));
+const {PNG}=require('pngjs');const png=PNG.sync.read(fs.readFileSync(path.join(out,`${tag}-${name}-render.png`)));const colors=new Set();for(let i=0;i<png.data.length;i+=4)colors.add(png.data.readUInt32BE(i));check('Rendered scene has nonblank artwork',colors.size>1000&&png.width===expected[0]&&png.height===expected[1],{colors:colors.size,width:png.width,height:png.height});
 await act('reset');await wait(200);await page.setViewportSize({width:844,height:390});await wait(250);
 // Portable DOM pointer delivery; hardware multi-touch remains unverified.
 r.touch_method="DOM pointer events with capture stub; not physical iPhone";await page.locator("[data-action]").evaluateAll(bs=>bs.forEach(b=>b.setPointerCapture=()=>{}));
@@ -23,12 +24,12 @@ for(const [w,h] of [[844,390],[390,844]]){await page.setViewportSize({width:w,he
 
 await page.setViewportSize({width:844,height:390});await wait(250);await page.locator('#fullscreen').click();await wait(350);
 const screenFit=()=>page.evaluate(()=>{const c=document.getElementById('canvas'),r=c.getBoundingClientRect();return {width:r.width,height:r.height,aspect:r.width/r.height,active:document.body.classList.contains('immersive'),pixels:[c.width,c.height]}});
-let fit=await screenFit();check('Full-screen fills available height without stretching',fit.active&&fit.height>380&&Math.abs(fit.aspect-640/360)<.001&&fit.pixels.join(',')==='640,360',fit);
+let fit=await screenFit();check('Full-screen fills available height without stretching',fit.active&&fit.height>380&&Math.abs(fit.aspect-640/360)<.001&&fit.pixels.join(',')===expected.join(','),fit);
 await page.locator('#screen-controls').click();check('Hide controls clears artwork view',!(await page.locator('#touch').isVisible()));await page.locator('#screen-controls').click();check('Controls can be restored',await page.locator('#touch').isVisible());
-await page.locator('#screen-scale').click();fit=await screenFit();check('Whole-pixel scale uses integer multiples',Math.abs(fit.width/640-Math.round(fit.width/640))<.001,fit);
+await page.locator('#screen-scale').click();fit=await screenFit();check('Whole-pixel scale uses integer multiples',fit.width<expected[0]||Math.abs(fit.width/expected[0]-Math.round(fit.width/expected[0]))<.001,fit);
 await page.locator('#screen-exit').click();await wait(150);check('Exit full-screen restores page',!(await screenFit()).active);
 await page.evaluate(()=>document.getElementById('frame').requestFullscreen=undefined);await page.locator('#fullscreen').click();await wait(150);check('Unsupported API still opens screen-filling view',(await screenFit()).active&&await page.locator('#screen-hint').isVisible());await page.locator('#screen-exit').click();
 await page.evaluate(()=>window.dispatchEvent(new Event('blur')));await wait(200);check('Focus loss pauses',(await s()).phase==='paused');check('No script or engine errors',r.errors.length===0,r.errors);r.passed=true;
-}catch(e){r.passed=false;r.failure=String(e);failed++;if(page)await page.screenshot({path:path.join(out,`courtyard-${name}-failure.png`)}).catch(()=>{});}finally{if(browser)await browser.close();fs.writeFileSync(path.join(out,`courtyard-${name}.json`),JSON.stringify(r,null,2));console.log(JSON.stringify(r));}}
+}catch(e){r.passed=false;r.failure=String(e);failed++;if(page)await page.screenshot({path:path.join(out,`${tag}-${name}-failure.png`)}).catch(()=>{});}finally{if(browser)await browser.close();fs.writeFileSync(path.join(out,`${tag}-${name}.json`),JSON.stringify(r,null,2));console.log(JSON.stringify(r));}}
 server.close();process.exitCode=failed?1:0;
 })().catch(e=>{server.close();console.error(e);process.exitCode=1});

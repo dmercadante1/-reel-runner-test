@@ -1,0 +1,45 @@
+{
+  "resolution": [
+    1280,
+    720
+  ],
+  "world_coordinates": [
+    640,
+    360
+  ],
+  "same_art_and_physics": true,
+  "files": {
+    "room.webmanifest": {
+      "bytes": 197,
+      "sha256": "fa7ae8df8676a02c31ab0c994a9fa220fda4e761028afee7464cc336d1099494"
+    },
+    "index.wasm": {
+      "bytes": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0"
+    },
+    "index.html": {
+      "bytes": 12867,
+      "sha256": "45aa332264b9d8386d0b28d6a322d997bc948a1a5c46e108510ef0e04709ee72"
+    },
+    "index.png": {
+      "bytes": 21443,
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e"
+    },
+    "index.audio.worklet.js": {
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3"
+    },
+    "index.js": {
+      "bytes": 279814,
+      "sha256": "7ae834bce024f55120a0e73f16abd5fc9ad080f4b90edc52f5240fb91d020962"
+    },
+    "index.audio.position.worklet.js": {
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8"
+    },
+    "index.pck": {
+      "bytes": 10785192,
+      "sha256": "719824bdcb1bea34a72efdc369ce31a2b7c1676f04f507fd000bca492d3bc4f4"
+    }
+  }
+}

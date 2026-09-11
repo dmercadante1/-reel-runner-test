@@ -43,6 +43,10 @@ const REVIEW_POSES := ["idle", "turn", "run", "jump", "fall", "land", "film", "f
 const SURFACES := [Rect2(0,230,260,24),Rect2(340,230,300,24),Rect2(0,342,640,18),Rect2(275,310,45,10),Rect2(268,276,40,10),Rect2(302,246,36,10)]
 
 func _ready() -> void:
+	# Render source art at the actual canvas resolution; retain 640x360 world units.
+	get_window().content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+	get_window().content_scale_size = Vector2i(640, 360)
+	get_window().content_scale_stretch = Window.CONTENT_SCALE_STRETCH_FRACTIONAL
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_font = ThemeDB.fallback_font
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -288,7 +292,7 @@ func _report() -> void:
 	if not is_instance_valid(player): return
 	var sorted := _samples.duplicate()
 	sorted.sort()
-	var state := {"phase":_phase,"x":player.position.x,"feet":player.position.y,"vx":player.velocity.x,"vy":player.velocity.y,"grounded":player.is_on_floor(),"pose":_pose,"film":stock.film,"film_capacity":stock.CAPACITY,"spares":stock.spares,"reload_left":stock.reload_left,"reloads":stock.reloads,"recording":_record,"health":_health,"hits":_hits,"jumps":_jumps,"pickups":_pickups,"checkpoint":_checkpoint_active,"guardian":guardian.phase,"guardian_x":guardian.x,"guardian_clock":guardian.clock,"exposure":guardian.exposure,"attacks":guardian.attacks,"complete":_completed,"viewport":[640,360],"fps":Engine.get_frames_per_second(),"frame_p95_ms":sorted[int((sorted.size()-1)*0.95)] if not sorted.is_empty() else 0.0,"engine":Engine.get_version_info().string,"build":"courtyard-01","audio_enabled":_sound,"actions":{"move_left":Input.is_action_pressed("move_left"),"move_right":Input.is_action_pressed("move_right"),"jump":Input.is_action_pressed("jump"),"record":Input.is_action_pressed("record")}}
+	var state := {"phase":_phase,"x":player.position.x,"feet":player.position.y,"vx":player.velocity.x,"vy":player.velocity.y,"grounded":player.is_on_floor(),"pose":_pose,"film":stock.film,"film_capacity":stock.CAPACITY,"spares":stock.spares,"reload_left":stock.reload_left,"reloads":stock.reloads,"recording":_record,"health":_health,"hits":_hits,"jumps":_jumps,"pickups":_pickups,"checkpoint":_checkpoint_active,"guardian":guardian.phase,"guardian_x":guardian.x,"guardian_clock":guardian.clock,"exposure":guardian.exposure,"attacks":guardian.attacks,"complete":_completed,"viewport":[get_window().size.x,get_window().size.y],"design_viewport":[640,360],"fps":Engine.get_frames_per_second(),"frame_p95_ms":sorted[int((sorted.size()-1)*0.95)] if not sorted.is_empty() else 0.0,"engine":Engine.get_version_info().string,"build":"courtyard-01","audio_enabled":_sound,"actions":{"move_left":Input.is_action_pressed("move_left"),"move_right":Input.is_action_pressed("move_right"),"jump":Input.is_action_pressed("jump"),"record":Input.is_action_pressed("record")}}
 	if _bridge != null: _bridge.report(JSON.stringify(state))
 
 func _draw() -> void:
