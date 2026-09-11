@@ -1,5 +1,7 @@
 extends Node2D
 ## Fixed, authored pose anchors. Physics never depends on source image dimensions.
+var aiming_up := false
+var crouch_sheet:Texture2D
 var stride_rate := 12.0
 var reverse_stride := false
 var pose: String = "idle"
@@ -27,6 +29,22 @@ func set_pose(value: String, elapsed: float, facing: int) -> void:
 	queue_redraw()
 
 func _draw() -> void:
+	if pose in ["crouch","crouch_walk","crouch_film"] or (aiming_up and pose in ["film","film_run"]):
+		if crouch_sheet==null:crouch_sheet=load("res://assets/courtyard-scroll/crouch.png")
+		var index:=0
+		if pose=="crouch_walk":index=[1,2,3,4][int(pose_time*8)%4]
+		elif pose=="crouch_film":index=5
+		elif aiming_up:index=6
+		var cell:=crouch_sheet.get_size()/Vector2(4,2)
+		var scale_factor:=0.14 if index==6 else 0.105
+		var source:=Rect2(Vector2(index%4,int(index/4))*cell,cell)
+		var anchor:=Vector2(cell.x*0.48,cell.y*0.94)
+		if index==6:
+			source=Rect2(768,470,384,540)
+			anchor=Vector2(184,517)
+		draw_set_transform(Vector2.ZERO,0,Vector2(direction,1))
+		draw_texture_rect_region(crouch_sheet,Rect2(-anchor*scale_factor,source.size*scale_factor),source)
+		return
 	if _atlas.is_empty():
 		return
 	var source := "ground"

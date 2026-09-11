@@ -1,32 +1,26 @@
 extends "res://scripts/capture_effect.gd"
-## Narrow luminous exposure beam and amber-edged photographic ribbon.
+var artwork:Texture2D
 func _draw() -> void:
  if not active:return
+ if artwork==null:artwork=load("res://assets/courtyard-scroll/film-fx.png")
  var tip:=endpoint if locked else lens+Vector2(direction*(245 if powered else 185),0)
- var normal:Vector2=(tip-lens).normalized().orthogonal()
- var spread:=20.0 if powered else 10.0
- for layer in range(5,0,-1):
-  var width:=spread*layer*0.65
-  draw_colored_polygon(PackedVector2Array([lens-normal,lens+normal,tip+normal*width,tip-normal*width]),Color(0.25,0.56,0.82,0.018))
- # Fine uneven shafts make the light feel projected through air.
- for i in range(9):
-  var n:=sin(i*1.72+clock*0.8)
-  draw_line(lens+normal*n,tip+normal*n*spread,Color(0.63,0.82,0.91,0.075),0.4,true)
- draw_circle(lens,4,Color(0.58,0.8,1,0.15))
- draw_circle(lens,1.3,Color("d8edf1"))
+ var axis:=tip-lens
+ var normal:=axis.normalized().orthogonal()
+ var length:=axis.length()
+ draw_set_transform(lens,axis.angle())
+ var height:=78.0 if powered else 55.0
+ draw_texture_rect_region(artwork,Rect2(0,-height*0.55,length,height),Rect2(50,70,1486,565),Color(0.8,0.92,1,0.6 if locked else 0.42))
+ draw_set_transform(Vector2.ZERO)
  if not locked and not powered:return
+ var half:=4.2 if powered else 3.0
  for ribbon in range(2 if powered else 1):
-  var pts:=PackedVector2Array()
-  for j in range(49):
-   var t:=j/48.0
-   var bend:=sin(t*9-clock*5+ribbon*PI)*sin(t*PI)*13
-   pts.append(lens.lerp(tip,t)+normal*bend)
-  draw_polyline(pts,Color(0.36,0.69,0.87,0.12),10,true)
-  draw_polyline(pts,Color("8d9683"),5.0,true)
-  draw_polyline(pts,Color("263a47"),3.5,true)
-  for j in range(25):
-   var t:=fposmod(j/25.0-clock*0.48,1)
-   var bend:=sin(t*9-clock*5+ribbon*PI)*sin(t*PI)*13
-   var point:=lens.lerp(tip,t)+normal*bend
-   for side in [-1,1]:draw_circle(point+normal*side*2,0.48,Color("d7d8bd"))
-   if j%3==0:draw_line(point-normal*1.3,point+normal*1.3,Color("7f9aa0"),0.6,true)
+  for i in range(32):
+   var t:=i/32.0
+   var u:=(i+1)/32.0
+   var a:Vector2=(lens.lerp(tip,t)+normal*sin(t*9-clock*5+ribbon*PI)*sin(t*PI)*12).snapped(Vector2(0.5,0.5))
+   var b:Vector2=(lens.lerp(tip,u)+normal*sin(u*9-clock*5+ribbon*PI)*sin(u*PI)*12).snapped(Vector2(0.5,0.5))
+   var x:=36+fposmod(t*2-clock*0.7,1)*1465
+   var x2:=minf(x+92,1500)
+   var uv:=PackedVector2Array([Vector2(x,720),Vector2(x,894),Vector2(x2,894),Vector2(x2,720)])
+   for j in range(4):uv[j]/=artwork.get_size()
+   draw_polygon(PackedVector2Array([a-normal*half,a+normal*half,b+normal*half,b-normal*half]),PackedColorArray([Color.WHITE,Color.WHITE,Color.WHITE,Color.WHITE]),uv,artwork)

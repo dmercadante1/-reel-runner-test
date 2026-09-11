@@ -1,0 +1,1 @@
+Kenney RPG Audio and Impact Sounds, Creative Commons CC0. Sources: https://kenney.nl/assets/rpg-audio and https://kenney.nl/assets/impact-sounds . Selected recorded Foley used for footsteps, cloth, impacts, mechanisms and processed enemy cues. No Nintendo recordings.

@@ -1,10 +1,11 @@
 extends "res://scripts/chapter_enemy.gd"
 var animation_clock := 0.0
 var aware := false
+var target_locked := false
 func setup(name: String, point: Vector2, limits: Vector2) -> void:
  super.setup(name,point,limits)
  spec=spec.duplicate()
- spec.capture=0.95 if kind=="skeleton" else 1.35
+ spec.capture=0.42 if kind=="skeleton" else 0.60
  spec.recover=0.8 if kind=="skeleton" else 1.0
  spec.windup=0.55 if kind=="skeleton" else 0.65
  spec.speed=170.0 if kind=="skeleton" else 260.0
@@ -21,7 +22,13 @@ func advance(delta: float,target: Vector2,filming: bool,facing: int,lens: Vector
    if position.x<=bounds.x:direction=1
    elif position.x>=bounds.y:direction=-1
    position.x=clampf(position.x,bounds.x,bounds.y)
- var result=super.advance(delta,target,filming,facing,lens)
+ if not filming or phase!="exposed":target_locked=false
+ if filming and phase=="exposed" and in_view(target,facing):target_locked=true
+ var aim_target:=target
+ if target_locked and absf(target.x-position.x)<230 and absf(target.y-origin.y)<145:
+  aim_target.y=position.y
+ else:target_locked=false
+ var result=super.advance(delta,aim_target,filming,facing,lens)
  if filming and in_view(target,facing) and phase in ["watch","windup","attack"]:
   result.captured=expose(delta*0.20,lens)
  return result
