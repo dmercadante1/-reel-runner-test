@@ -13,6 +13,8 @@ func _ready() -> void:
 	_bind("record", KEY_SPACE, false)
 	_bind("record", KEY_C, true)
 	_bind("reload", KEY_R, true)
+	_bind("drop", KEY_DOWN, false)
+	_bind("drop", KEY_S, true)
 	_bind("pause_game", KEY_ESCAPE, false)
 	_bind("pause_game", KEY_P, true)
 	_bind("reset_trial", KEY_T, true)
@@ -35,7 +37,7 @@ func _input(event: InputEvent) -> void:
 		command.emit("reset", true)
 
 func release_all() -> void:
-	for action in ["move_left", "move_right", "jump", "record", "reload"]:
+	for action in ["move_left", "move_right", "jump", "record", "reload", "drop"]:
 		Input.action_release(action)
 
 func _notification(what: int) -> void:

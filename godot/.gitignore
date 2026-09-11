@@ -4,3 +4,7 @@ evidence/*
 tests/latest-native-results.json
 export_credentials.cfg
 *.tmp
+# Likeness-derived artwork remains local until publication is explicitly approved.
+assets/private-character/
+
+tests/latest-courtyard-results.json

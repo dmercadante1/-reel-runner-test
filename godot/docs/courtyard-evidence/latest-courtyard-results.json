@@ -1,0 +1,117 @@
+{
+  "checks": [
+    {
+      "detail": null,
+      "name": "Filming guarded enemy gives no exposure",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Jump clears the low sweep",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Camera must face exposed enemy",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Filming exposed enemy captures it",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Exposure window expires even while filming",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Sweep damages once, not every frame",
+      "passed": true
+    },
+    {
+      "detail": "(65.0, 230.0)",
+      "name": "Courtyard starts on the upper bridge",
+      "passed": true
+    },
+    {
+      "detail": "(373.2, 229.9253)",
+      "name": "Authored bridge gap is jumpable",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Crossing activates checkpoint",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Retry restores checkpoint and supplies",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Crypt reel can be collected",
+      "passed": true
+    },
+    {
+      "detail": "(285.0, 309.9923)",
+      "name": "Crypt return step at 310.0 is reachable",
+      "passed": true
+    },
+    {
+      "detail": "(285.0, 275.987)",
+      "name": "Crypt return step at 276.0 is reachable",
+      "passed": true
+    },
+    {
+      "detail": "(324.7827, 245.9914)",
+      "name": "Third crypt step is reachable",
+      "passed": true
+    },
+    {
+      "detail": "(420.1487, 229.9253)",
+      "name": "Crypt route returns to upper bridge",
+      "passed": true
+    },
+    {
+      "detail": "(285.0, 341.9837)",
+      "name": "Down drops through crypt step",
+      "passed": true
+    },
+    {
+      "detail": "(365.0, 230.0)",
+      "name": "Down cannot fall through solid bridge",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Pause freezes reload",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Resume completes committed reload",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Captured guardian allows room completion",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Action review clears completion overlay",
+      "passed": true
+    },
+    {
+      "detail": null,
+      "name": "Retry resets capture and restores gate",
+      "passed": true
+    }
+  ],
+  "failed": 0,
+  "passed": 22,
+  "physical_phone_tested": false
+}

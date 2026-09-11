@@ -54,3 +54,7 @@ M0 native foundation is complete. M1 browser delivery has passed fresh native, C
 ## Film mechanic revision — 2026-09-10
 
 Flash is replaced by Reload. The current test carries up to three spare reels, starts with two, and consumes one to restore the active film to full after 0.65 seconds. Filming uses 12 seconds per active reel. Movement and jumping remain available during reload; filming pauses. Full-film and empty-reserve reload attempts spend nothing. Pickups stay available when reserves are full. No passive refill. These values are provisional playfeel tuning, separate from character art approval. Reset explicitly restarts the lab and inventory; falling only resets position and preserves inventory.
+
+## First room study — 2026-09-10
+
+The user authorized the full character action set and a playable Gothic room together. See COURTYARD-HANDOFF.md for the implemented room, fresh checks, local review package, and remaining Safari/phone/art approval. Public R5 and M1 releases are preserved.
