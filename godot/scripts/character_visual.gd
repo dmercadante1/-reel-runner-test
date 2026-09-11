@@ -1,5 +1,7 @@
 extends Node2D
 ## Fixed, authored pose anchors. Physics never depends on source image dimensions.
+var stride_rate := 12.0
+var reverse_stride := false
 var pose: String = "idle"
 var pose_time: float = 0.0
 var direction: int = 1
@@ -35,7 +37,8 @@ func _draw() -> void:
 		"reload": index = 4 + mini(3, int(pose_time / 0.65 * 4.0))
 		"run", "film_run":
 			source = "run"
-			index = int(pose_time * 12.0) % 8
+			index = int(pose_time * stride_rate) % 8
+			if reverse_stride: index = 7-index
 		"jump":
 			source = "air"
 			index = 0 if pose_time < 0.045 else (1 if pose_time < 0.20 else 2)

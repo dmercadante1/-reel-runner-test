@@ -1,3 +1,9 @@
+# Latest authorized milestone — scrolling Courtyard (2026-09-11)
+
+Build one 10–15-screen Courtyard (target 12), continuous scrolling with parallax and alternate elevations. Active enemies, shorter capture, defensive chip damage, film-locked facing with backward walking. Capture quota unlocks a midpoint key; collect it to exit, with return shortcut. Death restarts stage. Floating hearts/film/reels HUD, bespoke matching art, left D-pad and right Film/Jump with Super/Reload above. Keep 1080p and authorized cameraman. Prioritize the user’s Safari M3 MacBook Pro and iPhone 16 Pro; skip slow-machine and broad browser variations. Do not interrupt for permissions, record device access limitations. Existing previews/R5 remain immutable. See COURTYARD-SCROLL-HANDOFF.md for actual checks and pending physical Safari testing.
+
+---
+
 # Current direction — 1080p Gothic Horror chapter
 
 The user approved 1080p on 2026-09-10 after playing the resolution comparison, and explicitly authorized building the chapter overnight. Preserve 2D charm and pixel-art inspiration. World geometry remains 640×360 logical units; rendering is 1920×1080 with CanvasItems scaling, so artwork and effects receive the higher resolution without changing movement reach.

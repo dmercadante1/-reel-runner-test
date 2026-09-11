@@ -1,0 +1,58 @@
+{
+  "checks": [
+    {
+      "name": "12-screen stage and 21 enemies",
+      "passed": true
+    },
+    {
+      "name": "Distant enemy patrols",
+      "passed": true
+    },
+    {
+      "name": "Film retreat preserves facing and drains film",
+      "passed": true
+    },
+    {
+      "name": "Release film restores normal turning",
+      "passed": true
+    },
+    {
+      "name": "Vulnerable film drains five times faster",
+      "passed": true
+    },
+    {
+      "name": "11 captures do not unlock key",
+      "passed": true
+    },
+    {
+      "name": "Quota awakens distant key, not exit",
+      "passed": true
+    },
+    {
+      "name": "Collecting key opens exit",
+      "passed": true
+    },
+    {
+      "name": "Service passage returns to midpoint",
+      "passed": true
+    },
+    {
+      "name": "Stage completes with uncaptured enemies",
+      "passed": true
+    },
+    {
+      "name": "Death restarts whole stage with restored supplies",
+      "passed": true
+    },
+    {
+      "name": "Entire stage traversable using controller input",
+      "passed": true
+    },
+    {
+      "name": "Camera follows and clamps at stage edge",
+      "passed": true
+    }
+  ],
+  "failed": 0,
+  "note": "Native gameplay rules and input-only traversal; quota states arranged to isolate progression. Not a physical Safari/iPhone test."
+}

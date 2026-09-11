@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal jumped
 signal landed
 @export var tuning: MovementTuning = preload("res://data/default_movement.tres")
+var film_strafe := false
 var facing: int = 1
 var _coyote: float = 0.0
 var _buffer: float = 0.0
@@ -28,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	var rate: float = tuning.acceleration if direction != 0.0 else tuning.braking
 	velocity.x = move_toward(velocity.x, direction * tuning.run_speed, rate * delta)
-	if direction != 0.0:
+	if direction != 0.0 and not (film_strafe and Input.is_action_pressed("record")):
 		facing = 1 if direction > 0.0 else -1
 	if not is_on_floor():
 		velocity.y = minf(velocity.y + tuning.gravity * delta, tuning.terminal_fall_speed)
